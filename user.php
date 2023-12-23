@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Bind parameters
     // $stmt->bind_param("ssssss", $fname, $lname, $email, $password, $city, $country);
 
+    
     // Execute the statement
     if ($stmt->execute()) {
         echo "Registration successful!";
