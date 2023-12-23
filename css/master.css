@@ -1,0 +1,281 @@
+/* Start Variables */
+:root {
+    --main-color: #2196F3;
+    --main-color-alt: #1787E0;
+    --transition-time: 0.3s;
+    --main-padding-top: 100px;
+    --main-padding-bottom: 100px;
+    --section-background: #ececec;
+    --secondary-font-color: #777;
+}
+
+/* End Variables */
+/* Start Global Rules */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+
+}
+
+ul {
+    list-style: none;
+}
+
+i{
+    color: white;
+    font-size: 16px;
+    margin-right: 5px;
+}
+a {
+    text-decoration: none;
+    display: block;
+    color: black;
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1170px;
+}
+
+/* Start Header bar */
+.header-bar {
+    background-color: #393e46;
+    padding: 5px;
+
+}
+
+.header-bar .container {
+    display: flex;
+    justify-content: space-between;
+    width: 1320px;
+}
+
+.header-bar .icons {
+    display: flex;
+}
+
+.header-bar .icons i {
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+}
+
+.header-bar .icons i:hover {
+    color: #e31616;
+}
+
+.header-bar .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+}
+
+.header-bar .text .email {
+    margin-left: 15px;
+}
+
+/* End Header bar */
+
+/* Start Header */
+.header {
+    background-color: white;
+    position: relative;
+    height: 95px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px;
+    display: flex;
+}
+
+.header .container {
+    width: 1320px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.header .logo img {
+    width: 80px;
+}
+
+.header .rl-container {
+    color: black;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.header .rl-container div a{
+    padding: 20px;
+    position: relative;
+}
+.header .rl-container div a:hover{
+    color: #cd1818;
+}
+.header .rl-container div a::before{
+    content: "";
+    position: absolute;
+    height: 3px;
+    background-color: #cd1818;
+    width: calc(100% - 42px);
+    left: 21px;
+    bottom: 10px;
+    display: none;
+}
+.header .rl-container .home a::before{
+    display: block;
+}
+.header .rl-container .home a{
+    color: #cd1818;
+}
+.header .rl-container div a:hover::before{
+    display: block;
+}
+/* End Header */
+/* Start Landing */
+.landing{
+    height: calc(100vh - 131px);
+    background-image: url(/images/background-home.PNG);
+    background-size: cover;
+    position: relative;
+
+}
+
+.landing .overlay{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 25%);
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    
+}
+
+.landing .text{
+    position: absolute;
+    color: white;
+    transform: translateX(-50%);
+    max-width: 700px;
+    left: 50%;
+    top: 11%;
+    padding: 20px;
+    border-radius: 10px;
+}
+.landing .text span{
+    display: block;
+    font-weight: bold;
+    font-size: 60px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.landing .text p{
+    font-size: 24px;
+    text-align: center;
+}
+.landing .auth-container{
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    top: 42%;
+}
+.landing .auth-container .login-form form > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.landing .auth-container .login-form form input{
+    width: 500px;
+    height: 59px;
+    padding: 18px 18px 18px 65px;
+    margin-bottom: 20px;
+    position: relative;
+    border-radius: 6px;
+    border: 0;
+    outline: none;
+}
+.landing .auth-container form input[type="submit"]{
+    background-color: #cd1818d6;
+    color: white;
+    padding: 0;
+    font-weight: bold;
+}
+.landing .auth-container form input[type="submit"]:hover{
+    cursor: pointer;
+    background-color: #cd1818;
+}
+
+.landing .auth-container .login-form form .icon{
+    position: absolute;
+    height: 59px;
+    width: 50px;
+    background-color: #cd1818;
+    z-index: 2;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0px;
+}
+.landing .auth-container .login-form form .icon i{
+    margin: 0;
+}
+
+.landing .auth-container .login-form form a{
+    color: white;
+    display: inline;
+}
+.landing .auth-container .login-form form a:hover{
+    color: #cd1818;
+}
+.landing .auth-container .login-form form p{
+    color: white;
+}
+.login-form {
+    display: none;
+  }
+
+.landing .auth-container .signup-form form{
+    display: flex;
+    justify-content: space-around;
+    width: 1200px;
+}
+.landing .auth-container .signup-form form .left{
+
+}
+.landing .auth-container .signup-form form .right{
+
+}
+
+.landing .auth-container .signup-form input{
+    width: 500px;
+    height: 59px;
+    padding: 18px;
+    margin-bottom: 20px;
+    position: relative;
+    border-radius: 6px;
+    border: 0;
+    outline: none;
+}
+
+
+/* End Landing */
