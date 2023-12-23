@@ -16,6 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = password_hash(sanitizeInput($_POST["password"]), PASSWORD_DEFAULT); // Hash the password
     $city = sanitizeInput($_POST["city"]);
     $country = sanitizeInput($_POST["country"]);
+    $contactNumber = sanitizeInput($_POST["contact number"]);
+    $dob = sanitizeInput($_POST["dob"]);
+    $address = sanitizeInput($_POST["address"])
 
     // Establish a connection to your MySQL database
     $dbHost = "localhost";
@@ -31,8 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // SQL query to insert data into the customer table
-    $sql = "INSERT INTO customer (fname, lname, email, password, city, country)
-     VALUES ('$fname', '$lname', '$email','$password', '$city', '$country')";
+    $sql = "INSERT INTO customer (fname, lname, email, password, city, country, adress, dob, ContactNo)
+     VALUES ('$fname', '$lname', '$email','$password', '$city', '$country', '$address', '$dob', '$contactNumber' )";
 
     // Prepare the statement
     $stmt = $conn->prepare($sql);
