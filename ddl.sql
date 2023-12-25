@@ -4,16 +4,16 @@ CREATE TABLE car (
     CarName VARCHAR(225) NOT NULL,
     Overview VARCHAR(225),
     PricePerDay INT NOT NULL,
-    Year YEAR NOT NULL,
-    Image VARCHAR(300),
+    `Year` YEAR NOT NULL,
+    `Image` VARCHAR(300),
     DriverAirbag CHAR(1) NOT NULL,
-    AirConditioner CHAR(1) NOT NULL,
-    SeatingCapacity INT NOT NULL
+    `Status` VARCHAR(225);
+    Color VARCHAR(225);
 );
 
 -- Create the offices table
 CREATE TABLE offices (
-    OId INT PRIMARY KEY,
+    `OId` INT PRIMARY KEY,
     Country VARCHAR(50) NOT NULL
 );
 
@@ -29,7 +29,7 @@ CREATE TABLE users (
    FirstName VARCHAR(120) NOT NULL,
    LastName VARCHAR(120) NOT NULL,
    Email VARCHAR(100) NOT NULL,
-   Password VARCHAR (100)
+   `Password` VARCHAR (100)
 );
 
 
