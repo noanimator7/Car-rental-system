@@ -45,92 +45,123 @@
     <div class="header" id="header">
         <div class="container">
             <div class="logo">
-                <img src="/images/logo.png" alt="">
+                <img src="/Car-rental-system/images/logo.png" alt="">
             </div>
             <div class="rl-container">
                 <div class="home"><a href="#">HOME</a></div>
-                <div class="about-us"><a href="#">ABOUT US</a></div>
-                <div class="login "><a href="#" class="button">LOGIN</a></div>
-                <div class="register "><a href="#" class="button">SIGN UP</a></div>
+                <div class="about-us"><a href="#about">ABOUT US</a></div>
+                <div class="login "><a href="#" class="button">TESTIMONIALS</a></div>
+                <div class="register "><a href="#" class="button">CONTACT US</a></div>
             </div>
         </div>
     </div>
     <!-- End Header -->
     <!-- Start Landing -->
     <div class="landing">
-        <div class="overlay">
-            <div class="container">
+        <div class="overlay"></div>
+        <div class="auth-container container">
+            <div class="login-form">
                 <div class="text">
-                    <span>LUXURY CARS FOR RENT!</span>
+                    <span>LUXURY CARS FOR <br> RENT!</span>
                     <p>Login or Sign Up to start making reservations!</p>
                 </div>
-                <div class="auth-container">
-                    <div class="login-form">
-                        <form action="user.php" id="loginForm" method="post">
-                            <div class="email">
-                                <div class="icon"><i class="fa-regular fa-envelope"></i></div>
-                                <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
-                            </div>
-                            <div class="password">
-                                <div class="icon"><i class="fa-solid fa-key"></i></div>
-                                <input type="password" id="password" name="password" placeholder="Enter Your Password"
-                                    required>
-                            </div>
-                            <div class="submit">
-                                <input type="submit" value="LOGIN">
-                            </div>
-                            <p>Don't have an account? <a href="#" onclick="toggleForm('signup')">Sign Up</a></p>
-                        </form>
+                <form action="user.php" id="loginForm" method="post">
+                    <div class="email">
+                        <div class="icon"><i class="fa-regular fa-envelope"></i></div>
+                        <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
                     </div>
-                    <div class="signup-form">
-                        <form action="user.php" id="signupForm" method="post">
-                            <div class="left">
-                                <div class="first-name">
-                                    <input type="text" id="firstname" name="fname" placeholder="Enter Your Firstname"
-                                        required>
-                                </div>
-                                <div class="last-name">
-                                    <input type="text" id="lastname" name="lname" placeholder="Enter Your Lastname"
-                                        required>
-                                </div>
-                                <div class="email">
-                                    <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
-                                </div>
-                                <div class="password">
-                                    <input type="password" id="password" name="password"
-                                        placeholder="Enter Your Password" required>
-                                </div>
-                                <div class="dob">
-                                    <input type="text" placeholder="Enter Date Of Birth" name="dob" id="dob" onfocus="(this.type='date')">
-                                </div>
-                            </div>
-                            <div class="right">
-                                <div class="address">
-                                    <input type="text" name="address" id="address" placeholder="Enter Address" required>
-                                </div>
-                                <div class="contact">
-                                    <input type="tel" name="contact_number" id="contact"
-                                        placeholder="Enter Contact Number" required>
-                                </div>
-                                <div class="city">
-                                    <input type="text" name="city" id="city" placeholder="Enter City" required>
-                                </div>
-                                <div class="country">
-                                    <input type="text" name="country" id="country" placeholder="Enter Country" required>
-                                </div>
-                                <div class="submit">
-                                    <input type="submit" value="SIGN UP">
-                                </div>
-                            </div>
-                        </form>
-                        <p>Already have an account? <a href="#" onclick="toggleForm('login')">Login</a></p>
+                    <div class="password">
+                        <div class="icon"><i class="fa-solid fa-key"></i></div>
+                        <input type="password" id="password" name="password" placeholder="Enter Your Password" required>
                     </div>
+                    <div class="submit">
+                        <input type="submit" value="LOGIN">
+                    </div>
+                    <p>Don't have an account? <a href="#" onclick="toggleForm('signup')">Sign Up</a></p>
+                </form>
+            </div>
+            <div class="signup-form">
+                <div class="text">
+                    <span>LUXURY CARS FOR <br> RENT!</span>
+                    <p>Login or Sign Up to start making reservations!</p>
                 </div>
+                <form action="user.php" id="signupForm" method="post">
+                    <div class="left">
+                        <div class="first-name">
+                            <input type="text" id="firstname" name="fname" placeholder="Enter Your Firstname" required>
+                        </div>
+                        <div class="last-name">
+                            <input type="text" id="lastname" name="lname" placeholder="Enter Your Lastname" required>
+                        </div>
+                        <div class="email">
+                            <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
+                        </div>
+                        <div class="password">
+                            <input type="password" id="password" name="password" placeholder="Enter Your Password"
+                                required>
+                        </div>
+                        <div class="dob">
+                            <input type="text" placeholder="Enter Date Of Birth" name="dob" id="dob"
+                                onfocus="(this.type='date')">
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="address">
+                            <input type="text" name="address" id="address" placeholder="Enter Address" required>
+                        </div>
+                        <div class="contact">
+                            <input type="tel" name="contact_number" id="contact" placeholder="Enter Contact Number"
+                                required>
+                        </div>
+                        <div class="city">
+                            <input type="text" name="city" id="city" placeholder="Enter City" required>
+                        </div>
+                        <div class="country">
+                            <input type="text" name="country" id="country" placeholder="Enter Country" required>
+                        </div>
+                        <div class="submit">
+                            <input type="submit" value="SIGN UP">
+                        </div>
+                    </div>
+                </form>
+                <p>Already have an account? <a href="#" onclick="toggleForm('login')">Login</a></p>
             </div>
         </div>
     </div>
     </div>
     <!-- End Landing -->
+    <!-- Start About -->
+    <div class="about" id="about">
+        <div class="container">
+            <div class="main-heading">
+                <h2>About Us</h2>
+            </div>
+            <p>Welcome to Rent Car, where we redefine the way you experience the open road. With a passion for
+                unparalleled service and a fleet of meticulously maintained vehicles, we pride ourselves on being your
+                go-to destination for seamless and stress-free car rentals. At Rent Car, we understand that every
+                journey is unique, and we strive to provide a personalized experience tailored to your specific needs.
+                Whether you're embarking on a business trip, a family vacation, or just need a reliable ride for the
+                day, our diverse range of vehicles ensures that you'll find the perfect match. Our commitment to
+                excellence extends beyond the cars we offer; it's embedded in our customer-centric approach. From our
+                easy online booking system to our dedicated customer support, we are here to make your rental experience
+                as smooth as the ride in our vehicles. Choose Rent Car for a journey where comfort, reliability, and
+                exceptional service come together to elevate your travel experience. Your adventure begins with us!</p>
+        </div>
+    </div>
+    <!-- End About -->
+    <!-- Start Testimonials -->
+    <div class="testimonials">
+        <div class="container">
+            <div class="main-heading">
+                <h2>Testimonials</h2>
+                <p>Read what our customers have to say about our vehicles and services.</p>
+            </div>
+            
+            
+            
+        </div>
+    </div>
+    <!-- End Testimonials -->
 
     <script>
         function toggleForm(formType) {
