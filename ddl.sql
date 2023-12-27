@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS car_rental_system;
+USE car_rental_system;
+
 -- Create the car table
 CREATE TABLE car (
     PlateId INT PRIMARY KEY,
@@ -7,8 +10,9 @@ CREATE TABLE car (
     `Year` YEAR NOT NULL,
     `Image` VARCHAR(300),
     DriverAirbag CHAR(1) NOT NULL,
-    `Status` VARCHAR(225);
-    Color VARCHAR(225);
+    `Status` VARCHAR(225),
+    Color VARCHAR(225),
+    Old INT
 );
 
 -- Create the offices table
@@ -29,88 +33,89 @@ CREATE TABLE users (
    FirstName VARCHAR(120) NOT NULL,
    LastName VARCHAR(120) NOT NULL,
    Email VARCHAR(100) NOT NULL,
-   `Password` VARCHAR (100)
+   `Password` VARCHAR (100),
+   `Address` VARCHAR(255),
+   city VARCHAR(100),
+   country VARCHAR(100),
+   admin TinyINT
+);
+CREATE TABLE Reservation (
+Reservation_number INT PRIMARY KEY AUTO_INCREMENT,
+SSN char(11),
+PlateId INT,
+pickup_date Date,
+return_date Date,
+Payment_method VARCHAR(255),
+Total_price INT,
+FOREIGN KEY (`SSN`) REFERENCES users(`SSN`),
+FOREIGN KEY (`PlateId`) REFERENCES car(`PlateId`)
 );
 
 
 
--- Insert statements for the car table
-INSERT INTO car (PlateId, CarName, Overview, PricePerDay, Year, Image, DriverAirbag, AirConditioner, SeatingCapacity)
-VALUES
-(1, 'Toyota Camry', 'Sedan', 50, 2022, 'toyota_camry.jpg', 'Y', 'Y', 5),
-(2, 'Honda Accord', 'Luxury Sedan', 60, 2022, 'honda_accord.jpg', 'Y', 'Y', 5),
-(3, 'Ford Mustang', 'Sports Car', 70, 2022, 'ford_mustang.jpg', 'Y', 'N', 2),
-(4, 'Chevrolet Malibu', 'Midsize Sedan', 55, 2022, 'chevrolet_malibu.jpg', 'Y', 'Y', 5),
-(5, 'BMW 3 Series', 'Luxury Compact', 65, 2022, 'bmw_3_series.jpg', 'Y', 'Y', 5),
-(100, 'Nissan Altima', 'Compact Sedan', 45, 2022, 'nissan_altima.jpg', 'Y', 'N', 4);
--- Insert statements for the car table (continued)
-INSERT INTO car (PlateId, CarName, Overview, PricePerDay, Year, Image, DriverAirbag, AirConditioner, SeatingCapacity)
-VALUES
-(101, 'Hyundai Sonata', 'Family Sedan', 55, 2022, 'hyundai_sonata.jpg', 'Y', 'Y', 5),
-(102, 'Mercedes-Benz E-Class', 'Luxury Sedan', 75, 2022, 'mercedes_e_class.jpg', 'Y', 'Y', 5),
-(103, 'Audi A4', 'Compact Luxury Sedan', 70, 2022, 'audi_a4.jpg', 'Y', 'Y', 5),
-(104, 'Jeep Wrangler', 'Off-Road SUV', 80, 2022, 'jeep_wrangler.jpg', 'Y', 'N', 4),
-(105, 'Volkswagen Golf', 'Hatchback', 45, 2022, 'volkswagen_golf.jpg', 'Y', 'N', 5),
-(106, 'Subaru Outback', 'Crossover SUV', 65, 2022, 'subaru_outback.jpg', 'Y', 'Y', 5),
-(107, 'Chevrolet Tahoe', 'Full-Size SUV', 90, 2022, 'chevrolet_tahoe.jpg', 'Y', 'Y', 8),
-(108, 'Mazda CX-5', 'Compact SUV', 60, 2022, 'mazda_cx5.jpg', 'Y', 'Y', 5),
-(109, 'Ford Explorer', 'Midsize SUV', 75, 2022, 'ford_explorer.jpg', 'Y', 'Y', 7),
-(110, 'Kia Soul', 'Compact Crossover', 50, 2022, 'kia_soul.jpg', 'Y', 'N', 5),
-(111, 'Lexus RX', 'Luxury SUV', 85, 2022, 'lexus_rx.jpg', 'Y', 'Y', 5),
-(112, 'Tesla Model 3', 'Electric Sedan', 70, 2022, 'tesla_model3.jpg', 'Y', 'Y', 5),
-(113, 'Porsche 911', 'Sports Car', 100, 2022, 'porsche_911.jpg', 'Y', 'N', 2),
-(114, 'Jaguar F-Type', 'Luxury Sports Car', 110, 2022, 'jaguar_f_type.jpg', 'Y', 'N', 2),
-(115, 'Land Rover Range Rover', 'Luxury SUV', 120, 2022, 'land_rover_range_rover.jpg', 'Y', 'Y', 5),
-(116, 'Toyota Highlander', 'Midsize SUV', 80, 2022, 'toyota_highlander.jpg', 'Y', 'Y', 7),
-(117, 'Nissan Rogue', 'Compact SUV', 55, 2022, 'nissan_rogue.jpg', 'Y', 'Y', 5),
-(118, 'Acura MDX', 'Luxury Midsize SUV', 90, 2022, 'acura_mdx.jpg', 'Y', 'Y', 7),
-(119, 'Buick Enclave', 'Midsize Crossover', 70, 2022, 'buick_enclave.jpg', 'Y', 'Y', 7),
-(120, 'GMC Yukon', 'Full-Size SUV', 95, 2022, 'gmc_yukon.jpg', 'Y', 'Y', 8);
--- Insert statements for the car table (continued)
-INSERT INTO car (PlateId, CarName, Overview, PricePerDay, Year, Image, DriverAirbag, AirConditioner, SeatingCapacity)
-VALUES
-(121, 'Ford Fiesta', 'Compact Car', 40, 2022, 'ford_fiesta.jpg', 'Y', 'N', 5),
-(122, 'Chevrolet Camaro', 'Muscle Car', 90, 2022, 'chevrolet_camaro.jpg', 'Y', 'N', 4),
-(123, 'Hyundai Tucson', 'Compact SUV', 50, 2022, 'hyundai_tucson.jpg', 'Y', 'Y', 5),
-(124, 'Dodge Charger', 'Full-Size Sedan', 80, 2022, 'dodge_charger.jpg', 'Y', 'Y', 5),
-(125, 'Subaru Impreza', 'Compact Car', 45, 2022, 'subaru_impreza.jpg', 'Y', 'N', 5),
-(126, 'Mitsubishi Outlander', 'Midsize SUV', 60, 2022, 'mitsubishi_outlander.jpg', 'Y', 'Y', 7),
-(127, 'Chrysler Pacifica', 'Minivan', 70, 2022, 'chrysler_pacifica.jpg', 'Y', 'Y', 7),
-(128, 'Audi Q5', 'Luxury Compact SUV', 75, 2022, 'audi_q5.jpg', 'Y', 'Y', 5),
-(129, 'Volvo XC90', 'Luxury SUV', 85, 2022, 'volvo_xc90.jpg', 'Y', 'Y', 7),
-(130, 'Kia Telluride', 'Midsize SUV', 80, 2022, 'kia_telluride.jpg', 'Y', 'Y', 7),
-(131, 'Infiniti Q50', 'Luxury Sedan', 70, 2022, 'infiniti_q50.jpg', 'Y', 'Y', 5),
-(132, 'Honda CR-V', 'Compact SUV', 55, 2022, 'honda_crv.jpg', 'Y', 'Y', 5),
-(133, 'Lexus ES', 'Luxury Midsize Sedan', 85, 2022, 'lexus_es.jpg', 'Y', 'Y', 5),
-(134, 'Ford Escape', 'Compact SUV', 50, 2022, 'ford_escape.jpg', 'Y', 'Y', 5),
-(135, 'Acura RDX', 'Luxury Compact SUV', 65, 2022, 'acura_rdx.jpg', 'Y', 'Y', 5),
-(136, 'Mazda3', 'Compact Car', 45, 2022, 'mazda3.jpg', 'Y', 'N', 5),
-(137, 'GMC Acadia', 'Midsize SUV', 70, 2022, 'gmc_acadia.jpg', 'Y', 'Y', 7),
-(138, 'Toyota RAV4', 'Compact SUV', 55, 2022, 'toyota_rav4.jpg', 'Y', 'Y', 5),
-(139, 'Nissan Pathfinder', 'Midsize SUV', 75, 2022, 'nissan_pathfinder.jpg', 'Y', 'Y', 7),
-(140, 'Jeep Grand Cherokee', 'Midsize SUV', 80, 2022, 'jeep_grand_cherokee.jpg', 'Y', 'Y', 5);
--- Insert statements for the car table (continued)
-INSERT INTO car (PlateId, CarName, Overview, PricePerDay, Year, Image, DriverAirbag, AirConditioner, SeatingCapacity)
-VALUES
-(141, 'Volkswagen Tiguan', 'Compact SUV', 55, 2022, 'volkswagen_tiguan.jpg', 'Y', 'Y', 5),
-(142, 'Chevrolet Equinox', 'Midsize SUV', 65, 2022, 'chevrolet_equinox.jpg', 'Y', 'Y', 5),
-(143, 'Ford Edge', 'Midsize SUV', 70, 2022, 'ford_edge.jpg', 'Y', 'Y', 5),
-(144, 'BMW X5', 'Luxury SUV', 90, 2022, 'bmw_x5.jpg', 'Y', 'Y', 7),
-(145, 'Toyota Prius', 'Hybrid Car', 60, 2022, 'toyota_prius.jpg', 'Y', 'Y', 5),
-(146, 'Hyundai Kona', 'Subcompact SUV', 50, 2022, 'hyundai_kona.jpg', 'Y', 'Y', 5),
-(147, 'Lexus GX', 'Luxury SUV', 95, 2022, 'lexus_gx.jpg', 'Y', 'Y', 7),
-(148, 'Honda Civic', 'Compact Car', 45, 2022, 'honda_civic.jpg', 'Y', 'N', 5),
-(149, 'Nissan Murano', 'Midsize SUV', 75, 2022, 'nissan_murano.jpg', 'Y', 'Y', 5),
-(150, 'Audi Q7', 'Luxury Midsize SUV', 85, 2022, 'audi_q7.jpg', 'Y', 'Y', 7),
-(151, 'Mercedes-Benz GLE', 'Luxury SUV', 95, 2022, 'mercedes_gle.jpg', 'Y', 'Y', 7),
-(152, 'Subaru Forester', 'Compact SUV', 55, 2022, 'subaru_forester.jpg', 'Y', 'Y', 5),
-(153, 'Chevrolet Traverse', 'Midsize SUV', 70, 2022, 'chevrolet_traverse.jpg', 'Y', 'Y', 7),
-(154, 'Volkswagen Passat', 'Midsize Sedan', 60, 2022, 'volkswagen_passat.jpg', 'Y', 'Y', 5),
-(155, 'Jeep Compass', 'Compact SUV', 50, 2022, 'jeep_compass.jpg', 'Y', 'Y', 5),
-(156, 'Ford Expedition', 'Full-Size SUV', 100, 2022, 'ford_expedition.jpg', 'Y', 'Y', 8),
-(157, 'Kia Seltos', 'Subcompact SUV', 45, 2022, 'kia_seltos.jpg', 'Y', 'Y', 5),
-(158, 'Toyota Avalon', 'Full-Size Sedan', 80, 2022, 'toyota_avalon.jpg', 'Y', 'Y', 5),
-(159, 'Nissan Titan', 'Pickup Truck', 90, 2022, 'nissan_titan.jpg', 'Y', 'N', 5),
-(160, 'Tesla Model Y', 'Electric SUV', 75, 2022, 'tesla_model_y.jpg', 'Y', 'Y', 7);
+-- Insert data into Reservation table
+INSERT INTO Reservation (`Reservation_number`, `SSN`, `PlateId`, `pickup_date`, `return_date`, `Payment_method`, `Total_price`) VALUES
+(1, '12345678901', 101, '2023-01-01', '2023-01-05', 'Credit Card', 200),
+(2, '98765432101', 102, '2023-02-01', '2023-02-10', 'PayPal', 700);
+-- Insert data into offices table
+INSERT INTO offices (`OId`, `Country`) VALUES
+(1, 'USA'),
+(2, 'Canada');
 
+-- Insert data into category table
+INSERT INTO category (`CarName`, `BrandName`) VALUES
+('Sedan1', 'Toyota'),
+('SUV1', 'Ford');
 
+-- Insert data into car table
+INSERT INTO car (`PlateId`, `CarName`, `Overview`, `PricePerDay`, `Year`, `Image`, `DriverAirbag`, `Status`, `Color`) VALUES
+(101, 'Sedan1', 'Comfortable sedan', 50, 2022, 'sedan_image.jpg', 'Y', 'Available', 'Blue'),
+(102, 'SUV1', 'Spacious SUV', 70, 2021, 'suv_image.jpg', 'Y', 'Reserved', 'Black');
+
+-- Insert data into users table
+INSERT INTO users (`SSN`, `FirstName`, `LastName`, `Email`, `Password`, `Address`, `city`, `country`, `admin`) VALUES
+('12345678901', 'John', 'Doe', 'john@example.com', 'password123', '123 Main St', 'City1', 'USA', 0),
+('98765432101', 'Jane', 'Smith', 'jane@example.com', 'securepass', '456 Oak St', 'City2', 'Canada', 1);
+
+-- Insert data into Reservation table
+INSERT INTO Reservation (`Reservation_number`, `SSN`, `PlateId`, `pickup_date`, `return_date`, `Payment_method`, `Total_price`) VALUES
+(1, '12345678901', 101, '2023-01-01', '2023-01-05', 'Credit Card', 200),
+(2, '98765432101', 102, '2023-02-01', '2023-02-10', 'PayPal', 700);
+-- Insert more data into offices table
+INSERT INTO offices (`OId`, `Country`) VALUES
+(3, 'Germany'),
+(4, 'France');
+
+-- Insert more data into category table
+INSERT INTO category (`CarName`, `BrandName`) VALUES
+('Sedan2', 'Honda'),
+('SUV2', 'Chevrolet'),
+('Compact1', 'Nissan');
+
+-- Insert more data into car table
+INSERT INTO car (`PlateId`, `CarName`, `Overview`, `PricePerDay`, `Year`, `Image`, `DriverAirbag`, `Status`, `Color`) VALUES
+(103, 'Sedan2', 'Fuel-efficient sedan', 60, 2020, 'sedan2_image.jpg', 'Y', 'Available', 'Silver'),
+(104, 'SUV2', 'Family-friendly SUV', 80, 2022, 'suv2_image.jpg', 'Y', 'Reserved', 'Red'),
+(105, 'Compact1', 'Compact car for city driving', 45, 2021, 'compact_image.jpg', 'N', 'Available', 'White'),
+(106, 'Sedan1', 'Another Sedan for testing', 55, 2023, 'sedan3_image.jpg', 'Y', 'Available', 'Black'),
+(107, 'SUV1', 'Another SUV for testing', 75, 2020, 'suv3_image.jpg', 'Y', 'Reserved', 'Green');
+
+-- Insert more data into users table
+INSERT INTO users (`SSN`, `FirstName`, `LastName`, `Email`, `Password`, `Address`, `city`, `country`, `admin`) VALUES
+('11111111111', 'Alice', 'Johnson', 'alice@example.com', 'pass123', '789 Pine St', 'City3', 'Germany', 0),
+('22222222222', 'Bob', 'Williams', 'bob@example.com', 'securepass2', '101 Elm St', 'City4', 'France', 0),
+('33333333333', 'Admin', 'Adminson', 'admin@example.com', 'adminpass', '456 Birch St', 'City5', 'USA', 1),
+('44444444444', 'Eva', 'Miller', 'eva@example.com', 'evapass', '222 Oak St', 'City6', 'Canada', 0);
+
+-- Insert more data into Reservation table
+INSERT INTO Reservation (`Reservation_number`, `SSN`, `PlateId`, `pickup_date`, `return_date`, `Payment_method`, `Total_price`) VALUES
+(3, '11111111111', 103, '2023-03-01', '2023-03-10', 'Debit Card', 500),
+(4, '22222222222', 104, '2023-04-01', '2023-04-05', 'Credit Card', 320),
+(5, '33333333333', 105, '2023-05-01', '2023-05-07', 'PayPal', 315),
+(6, '44444444444', 106, '2023-06-01', '2023-06-15', 'Credit Card', 825),
+(7, '12345678901', 107, '2023-07-01', '2023-07-20', 'Debit Card', 900),
+(8, '98765432101', 103, '2023-08-01', '2023-08-10', 'PayPal', 400),
+(9, '11111111111', 104, '2023-09-01', '2023-09-05', 'Credit Card', 250),
+(10, '22222222222', 105, '2023-10-01', '2023-10-15', 'Debit Card', 550),
+(11, '33333333333', 106, '2023-11-01', '2023-11-07', 'PayPal', 400),
+(12, '44444444444', 107, '2023-12-01', '2023-12-20', 'Credit Card', 700);
