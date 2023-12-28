@@ -60,12 +60,12 @@
     <div class="landing">
         <div class="overlay"></div>
         <div class="auth-container container">
-            <div class="login-form">
+            <div class="login-form" id="login-form">
                 <div class="text">
                     <span>LUXURY CARS FOR <br> RENT!</span>
                     <p>Login or Sign Up to start making reservations!</p>
                 </div>
-                <form action="user.php" id="loginForm" method="post">
+                <form action ='av.php' id="loginForm" method="post">
                     <div class="email">
                         <div class="icon"><i class="fa-regular fa-envelope"></i></div>
                         <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
@@ -75,11 +75,34 @@
                         <input type="password" id="password" name="password" placeholder="Enter Your Password" required>
                     </div>
                     <div class="submit">
-                        <input type="submit" value="LOGIN">
+                        <input id="Submit" type="submit" value="LOGIN">
                     </div>
                     <p>Don't have an account? <a href="#" onclick="toggleForm('signup')">Sign Up</a></p>
                 </form>
             </div>
+            <script src="http://code.jquery.com/jquery-latest.js"></script>
+            <script type="text/javascript">
+            $(document).ready(function(){ //newly added 
+            $('#Submit').click(function(event) {
+                event.preventDefault();
+                var emailVal = $('#email').val(); // assuming this is a input text field
+                $.post('checkemail.php', {'email' : emailVal}, function(data) {
+                    
+                    if(data=='not_exist'){
+                        // alert('No');
+                        
+                        return false;
+                    } 
+                    else {
+                        // alert('Yes');
+                        $('#loginForm').submit();
+                        // return false;
+                    }       
+                });
+            });});
+            </script>
+
+
             <div class="signup-form">
                 <div class="text">
                     <span>LUXURY CARS FOR <br> RENT!</span>

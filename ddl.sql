@@ -12,13 +12,15 @@ CREATE TABLE car (
     DriverAirbag CHAR(1) NOT NULL,
     `Status` VARCHAR(225),
     Color VARCHAR(225),
-    Old INT
+    Old INT,
+    Seating_capacity INT,
+    Air_conditioner char(1)
 );
 
 -- Create the offices table
 CREATE TABLE offices (
     `OId` INT PRIMARY KEY,
-    Country VARCHAR(50) NOT NULL
+    Country VARCHAR(50) NOT NULL,
 );
 
 -- Create the category table
@@ -68,9 +70,9 @@ INSERT INTO category (`CarName`, `BrandName`) VALUES
 ('SUV1', 'Ford');
 
 -- Insert data into car table
-INSERT INTO car (`PlateId`, `CarName`, `Overview`, `PricePerDay`, `Year`, `Image`, `DriverAirbag`, `Status`, `Color`) VALUES
-(101, 'Sedan1', 'Comfortable sedan', 50, 2022, 'sedan_image.jpg', 'Y', 'Available', 'Blue'),
-(102, 'SUV1', 'Spacious SUV', 70, 2021, 'suv_image.jpg', 'Y', 'Reserved', 'Black');
+INSERT INTO car (`PlateId`, `CarName`, `Overview`, `PricePerDay`, `Year`, `Image`, `DriverAirbag`, `Status`, `Color`, `Air_conditioner`, `Seating_capacity`, `OId` ) VALUES
+(101, 'Sedan1', 'Comfortable sedan', 50, 2022, 'sedan_image.jpg', 'Y', 'Available', 'Blue', 'Y', 4, 2),
+(102, 'SUV1', 'Spacious SUV', 70, 2021, 'suv_image.jpg', 'Y', 'Reserved', 'Black', 'Y', 8, 1);
 
 -- Insert data into users table
 INSERT INTO users (`SSN`, `FirstName`, `LastName`, `Email`, `Password`, `Address`, `city`, `country`, `admin`) VALUES
@@ -93,12 +95,12 @@ INSERT INTO category (`CarName`, `BrandName`) VALUES
 ('Compact1', 'Nissan');
 
 -- Insert more data into car table
-INSERT INTO car (`PlateId`, `CarName`, `Overview`, `PricePerDay`, `Year`, `Image`, `DriverAirbag`, `Status`, `Color`) VALUES
-(103, 'Sedan2', 'Fuel-efficient sedan', 60, 2020, 'sedan2_image.jpg', 'Y', 'Available', 'Silver'),
-(104, 'SUV2', 'Family-friendly SUV', 80, 2022, 'suv2_image.jpg', 'Y', 'Reserved', 'Red'),
-(105, 'Compact1', 'Compact car for city driving', 45, 2021, 'compact_image.jpg', 'N', 'Available', 'White'),
-(106, 'Sedan1', 'Another Sedan for testing', 55, 2023, 'sedan3_image.jpg', 'Y', 'Available', 'Black'),
-(107, 'SUV1', 'Another SUV for testing', 75, 2020, 'suv3_image.jpg', 'Y', 'Reserved', 'Green');
+INSERT INTO car (`PlateId`, `CarName`, `Overview`, `PricePerDay`, `Year`, `Image`, `DriverAirbag`, `Status`, `Color`, `Air_conditioner`, `Seating_capacity`, `OId`) VALUES
+(103, 'Sedan2', 'Fuel-efficient sedan', 60, 2020, 'sedan2_image.jpg', 'Y', 'Available', 'Silver', 'Y', 4, 2),
+(104, 'SUV2', 'Family-friendly SUV', 80, 2022, 'suv2_image.jpg', 'Y', 'Reserved', 'Red', 'N', 8, 3),
+(105, 'Compact1', 'Compact car for city driving', 45, 2021, 'compact_image.jpg', 'N', 'Available', 'White', 'Y', 4, 4),
+(106, 'Sedan1', 'Another Sedan for testing', 55, 2023, 'sedan3_image.jpg', 'Y', 'Available', 'Black', 1),
+(107, 'SUV1', 'Another SUV for testing', 75, 2020, 'suv3_image.jpg', 'Y', 'Reserved', 'Green', 'N', 4, 3);
 
 -- Insert more data into users table
 INSERT INTO users (`SSN`, `FirstName`, `LastName`, `Email`, `Password`, `Address`, `city`, `country`, `admin`) VALUES
