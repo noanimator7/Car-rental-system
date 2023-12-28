@@ -23,7 +23,7 @@ $result = $conn->query($sql);
 if ($result) {
     // Loop through the rows
     while ($row = $result->fetch_assoc()) {
-        echo '<img src="' . $row["Image"] . '" alt="Car Image"><br>';
+        echo '<img src="data:image/jpeg;base64,'.base64_encode($row["Image"]).'" alt="Car Image '.$id.'"><br>';
         // Echo each row or process it as needed
         echo "name: " . $row["CarName"] . " - overview: " . $row["Overview"] . "<br>";
     }
