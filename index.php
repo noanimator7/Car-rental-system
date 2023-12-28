@@ -78,7 +78,7 @@
                         <!-- <div class="error"></div> -->
                     </div>
                     <div class="submit">
-                        <input type="submit" value="LOGIN">
+                        <input id="Submit" type="submit" value="LOGIN">
                     </div>
                     <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
                 </form>
