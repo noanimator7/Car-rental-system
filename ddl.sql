@@ -119,9 +119,8 @@ INSERT INTO Reservation (Reservation_number, SSN, PlateId, pickup_date, return_d
 (9, '11111111111', 104, '2023-09-01', '2023-09-05', 'Credit Card', 250),
 (10, '22222222222', 105, '2023-10-01', '2023-10-15', 'Debit Card', 550),
 (11, '33333333333', 106, '2023-11-01', '2023-11-07', 'PayPal', 400),
-(12, '44444444444', 107, '2023-12-01', '2023-12-20', 'Credit Card', 700);1 errors were found during analysis.
+(12, '44444444444', 107, '2023-12-01', '2023-12-20', 'Credit Card', 700);
 
-12 values were expected, but found 11. (near "(" at position 518)
-SQL query: Copy
+
 
 -- Insert more data into car table INSERT INTO car (PlateId, CarName, Overview, PricePerDay, Year, Image, DriverAirbag, Status, Color, Air_conditioner, Seating_capacity, OId) VALUES (103, 'Sedan2', 'Fuel-efficient sedan', 60, 2020, 'sedan2_image.jpg', 'Y', 'Available', 'Silver', 'Y', 4, 2), (104, 'SUV2', 'Family-friendly SUV', 80, 2022, 'suv2_image.jpg', 'Y', 'Reserved', 'Red', 'N', 8, 3), (105, 'Compact1', 'Compact car for city driving', 45, 2021, 'compact_image.jpg', 'N', 'Available', 'White', 'Y', 4, 4), (106, 'Sedan1', 'Another Sedan for testing', 55, 2023, 'sedan3_image.jpg', 'Y', 'Available', 'Black', 1 ,2), (107, 'SUV1', 'Another SUV for testing', 75, 2020, 'suv3_image.jpg', 'Y', 'Reserved', 'Green', 'N', 4, 3);

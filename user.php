@@ -14,11 +14,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lname = sanitizeInput($_POST["lname"]);
     $email = sanitizeInput($_POST["email"]);
     $password = password_hash(sanitizeInput($_POST["password"]), PASSWORD_DEFAULT); // Hash the password
-    $city = sanitizeInput($_POST["city"]);
-    $country = sanitizeInput($_POST["country"]);
-    $contactNumber = sanitizeInput($_POST["contact_number"]);
+    $ssn = sanitizeInput($_POST["ssn"]);
     $dob = sanitizeInput($_POST["dob"]);
     $address = sanitizeInput($_POST["address"]);
+    $contactNumber = sanitizeInput($_POST["contact_number"]);
+    $city = sanitizeInput($_POST["city"]);
+    $country = sanitizeInput($_POST["country"]);
+
+   
 
     // Establish a connection to your MySQL database
     $dbHost = "localhost";

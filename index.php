@@ -3,22 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=0">
     <title>RentCar</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/master.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../Car-rental-system/validation/loginValidation.js"></script>
 
 <body>
 
@@ -45,7 +43,7 @@
     <div class="header" id="header">
         <div class="container">
             <div class="logo">
-                <img src="/Car-rental-system/images/logo.png" alt="">
+                <img src="../Car-rental-system/images/logo.png" alt="">
             </div>
             <div class="rl-container">
                 <div class="home"><a href="#">HOME</a></div>
@@ -60,74 +58,32 @@
     <div class="landing">
         <div class="overlay"></div>
         <div class="auth-container container">
+            <span id="error" style="color:red; font-size: 18px; font-weight: bold;"></span>
             <div class="login-form">
                 <div class="text">
                     <span>LUXURY CARS FOR <br> RENT!</span>
                     <p>Login or Sign Up to start making reservations!</p>
                 </div>
-                <form action="user.php" id="loginForm" method="post">
+                <form action="" id="loginForm" method="post">
                     <div class="email">
                         <div class="icon"><i class="fa-regular fa-envelope"></i></div>
-                        <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
+                        <input type="email" id="email" name="email" placeholder="Enter Your Email" class="input">
+                        <div class="error"></div>
+                        <!-- <div class="error"></div> -->
                     </div>
                     <div class="password">
                         <div class="icon"><i class="fa-solid fa-key"></i></div>
-                        <input type="password" id="password" name="password" placeholder="Enter Your Password" required>
+                        <input type="password" id="password" name="password" placeholder="Enter Your Password" class="input">
+                        <div class="error"></div>
+                        <!-- <div class="error"></div> -->
                     </div>
                     <div class="submit">
                         <input type="submit" value="LOGIN">
                     </div>
-                    <p>Don't have an account? <a href="#" onclick="toggleForm('signup')">Sign Up</a></p>
+                    <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
                 </form>
-            </div>
-            <div class="signup-form">
-                <div class="text">
-                    <span>LUXURY CARS FOR <br> RENT!</span>
-                    <p>Login or Sign Up to start making reservations!</p>
-                </div>
-                <form action="user.php" id="signupForm" method="post">
-                    <div class="left">
-                        <div class="first-name">
-                            <input type="text" id="firstname" name="fname" placeholder="Enter Your Firstname" required>
-                        </div>
-                        <div class="last-name">
-                            <input type="text" id="lastname" name="lname" placeholder="Enter Your Lastname" required>
-                        </div>
-                        <div class="email">
-                            <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
-                        </div>
-                        <div class="password">
-                            <input type="password" id="password" name="password" placeholder="Enter Your Password"
-                                required>
-                        </div>
-                        <div class="dob">
-                            <input type="text" placeholder="Enter Date Of Birth" name="dob" id="dob"
-                                onfocus="(this.type='date')">
-                        </div>
-                    </div>
-                    <div class="right">
-                        <div class="address">
-                            <input type="text" name="address" id="address" placeholder="Enter Address" required>
-                        </div>
-                        <div class="contact">
-                            <input type="tel" name="contact_number" id="contact" placeholder="Enter Contact Number"
-                                required>
-                        </div>
-                        <div class="city">
-                            <input type="text" name="city" id="city" placeholder="Enter City" required>
-                        </div>
-                        <div class="country">
-                            <input type="text" name="country" id="country" placeholder="Enter Country" required>
-                        </div>
-                        <div class="submit">
-                            <input type="submit" value="SIGN UP">
-                        </div>
-                    </div>
-                </form>
-                <p>Already have an account? <a href="#" onclick="toggleForm('login')">Login</a></p>
             </div>
         </div>
-    </div>
     </div>
     <!-- End Landing -->
     <!-- Start About -->
@@ -182,7 +138,8 @@
     </div>
     <!-- End Testimonials -->
 
-    <script>
+
+    <!-- <script>
         function toggleForm(formType) {
             const loginForm = document.querySelector('.login-form');
             const signupForm = document.querySelector('.signup-form');
@@ -195,7 +152,11 @@
                 signupForm.style.display = 'none';
             }
         }
-    </script>
+    </script> -->
+
+
+
+
 </body>
 
 </html>

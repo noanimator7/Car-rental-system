@@ -411,9 +411,25 @@ a {
     text-align: center;
 }
 
-.signup-form {
-    display: none;
+
+.landing .auth-container.signup{
+    top: 35%;
 }
+
+.landing .auth-container.signup .text span{
+    font-size: 47px;
+    margin-top: 50px;
+}
+
+.landing .auth-container.signup div.error{
+    display: block;
+    height: 20px;
+    text-align: center;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+
 
 .landing .auth-container .signup-form form {
     display: flex;
@@ -497,15 +513,15 @@ a {
         text-align: center;
         margin-bottom: 8px;
     }
-
-    /* .landing .auth-container {
-        position: absolute;
-        transform: translateX(-50%);
-        left: 50%;
-        top: 20%;
-    } */
 }
-
+.error{
+    margin: 5px 0px 0px 5px;
+    text-align: left;
+    height: 13px;
+    font-size: 12px;
+    color: red;
+    position: absolute;
+}
 
 /* End Landing */
 /* Start About */
@@ -528,7 +544,7 @@ a {
 .testimonials {
     background-color: #f4f4f4;
     padding-bottom: 60px;
-    background-image: url(https://trials.vevs.website/web-demo/1/car-rental-website/app/web/upload/medium/aston-martin-hire-nz-rental-header-2589.jpg);
+    background-image: url(../images/Testimonials.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -580,7 +596,7 @@ a {
 
 @media(max-width: 767px) {
     .testimonials .text{
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 20px;
     }
     
