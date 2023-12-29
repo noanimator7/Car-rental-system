@@ -1,3 +1,50 @@
+<?php 
+$host = "localhost";
+$username = "root";
+$password = "";
+$database = "car_rental_system";
+$conn = new mysqli($host, $username, $password, $database);
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $start = $_POST['startdate'];
+    $sqlav = "
+    SELECT c.PlateId
+    FROM car AS c
+    WHERE c.PlateId NOT IN (
+        SELECT c.PlateID
+        FROM car AS c
+        NATURAL JOIN reservation as r
+        WHERE '$start' BETWEEN r.pickup_date AND r.return_date
+    )
+    ";
+
+    $resultavailable = $conn->query($sqlav);
+    // echo  $sqlav ;
+    if ($resultavailable === false) {
+        echo "Error: " . $conn->error;
+    }
+
+    $sqlrented = "
+    SELECT c.PlateID
+    FROM car AS c
+     JOIN reservation as r ON c.PlateId = r.PlateId
+    WHERE '$start' BETWEEN r.pickup_date AND r.return_date
+";
+//  echo $sqlrented;
+$resultrented = $conn->query($sqlrented);
+// echo $resultrented. ;
+if ($resultrented === false) {
+    echo "SIU" ; 
+    die("Error executing the query: " . $conn->error);
+}
+
+
+
+    $conn->close();
+}
+    ?>
+
+
 <!DOCTYPE html>
 <meta charset="UTF-8">
     <meta name="viewport"
@@ -15,14 +62,14 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
         <link rel="stylesheet" href="master.css">
-        <style>
-            /* .header a {
+    <style>
+            .header a {
     text-decoration: none;
 }
 
 .header .rl-container nav {
     font-family: monospace;
-} */
+}
 
 .header .rl-container ul {
     /* background: darkorange; */
@@ -60,7 +107,7 @@
 }
 
 .header .rl-container .dropdown-menu {
-    /* background: orange; */
+    background: orange;
     visibility: hidden;
     opacity: 0;
     position: absolute;
@@ -83,9 +130,9 @@
 }
 
         </style>
-
 </head>
 <body>
+        
         <!-- Start Header bar -->
         <div class="header-bar">
         <div class="container">
@@ -117,7 +164,7 @@
                     <li class="home"><a href="temp.php">HOME</a></li>
                     <li class="about-us"><a href="add.php">ADD NEW CAR</a></li>
                     <li class="login"><a href="addnewoffice.php" class="button">ADD NEW OFFICE</a></li>
-                    <li class="register"><a href="#" class="button">LOGOUT</a></li>
+                    <li class="register"><a href="../logout.php" class="button">LOGOUT</a></li>
                     <li class="dropdown">
                         <a href="#" aria-haspopup="true">Advanced Search</a>
                         <ul class="dropdown-menu" aria-label="submenu">
@@ -146,156 +193,135 @@
 </div>
 
     <!-- End Header -->
+
     <div class="caratts">
-    <div class="container">
-<form method="post" action="" id="form">
-                    <div class="brandatts">
-                    <label for="startDate">Start Date:</label>
-                    <input type="date" name="startDate" id="startDate" >
-                    <div class="error"></div>
-
-                    <label for="endDate">End Date:</label>
-                    <input type="date" name="endDate"  id="endDate">
-                    <div class="error"></div>
-
+            <div class="container">
+                <form action="" method="post" id="form">
+        <div class="brandatts">
+                <label for="startdate">Enter A Day</label>
+                <input type="date" id="startdate" name="startdate">
+                <div class="error"></div>
+               
+        </div>
+   
+        <div class="submit">            
+                    <button class="submit-btn">Submit</button>
                     </div>
 
-
-                    <div class="submit">            
-                                    <button class="submit-btn">Submit</button>
-                                    </div>
-                </form>
+    </form>
 </div>
 </div>
 
-<?php
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve user input
-    $startDate = $_POST["startDate"];
-    $endDate = $_POST["endDate"];
+<div class="output">
+    <div class="container">
+        <!-- <h2>Rented Cars On D</h2> -->
+        <?php
+        // Display the results
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($resultrented)) {
+            echo '<div class="results">';
+            // Check if there are rows in the result
+            echo '<h3 style="width :100% ;" >Reserved Cars On This Day</h3>';
 
-    // Replace these variables with your actual database connection details
-    $host = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "car_rental_system";
-
-    // Connect to the database
-    $conn = new mysqli($host, $username, $password, $database);
-
-    // Check the connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    // <div class="output">
-    // <div class="container">
-    echo '<div class="output">' ;
-    echo '<div class="container">' ;
-    echo '<div class="results">';
-    
-    // echo $startDate ;
-    while($startDate <= $endDate){
-        // echo $startDate ;
-    // SQL query to retrieve daily profits
-    $sql = "
-        SELECT
-            '$startDate' AS Day,
-            COALESCE(SUM(c.PricePerDay), 0) AS DailyProfit
-        FROM
-            Reservation
-        NATURAL JOIN car c
-        WHERE
-            '$startDate' BETWEEN pickup_date AND return_date
-        GROUP BY
-            Day
-     
-    ";
-
-    // Execute the query
-    $result = $conn->query($sql);
-    echo '<div class="car-info-box">';
-    echo "<h3>Daily Profits</h3>";
-    echo '<form action="" method="post">';
-
-    echo '<div class="results-box"> ';
-
-    // Display the results
-    if ($result->num_rows > 0) {
-
-        // echo "<h3>Daily Profits</h3>";
-        // echo "<table border='1'>";
-        // echo "<tr><th>Day</th><th>Daily Profit</th></tr>";
-
-        while ($row = $result->fetch_assoc()) {
-            // echo "<tr>";
-            // echo "<td>{$row['Day']}</td>";
-            // echo "<td>{$row['DailyProfit']}</td>";
-            // echo "</tr>";
-            echo '<label for="brand">Day:</label>' ;
-            echo '<input type="text" id = "brand" name="brand" value="' . $row["Day"] . '" readonly>';
-            echo '<label for="brand">Daily Profit:</label>' ;
-            echo '<input type="text" id = "brand" name="brand" value="' . $row["DailyProfit"] . '" readonly>';
+            if ($resultrented->num_rows > 0) {
+                // Output the car information in a box
+                while ($row = $resultrented->fetch_assoc()) {
+                    echo '<div class="car-info-box">';
+                    echo '<form action="" method="post">';
+                    
+                    echo '<div class="results-box"> ';
+                    echo '<label for="plateid">Plate Id:</label>' ;
+                    // print_r( $row );
+                    echo '<input type="text" id="plateid" name="plateid" value="' . $row["PlateID"] . '" readonly>';
+                    // echo '<input type="text" id="plateid" name="plateid" value="7amada" readonly>';
+                    echo '</div>';
+                    echo '<div class="results-box"> ';
+                    echo '<label for="status">Status:</label>' ;
+                    echo '<input type="text" id="status" name="status" value="Rented" readonly>';
+                    echo '</div>';
+                    echo '</form>';
+                    echo '</div>';
+                }
+            } else {
+                echo '<div class="car-info-box">';
+                echo '<p>No reservations found matching the criteria.</p>';
+                echo '</div>';
+            }
+            echo '</div>';
         }
 
-        // echo "</table>";
-    } else {
-        // echo "<h3>Daily Profits</h3>";
-        // echo "<table border='1'>";
-        // echo "<tr><th>Day</th><th>Daily Profit</th></tr>";
-        // echo "<tr>";
-        // echo "<td>{$startDate}</td>";
-        // echo "<td>0</td>";
-        // echo "</tr>";  
-        echo '<label for="brand">Day:</label>' ;
-        echo '<input type="text" id = "brand" name="brand" value="' . $startDate . '" readonly>';
-        echo '<label for="brand">Daily Profit:</label>' ;
-        echo '<input type="text" id = "brand" name="brand" value="0" readonly>';  
-    
-    }
-    // $startDate = strtotime("+1 day", strtotime($startDate));
-    $date = new DateTime($startDate);
-$date->modify('+1 day');
-$startDate = $date->format('Y-m-d');
-echo '</div>' ;
-echo '</form>' ;
-echo '</div>' ;
-
-    }
+        
+        ?>
 
 
-    // Close the database connection
-    $conn->close();
-}
-echo '</div>';
-echo '</div>';
-echo '</div>';
-?>
+
+    <!-- <h2>Available Cars On Day </h2> -->
+        <?php
+        // Display the results
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($resultavailable)) {
+            echo '<div class="results av">';
+            echo '<h3 style="width :100% ;" ">Available Cars On This Day</h3>';
+
+            // Check if there are rows in the result
+            if ($resultavailable->num_rows > 0) {
+                // Output the car information in a box
+                while ($row = $resultavailable->fetch_assoc()) {
+                    echo '<div class="car-info-box">';
+                    // echo '<h3>Reservation Information</h3>';
+                    echo '<form action="" method="post">';
+                    
+                    echo '<div class="results-box"> ';
+                    echo '<label for="plateid">Plate Id:</label>' ;
+                    echo '<input type="text" id="plateid" name="plateid" value="' . $row["PlateId"] . '" readonly>';
+                    echo '</div>';
+                    echo '<div class="results-box"> ';
+                    echo '<label for="status">Status:</label>' ;
+                    echo '<input type="text" id="status" name="status" value="Available" readonly>';
+                    echo '</div>';
+                    echo '</form>';
+                    echo '</div>';
+                }
+            } else {
+                echo '<div class="car-info-box">';
+                echo '<p>No reservations found matching the criteria.</p>';
+                echo '</div>';
+            }
+            echo '</div>';
+        }
+
+            ?>
+
+    </div>
+</div>
+
 
 
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
+<script>
         let id = (id) => document.getElementById(id);
         let classes = (classes) => document.getElementsByClassName(classes);
-        let startdate = id("startDate");
-        let enddate = id("endDate");
+        let startdate = id("startdate");
         let form = id("form");
         let errorMsg = classes("error");
-        // console.log("SIU") ;
-        // console.log(startdate.value);
-        // console.log(enddate.value);
+        let results = classes("results");
+        console.log("SIU") ;
+        console.log(startdate.value);
         form.addEventListener("submit", (e) => {
             let resultsElement = document.querySelector('.output .results');
-            if (resultsElement) {
-                resultsElement.innerHTML = "";
-            }
+            let resultsElement2 = document.querySelector('.output .av');
+    if (resultsElement) {
+        resultsElement.innerHTML = "";
+    }
+    if (resultsElement2) {
+        resultsElement2.innerHTML = "";
+    }
+
             let validationPassed2 = true;
-            let validationPassed3 = true;
-            validationPassed2 = validationPassed2 && engine(startdate, 0, "start date cannot be blank") ;
-            validationPassed3 = validationPassed3 && engine(enddate, 1, "end date cannot be blank") ;
-            if ( !validationPassed2 || !validationPassed3) {
+            validationPassed2 = validationPassed2 && engine(startdate, 0, "Date cannot be blank") ;
+            if (!validationPassed2 ) {
+                results.innerHTML = "" ;
+
             e.preventDefault();
+
         }
         });
 
@@ -307,15 +333,7 @@ echo '</div>';
                 return false;
             } else {
  
-                if(id  === plate){
-                    if( isNaN(id.value) || id.value <= 0){
 
-                            errorMsg[serial].innerHTML = "";
-                            errorMsg[serial].innerHTML = "Please Enter A Valid Plate Number";
-                            id.style.border = "2px solid red";
-                            return false;
-                        }
-                }
                 errorMsg[serial].innerHTML = "";
                 id.style.border = "2px solid green";
                 return true;
@@ -323,4 +341,5 @@ echo '</div>';
         };
 
     </script>
+
 </html>

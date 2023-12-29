@@ -10,15 +10,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     $sqlrented = "
-    SELECT u.*
-    FROM users as  u 
-    where u.SSN LIKE '$start' OR 
-    u.FirstName LIKE '$start' OR 
-    u.LastName LIKE '$start' OR 
-    u.Email LIKE '$start' OR 
-    u.Address LIKE '$start' OR 
-    u.city LIKE '$start' OR 
-    u.country LIKE '$start' 
+    SELECT c.*
+    FROM car as  c 
+    where c.PlateId LIKE '$start' OR 
+    c.CarName LIKE '$start' OR 
+    c.Overview LIKE '$start' OR 
+    c.PricePerDay LIKE '$start' OR 
+    c.Year LIKE '$start' OR 
+    c.DriverAirbag LIKE '$start' OR 
+    c.Status LIKE '$start'  OR
+    c.Color LIKE '$start'  OR
+    c.OId LIKE '$start'  OR
+    c.Seating_capacity LIKE '$start'  OR
+    c.Air_conditioner LIKE '$start'  
 ";
 echo "SIU" ;
 //  echo $sqlrented;
@@ -124,6 +128,7 @@ if ($resultrented === false) {
 </head>
 <body>
         
+
         <!-- Start Header bar -->
         <div class="header-bar">
         <div class="container">
@@ -155,7 +160,7 @@ if ($resultrented === false) {
                     <li class="home"><a href="temp.php">HOME</a></li>
                     <li class="about-us"><a href="add.php">ADD NEW CAR</a></li>
                     <li class="login"><a href="addnewoffice.php" class="button">ADD NEW OFFICE</a></li>
-                    <li class="register"><a href="#" class="button">LOGOUT</a></li>
+                    <li class="register"><a href="../logout.php" class="button">LOGOUT</a></li>
                     <li class="dropdown">
                         <a href="#" aria-haspopup="true">Advanced Search</a>
                         <ul class="dropdown-menu" aria-label="submenu">
@@ -189,7 +194,7 @@ if ($resultrented === false) {
             <div class="container">
                 <form action="" method="post">
         <div class="brandatts">
-                <label for="startdate">Enter Customer data</label>
+                <label for="startdate">Enter Car data</label>
                 <input type="text" id="startdate" name="startdate">
                
         </div>
@@ -204,62 +209,33 @@ if ($resultrented === false) {
 <div class="output">
     <div class="container">
         <?php
-        // Display user information
+        // Display car information
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($resultrented)) {
             echo '<div class="results">';
-            echo '<h3 style="width:100%;">User Information</h3>';
+            echo '<h3 style="width:100%;">Car Information</h3>';
 
             if ($resultrented->num_rows > 0) {
-                // Output user information in a box
-                while ($userRow = $resultrented->fetch_assoc()) {
+                // Output car information in a box
+                while ($carRow = $resultrented->fetch_assoc()) {
                     echo '<div class="car-info-box">';
-                    echo '<form action="makeadmin.php" method="post">';
+                    echo '<form action="" method="post">';
 
-                    // Display user data attributes
-                    echo '<div class="results-box"> ';
-                    echo '<label for="ssn">SSN:</label>';
-                    echo '<input type="text" id="ssn" name="ssn" value="' . $userRow["SSN"] . '" readonly>';
-                    echo '</div>';
-
-                    echo '<div class="results-box"> ';
-                    echo '<label for="fname">First Name:</label>';
-                    echo '<input type="text" id="fname" name="fname" value="' . $userRow["FirstName"] . '" readonly>';
-                    echo '</div>';
-
-                    echo '<div class="results-box"> ';
-                    echo '<label for="lname">Last Name:</label>';
-                    echo '<input type="text" id="lname" name="lname" value="' . $userRow["LastName"] . '" readonly>';
-                    echo '</div>';
-
-                    echo '<div class="results-box"> ';
-                    echo '<label for="email">Email:</label>';
-                    echo '<input type="text" id="email" name="email" value="' . $userRow["Email"] . '" readonly>';
-                    echo '</div>';
-
-                    echo '<div class="results-box"> ';
-                    echo '<label for="address">Address:</label>';
-                    echo '<input type="text" id="address" name="address" value="' . $userRow["Address"] . '" readonly>';
-                    echo '</div>';
-
-                    echo '<div class="results-box"> ';
-                    echo '<label for="city">City:</label>';
-                    echo '<input type="text" id="city" name="city" value="' . $userRow["city"] . '" readonly>';
-                    echo '</div>';
-
-                    echo '<div class="results-box"> ';
-                    echo '<label for="country">Country:</label>';
-                    echo '<input type="text" id="country" name="country" value="' . $userRow["country"] . '" readonly>';
-                    echo '</div>';
+                    // Display car attributes
+                    foreach ($carRow as $key => $value) {
+                        echo '<div class="results-box"> ';
+                        echo '<label for="' . $key . '">' . ucfirst(str_replace('_', ' ', $key)) . ':</label>';
+                        echo '<input type="text" id="' . $key . '" name="' . $key . '" value="' . $value . '" readonly>';
+                        echo '</div>';
+                    }
 
                     // Add more attributes as needed
-                    echo '<button type="submit" class="submit-btn" name="edit" value="EDIT">Make Admin</button>';
 
                     echo '</form>';
                     echo '</div>';
                 }
             } else {
-                echo '<div class="user-info-box">';
-                echo '<p>No users found matching the criteria.</p>';
+                echo '<div class="car-info-box">';
+                echo '<p>No cars found matching the criteria.</p>';
                 echo '</div>';
             }
             echo '</div>';

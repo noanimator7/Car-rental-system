@@ -24,7 +24,7 @@ if (isset($_POST["register"])) {
     echo "ssn";
   } else {
     $sql = "INSERT INTO users (SSN,FirstName, LastName, Email, Password, address, city, country,admin)
-      VALUES ('$ssn', '$fname', '$lname','$email', '$password', '$address', '$city', '$country', 0)";
+      VALUES ('$ssn', '$fname', '$lname','$email', '$password', '$address', '$city', '$country', '0')";
     $result = mysqli_query($conn, $sql);
     if ($result) {
       //header("Location: login.html");
@@ -35,3 +35,4 @@ if (isset($_POST["register"])) {
     }
   }
 }
+?>
