@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if (!isset($_SESSION["SESSION_EMAIL"])) {
+    header("Location: ../index.php");
+}
+
+?>
 <!DOCTYPE html>
 <meta charset="UTF-8">
     <meta name="viewport"
