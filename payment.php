@@ -1,14 +1,5 @@
 <?php
-// include "config.php";
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     $date= $_POST["start-date"];
-//     echo $date;
-//     $plateid=$_POST["plateids"];
-//     $sql="UPDATE car set status = 'rented' where PlateId = '$plateid' ";
-//     $result = $conn->query($sql);
-//     echo $result;
-//     echo "hassan";
-// }
+
 $plateid=$_POST["plateids"];
 echo $plateid;
 
