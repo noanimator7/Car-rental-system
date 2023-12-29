@@ -251,12 +251,18 @@ a {
 /* End Header */
 /* Start Landing */
 .landing {
-    height: 89.5vh;
+    height: 120.5vh;
     background-image: url(../images/background-home.PNG);
     background-size: cover;
     background-attachment: fixed;
     position: relative;
 
+}
+
+@media(max-width: 767px){
+    .landing{
+        height: 140.5vh
+    }
 }
 
 .landing .overlay {
@@ -279,7 +285,7 @@ a {
     max-width: 800px;
     min-width: 600px;
     left: 50%;
-    top: -59%;
+    top: -56%;
     padding: 20px;
     border-radius: 10px;
 }
@@ -290,7 +296,7 @@ a {
 }
 
 .landing .login-form .text {
-    top: -95.5%;
+    top: -81.5%;
 }
 
 @media(max-width: 767px) {
@@ -307,13 +313,13 @@ a {
 .landing .text span {
     display: block;
     font-weight: bold;
-    font-size: 60px;
+    font-size: 45px;
     text-align: center;
     margin-bottom: 25px;
 }
 
 .landing .text p {
-    font-size: 24px;
+    font-size: 18px;
     text-align: center;
     min-width: 550px;
 }
@@ -426,12 +432,18 @@ a {
 
 
 .landing .auth-container.signup{
-    top: 35%;
+    top: 28%;
+}
+
+@media(max-width:767px){
+    .landing .auth-container.signup {
+        top: 24%;
+    }
 }
 
 .landing .auth-container.signup .text span{
-    font-size: 47px;
-    margin-top: 50px;
+    font-size: 38px;
+    margin-top: 140px;
 }
 
 
@@ -491,6 +503,9 @@ a {
     .landing .text p {
         display: none;
     }
+    .landing .auth-container.signup .text span{
+        font-size: 29px;
+    }
 
     .landing .auth-container .signup-form form {
         display: block;
@@ -498,7 +513,7 @@ a {
 
     .landing .signup-form {
         position: absolute;
-        transform: translate(-50%, -34%);
+        transform: translate(-50%, -15%);
     }
 
     .landing .signup-form .text {
@@ -508,7 +523,7 @@ a {
         max-width: 700px;
         min-width: 390px;
         left: 50%;
-        top: -23%;
+        top: -42%;
         padding: 57px;
         border-radius: 10px;
     }
@@ -750,15 +765,7 @@ a {
 
 /* Start Payement */
         
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    border: none;
-    outline: none;
-    text-transform: capitalize;
-    transition: all 0.2s linear;
-}
+
 
 .containers{
     display: flex;
