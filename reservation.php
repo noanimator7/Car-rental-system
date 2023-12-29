@@ -21,9 +21,13 @@ $result = $conn->query($sql);
 
 // Check if the query was successful
 if ($result) {
+    $rowCount = $result->num_rows;
+
+    // Output the number of rows
+    echo "Number of rows: $rowCount";
     // Loop through the rows
     while ($row = $result->fetch_assoc()) {
-        echo '<img src="' . $row["Image"] . '" alt="Car Image"><br>';
+        echo '<img src="' . "./car-images/" . $row["Image"] . '" alt="Car Image"><br>';
         // Echo each row or process it as needed
         echo "name: " . $row["CarName"] . " - overview: " . $row["Overview"] . "<br>";
     }
