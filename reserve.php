@@ -4,7 +4,7 @@ include 'config.php';
 $plateid = $_POST["plateid"];
 //echo $plateid;
 
-$sql = "SELECT * FROM Car where PlateId = $plateid";
+$sql = "SELECT * FROM car where PlateId = $plateid";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 //echo $row["CarName"];
@@ -61,26 +61,40 @@ $row = $result->fetch_assoc();
     </div>
     <!-- End Header -->
     <!-- Start Section -->
+    <div class="main-header">
+        <div class="text">
+            <h1>Reservations</h1>
+            <p>Choose start and end dates to make a reservation </p>
+        </div>
+        <div class="overlay"></div>
+    </div>
     <div class="section">
         <div class="container">
+            
             <div class="top-box">
+            <?php
+                echo    '<div class="image">';
+                echo        '<img src="data:image/jpeg;base64,' . base64_encode($row["Image"]) . '" alt="Car Image">';
+                echo    '</div>';
+                ?>
                 <div class="text">
                     <div class="brand"><?php echo $row["CarName"]?></div>
                     <div class="overview"><?php echo $row["Overview"]?></div>
                     <div class="plate"><?php echo $row["PlateId"]?></div>
                 </div>
-                <?php
-                echo    '<div class="image">';
-                echo        '<img src="data:image/jpeg;base64,' . base64_encode($row["Image"]) . '" alt="Car Image">';
-                echo    '</div>';
-                ?>
+                
             </div>
             <div class="form-container">
-                <form action="">
+                <form action="payment.php" method="post">
                     <input type="text" name="price" id="priceperday" value="<?php echo $row["PricePerDay"]; ?>" hidden>
+                    <input type="text" id="plateids" name="plateids" value="<?php echo $row["PlateId"]; ?>" hidden>
                     <div class="dates">
-                        <input type="date" placeholder="Enter Start Date" name="start-date" id="start-date" class="inputs">
-                        <input type="date" placeholder="Enter End Date" name="end-date" id="end-date" class="inputs">
+                        <div class="date1">
+                            <input type="date" placeholder="Enter Start Date" name="start-date" id="start-date" class="inputs">
+                        </div>
+                        <div class="date2">
+                            <input type="date" placeholder="Enter End Date" name="end-date" id="end-date" class="inputs">
+                        </div>
                     </div>
                     <div class="price" id="pricese"></div>
                     <button class="proceed" name=proceed>PROCEED</button>

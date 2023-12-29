@@ -121,20 +121,46 @@ $conn->close();
         </div>
     </div>
     <!-- End Header bar -->
-    <!-- Start Header -->
-    <div class="header" id="header">
-        <div class="container">
-            <div class="logo">
-                <img src="/images/logo.png" alt="">
-            </div>
-            <div class="rl-container">
-                <div class="home"><a href="temp.php">HOME</a></div>
-                <div class="about-us"><a href="add.php">ADD NEW CAR</a></div>
-                <div class="login "><a href="#" class="button">ADD NEW OFFICE</a></div>
-                <div class="register "><a href="#" class="button">LOGOUT</a></div>
-            </div>
+        <!-- Start Header -->
+        <div class="header" id="header" style="margin-bottom:200px;">
+    <div class="container">
+        <div class="logo">
+            <img src="logo.png" alt="">
+        </div>
+        <div class="rl-container">
+            <nav>
+                <ul>
+                    <li class="home"><a href="temp.php">HOME</a></li>
+                    <li class="about-us"><a href="add.php">ADD NEW CAR</a></li>
+                    <li class="login"><a href="addnewoffice.php" class="button">ADD NEW OFFICE</a></li>
+                    <li class="register"><a href="../logout.php" class="button">LOGOUT</a></li>
+                    <li class="dropdown">
+                        <a href="#" aria-haspopup="true">Advanced Search</a>
+                        <ul class="dropdown-menu" aria-label="submenu">
+                            <li><a href="customeradvancesearch.php">By Customer</a></li>
+                            <li><a href="caradvancedsearch.php">By Car</a></li>
+
+
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                    <a href="#" aria-haspopup="true"> Search</a>
+
+                        <ul class="dropdown-menu" aria-label="submenu">
+                            <li><a href="reservecar.php">Reservations of car</a></li>
+                            <li><a href="daily_payments.php">Daily Payments</a></li>
+                            <li><a href="statusofcar.php">Status of cars</a></li>
+                            <li><a href="reservecustomer.php">Reservations of customer</a></li>
+                            <li><a href="reserveperiod.php">Reservations of period</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
+</div>
+
     <!-- End Header -->
     <section class="welcome">
         <div class="container">

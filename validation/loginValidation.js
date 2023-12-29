@@ -43,7 +43,11 @@ function validate() {
             console.log(response);
             if (response === 'success') {
                 window.location.href = "profile.php";
-            } else if (response === 'invalidPassword') {
+            }
+            else if( response === 'successadmin'){
+                window.location.href = "admin/temp.php";
+            }
+            else if (response === 'invalidPassword') {
                 error.innerText = "Invalid Password";
             } else if (response === 'invalidEmail') {
                 error.innerText = "Invalid Email";
