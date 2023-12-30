@@ -103,9 +103,7 @@ if (mysqli_num_rows($result) > 0) {
              }
              ?>
         </div>
-    <!-- </div>. "<span>" . $row["Overview"] . "</span>" -->
     </div>
-    <!-- End Cars Available -->
 
 
 </body>

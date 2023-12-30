@@ -27,8 +27,8 @@ if ($result) {
     echo "Number of rows: $rowCount";
     // Loop through the rows
     while ($row = $result->fetch_assoc()) {
-        echo '<img src="' . "./car-images/" . $row["Image"] . '" alt="Car Image"><br>';
-        echo '<img src="data:image/jpeg;base64,'.base64_encode($row["Image"]).'" alt="Car Image '.$id.'"><br>';
+        // echo '<img src="' . "./car-images/" . $row["Image"] . '" alt="Car Image"><br>';
+        echo '<img src="data:image/jpeg;base64,'.base64_encode($row["Image"]).'" ><br>';
         // Echo each row or process it as needed
         echo "name: " . $row["CarName"] . " - overview: " . $row["Overview"] . "<br>";
     }

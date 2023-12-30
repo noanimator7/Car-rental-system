@@ -446,6 +446,13 @@ $result = $conn5->query($sql);
                 echo '<div class="car-info-box">';
                 echo '<h3>Car Information</h3>';
                 echo '<form action="edit.php" method="post">';
+                echo '<div class="image-box"> ';
+                echo '<img src="data:image/jpeg;base64,'.base64_encode($row["Image"]).'" ><br>';
+                echo '</div>';
+
+
+
+
                 echo '<div class="results-box"> ';
                 echo '<label for="brand">Brand Name:</label>' ;
                 echo '<input type="text" id = "brand" name="brand" value="' . $row["CarName"] . '" readonly>';

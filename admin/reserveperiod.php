@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  $start = $_POST['startdate'];   
  $end = $_POST['enddate'];   
  $sql = "
- SELECT pickup_date, return_date, u.FirstName, u.LastName, u.SSN, u.country, c.CarName, c.PlateId, c.PricePerDay
+ SELECT Image,pickup_date, return_date, u.FirstName, u.LastName, u.SSN, u.country, c.CarName, c.PlateId, c.PricePerDay
  FROM reservation as r 
  JOIN car as c ON r.PlateId = c.PlateId 
  JOIN users as u ON r.SSN  = u.SSN 
@@ -224,6 +224,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo '<div class="car-info-box">';
                 echo '<h3>Car Information</h3>';
                 echo '<form action="" method="post">';
+                echo '<div class="image-box"> ';
+                echo '<img src="data:image/jpeg;base64,'.base64_encode($row["Image"]).'" ><br>';
+                echo '</div>';
                 echo '<div class="results-box"> ';
                 echo '<label for="ssn">SSN:</label>' ;
                 echo '<input type="text" id = "ssn" name="ssn" value="' . $row["SSN"] . '" readonly>';

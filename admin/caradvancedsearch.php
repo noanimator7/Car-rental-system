@@ -28,7 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     c.Seating_capacity LIKE '$start'  OR
     c.Air_conditioner LIKE '$start'  
 ";
-echo "SIU" ;
 //  echo $sqlrented;
 $resultrented = $conn->query($sqlrented);
 // echo $resultrented. ;
@@ -216,24 +215,75 @@ if ($resultrented === false) {
         // Display car information
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($resultrented)) {
             echo '<div class="results">';
-            echo '<h3 style="width:100%;">Car Information</h3>';
 
             if ($resultrented->num_rows > 0) {
                 // Output car information in a box
-                while ($carRow = $resultrented->fetch_assoc()) {
+                while ($row = $resultrented->fetch_assoc()) {
                     echo '<div class="car-info-box">';
+                    echo '<h3>Car Information</h3>';
                     echo '<form action="" method="post">';
-
-                    // Display car attributes
-                    foreach ($carRow as $key => $value) {
-                        echo '<div class="results-box"> ';
-                        echo '<label for="' . $key . '">' . ucfirst(str_replace('_', ' ', $key)) . ':</label>';
-                        echo '<input type="text" id="' . $key . '" name="' . $key . '" value="' . $value . '" readonly>';
-                        echo '</div>';
-                    }
-
-                    // Add more attributes as needed
-
+                    echo '<div class="image-box"> ';
+                    echo '<img src="data:image/jpeg;base64,'.base64_encode($row["Image"]).'" ><br>';
+                    echo '</div>';
+    
+    
+    
+    
+                    echo '<div class="results-box"> ';
+                    echo '<label for="brand">Brand Name:</label>' ;
+                    echo '<input type="text" id = "brand" name="brand" value="' . $row["CarName"] . '" readonly>';
+                    echo '</div>';
+                    
+                    echo '<div class="results-box"> ';
+                    echo '<label for="overview">OverView:</label>' ;
+                    echo '<input type="text" id = "overview" name="overview" value="' . $row["Overview"] . '" readonly>';
+                    echo '</div>';
+    
+                    // echo '<input type="text" id="color" name="color" value="' . $row["color"] . '" readonly>';
+                    echo '<div class="results-box"> ';
+                    echo '<label for="airbag">Airbag:</label>' ;
+                    echo '<input type="text" id="airbag" name="airbag" value="' . $row["DriverAirbag"] . '" readonly>';
+                    echo '</div>';
+    
+    
+                    echo '<div class="results-box"> ';
+                    echo '<label for="plate_id">Plate Id:</label>' ;
+                    echo '<input type="text"  id="plate_id" name="plate_id" value="' . $row["PlateId"] . '" readonly>';
+                    echo '</div>';
+    
+                    // echo '<input type="text" id="status" name="status" value="' . $row["status"] . '" readonly>';
+                    echo '<div class="results-box"> ';
+                    echo '<label for="price_per_day">Price Per Day:</label>' ;
+                    echo '<input type="text" id="price_per_day" name="price_per_day" value="' . $row["PricePerDay"] . '" readonly>';
+                    echo '</div>';
+    
+    
+                    echo '<div class="results-box"> ';
+                    echo '<label for="seatingcapacity">Seating Capacity:</label>' ;
+                    echo '<input type="text" id="seatingcapacity" name="seatingcapacity" value="' . $row["Seating_capacity"] . '" readonly>';
+                    echo '</div>';
+    
+                    echo '<div class="results-box"> ';
+                    echo '<label for="year">Year:</label>' ;
+                    echo '<input type="text" id="year" name="year" value="' . $row["Year"] . '" readonly>';
+                    echo '</div>';
+    
+                    echo '<div class="results-box"> ';
+                    echo '<label for="airconditioner">Air Conditioner:</label>' ;
+                    echo '<input type="text" id="airconditioner" name="airconditioner" value="' . $row["Air_conditioner"] . '" readonly>';
+                    echo '</div>';
+                    echo '<div class="results-box"> ';
+                    echo '<label for="status">Status:</label>' ;
+                    echo '<input type="text" id="status" name="status" value="' . $row["Status"] . '" readonly>';
+                    echo '</div>';
+                    echo '<div class="results-box"> ';
+                    echo '<label for="airconditioner">Office Id:</label>' ;
+                    echo '<input type="text" id="oid" name="oid" value="' . $row["OId"] . '" readonly>';
+                    echo '</div>';
+                    echo '<div class="results-box"> ';
+                    echo '<label for="color">Color:</label>' ;
+                    echo '<input type="text" id="color" name="color" value="' . $row["Color"] . '" readonly>';
+                    echo '</div>';
                     echo '</form>';
                     echo '</div>';
                 }

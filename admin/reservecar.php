@@ -231,7 +231,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo '<div class="car-info-box">';
                     echo '<h3>Reservation Information</h3>';
                     echo '<form action="" method="post">';
-                    
+                    echo '<div class="image-box"> ';
+                    echo '<img src="data:image/jpeg;base64,'.base64_encode($row["Image"]).'" ><br>';
+                    echo '</div>';
                     echo '<div class="results-box"> ';
                     echo '<label for="plate_id">Plate Id:</label>' ;
                     echo '<input type="text" id="plate_id" name="plate_id" value="' . $row["PlateId"] . '" readonly>';

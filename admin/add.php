@@ -186,7 +186,11 @@ if ($result_office->num_rows > 0) {
      
     <div class="caratts">
             <div class="container">
-                <form action="addcartodb.php" method="post" id="form">
+                <form action="addcartodb.php" method="post" id="form"  enctype="multipart/form-data">
+
+                <label for="image">Enter Image:</label>
+<input type="file" id="image" name="image" accept="image/jpg, image/jpeg, image/jfif" />
+
 
             <label for="Brand">Car Name:</label>
             <input type="text" name="Brand" id="Brand">

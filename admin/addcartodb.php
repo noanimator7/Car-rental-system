@@ -9,6 +9,7 @@ if (mysqli_connect_errno()) {
     exit();
 }
 
+$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
 $brand = $_POST['Brand'];
 $price = $_POST['price'];
 $airbag = $_POST['airbag'];
@@ -20,10 +21,10 @@ $airconditioner = $_POST['airconditioner'];
 $oid = $_POST['oid'] ;
 $color = $_POST['color'] ;
 $status =$_POST['status'] ; 
-
+// $imageblob=$conn->real_escape_string(file_get_contents($image)) ;
 $sql = "INSERT INTO `car` (`CarName`, `PricePerDay`, `DriverAirbag`, `PlateId`, `Overview`, `Seating_capacity`, `Year`, 
-`Air_conditioner` ,`Status` , `Color` ,`OId`) VALUES 
-('$brand', '$price', '$airbag', '$plate', '$overview', '$seatingcapacity', '$year', '$airconditioner','$status','$color','$oid')";
+`Air_conditioner` ,`Status` , `Color` ,`OId` , `Image`) VALUES 
+('$brand', '$price', '$airbag', '$plate', '$overview', '$seatingcapacity', '$year', '$airconditioner','$status','$color','$oid' , '{$image}')";
 
 $rs = mysqli_query($con, $sql);
 
@@ -35,3 +36,4 @@ if ($rs) {
 
 mysqli_close($con);
 ?>
+
