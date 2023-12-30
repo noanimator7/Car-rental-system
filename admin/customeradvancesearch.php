@@ -247,12 +247,12 @@ if ($resultrented === false) {
 
                     echo '<div class="results-box"> ';
                     echo '<label for="city">City:</label>';
-                    echo '<input type="text" id="city" name="city" value="' . $userRow["city"] . '" readonly>';
+                    echo '<input type="text" id="city" name="city" value="' . $userRow["City"] . '" readonly>';
                     echo '</div>';
 
                     echo '<div class="results-box"> ';
                     echo '<label for="country">Country:</label>';
-                    echo '<input type="text" id="country" name="country" value="' . $userRow["country"] . '" readonly>';
+                    echo '<input type="text" id="country" name="country" value="' . $userRow["Country"] . '" readonly>';
                     echo '</div>';
 
                     // Add more attributes as needed
