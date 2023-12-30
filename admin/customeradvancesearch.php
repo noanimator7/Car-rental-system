@@ -24,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     u.City LIKE '$start' OR 
     u.Country LIKE '$start' 
 ";
-echo "SIU" ;
 //  echo $sqlrented;
 $resultrented = $conn->query($sqlrented);
 // echo $resultrented. ;
