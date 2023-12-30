@@ -5,7 +5,9 @@ if (!isset($_SESSION["SESSION_EMAIL"])) {
 }
 
 $plateid=$_POST["plateids"];
-echo $plateid;
+$ssn=$_POST["ssn"];
+$price  =$_POST['priceperday'] ;
+
 
 ?>
 
@@ -78,6 +80,24 @@ echo $plateid;
     <div class="containers">
 
         <form action="process.php" method="POST">
+                    <input type="text" name="priceperday" id="priceperday" value="<?php echo $price ;  ?>" hidden>
+                    <input type="text" name="ssn" id="ssn" value="<?php echo $ssn; ?>" hidden >
+                    <input type="text" id="plateids" name="plateids" value="<?php echo $plateid; ?>" hidden>
+                    <div class="dates">
+                        <div class="date1">
+                            <input type="date" placeholder="Enter Start Date" name="start-date" id="start-date" class="inputs"
+                            value="<?php echo $_POST['start-date']; ?>"
+                            hidden
+                            >
+                        </div>
+                        <div class="date2">
+                            <input type="date" placeholder="Enter End Date" name="end-date" id="end-date" class="inputs"
+                            value="<?php echo $_POST['end-date']; ?>"
+                            hidden
+                            >
+
+
+
             <input type="text" name="plateid" id="plateid" value="<?php echo $plateid; ?>" hidden>
 
             <div class="row">
