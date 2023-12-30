@@ -107,7 +107,7 @@ $row2 = $result2->fetch_assoc();
 
                 </form>
             <div class="form-container">
-                <form action="payment.php" method="post">
+                <form action="payment.php" method="post" id="form">
                     <input type="text" name="priceperday" id="priceperday" value="<?php echo $row["PricePerDay"]; ?>" hidden>
                     <input type="text" name="ssn" id="ssn" value="<?php echo $row2["SSN"]; ?>" hidden >
                     <input type="text" id="plateids" name="plateids" value="<?php echo $row["PlateId"]; ?>" hidden>
@@ -126,6 +126,10 @@ $row2 = $result2->fetch_assoc();
                     <div class="button">
                         <button class="proceed" name=proceed>PROCEED TO PAYMENT</button>
                     </div>
+
+
+                    <div class="error" id="error"></div>
+
                     
                 </form>
             </div>
@@ -135,17 +139,33 @@ $row2 = $result2->fetch_assoc();
 </body>
 
 <script>
+    function isValidDate(d) {
+  return d instanceof Date && !isNaN(d);
+}
     function calculatePrice() {
 
       var startDate = new Date(document.getElementById('start-date').value);
       var endDate = new Date(document.getElementById('end-date').value);
       var pricePerDay = document.getElementById('pricepd').innerHTML;
-      console.log(pricePerDay);
+    //   console.log(pricePerDay);
+    //   console.log( endDate)
+    //   console.log(typeof startDate)
+    //   if( endDate === "Invalid Date"){
+    //     console.log("7amda");
+    //   }
+    //   if(isValidDate(endDate) === false ){
+    //     console.log("Hassona is here") ;
+    //   }
 
       var price = calculatePriceLogic(startDate, endDate, pricePerDay);
 
-      if(!isNaN(price)){
+      if(!isNaN(price) && price>=0 ){
             document.getElementById('result').innerText = price + "$";
+      }
+      else if(price <=0){
+        document.getElementById('result').innerText = "$0";
+
+        
       }
       
     }
@@ -154,6 +174,31 @@ $row2 = $result2->fetch_assoc();
       var totalPrice = daysDifference * pricePerDay;
       return totalPrice;
     }
+    const form  =document.getElementById("form") ;
+    const error =document.getElementById("error") ; 
+    form.addEventListener("submit" , (e)=>{
+      var startDate = new Date(document.getElementById('start-date').value);
+      var endDate = new Date(document.getElementById('end-date').value);
+      console.log("Migzo is here");
+      if (startDate >= endDate  || isValidDate(endDate) === false || isValidDate(startDate)){
+        console.log("Migzo is here part2 ");
+        console.log(error) ;
+
+        document.getElementById('result').innerText = "$0";
+
+        error.innerHTML = "You cannot insert start date > end date" ;
+        console.log(error.innerHTML)
+        e.preventDefault() ;
+      }
+      else {
+        error.innerText="" ;
+        return true ;
+      }
+
+
+
+
+    })
   </script>
 
 
