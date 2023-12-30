@@ -123,7 +123,6 @@ if ( $airbag !== "Null") {
 }
 if (!empty($price) ) {
     $sql .= " AND PricePerDay = '$price'";
-    echo $sql ;
 }
 if ( $overview !== "Null") {
     $sql .= " AND Overview = '$overview'";
