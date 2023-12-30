@@ -21,8 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     u.LastName LIKE '$start' OR 
     u.Email LIKE '$start' OR 
     u.Address LIKE '$start' OR 
-    u.city LIKE '$start' OR 
-    u.country LIKE '$start' 
+    u.City LIKE '$start' OR 
+    u.Country LIKE '$start' 
 ";
 echo "SIU" ;
 //  echo $sqlrented;
