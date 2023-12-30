@@ -1,12 +1,21 @@
 <?php
 include 'config.php';
-
+session_start();
+if (!isset($_SESSION["SESSION_EMAIL"])) {
+    header("Location: index.php");
+}
 $plateid = $_POST["plateid"];
 //echo $plateid;
 
 $sql = "SELECT * FROM car where PlateId = $plateid";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
+
+$email = $_SESSION["SESSION_EMAIL"] ;
+//echo $email ; 
+$sql = "SELECT * FROM users WHERE EMAIL = '$email'" ; 
+$result2 = $conn->query($sql);
+$row2 = $result2->fetch_assoc();
 //echo $row["CarName"];
 ?>
 
@@ -79,24 +88,45 @@ $row = $result->fetch_assoc();
                 <div class="text">
                     <div class="car-name"><?php echo $row["CarName"]?></div>
                     <!-- <div class="overview"><?php //echo $row["Overview"]?></div> -->
-                    <div class="plate"><?php echo $row["PlateId"]?></div>
+                    <div class="color">Color : <?php echo $row["Color"]?></div>
+                    <div class="year">Year : <?php echo $row["Year"]?></div>
+                    <div class="ppd">Price Per Day : $<span id="pricepd"><?php echo $row["PricePerDay"]?></span></div>
+                    <div class="plate">Plate ID : <?php echo $row["PlateId"]?></div>
+                    <div class="ac">Air Conditioner : <?php if($row["Air_conditioner"] === "Y"){echo "Yes";}else{echo "No";}?></div>
+                    <div class="sc">Seating Capacity : <?php echo $row["Seating_capacity"]?></div>
+                    <div class="tp">Total Price : <span class="price" id="result">Select Dates To Calculate</span></div>
+                    
                 </div>
                 
             </div>
+            <form action="payment.php" method="post">
+                    
+                    
+                    
+
+
+                </form>
             <div class="form-container">
                 <form action="payment.php" method="post">
-                    <input type="text" name="price" id="priceperday" value="<?php echo $row["PricePerDay"]; ?>" hidden>
+                    <input type="text" name="priceperday" id="priceperday" value="<?php echo $row["PricePerDay"]; ?>" hidden>
+                    <input type="text" name="ssn" id="ssn" value="<?php echo $row2["SSN"]; ?>" hidden >
                     <input type="text" id="plateids" name="plateids" value="<?php echo $row["PlateId"]; ?>" hidden>
                     <div class="dates">
                         <div class="date1">
-                            <input type="date" placeholder="Enter Start Date" name="start-date" id="start-date" class="inputs">
+                            <div class="icon"><i class="fa-regular fa-calendar"></i></div>
+                            <input type="date" oninput="calculatePrice()" placeholder="Enter Start Date" name="start-date" id="start-date" class="inputs">
                         </div>
                         <div class="date2">
-                            <input type="date" placeholder="Enter End Date" name="end-date" id="end-date" class="inputs">
+                            <div class="icon"><i class="fa-regular fa-calendar-xmark"></i></div>
+                            <input type="date" oninput="calculatePrice()" placeholder="Enter End Date" name="end-date" id="end-date" class="inputs">
                         </div>
                     </div>
-                    <div class="price" id="pricese"></div>
-                    <button class="proceed" name=proceed>PROCEED</button>
+                    
+                    
+                    <div class="button">
+                        <button class="proceed" name=proceed>PROCEED TO PAYMENT</button>
+                    </div>
+                    
                 </form>
             </div>
         </div>
@@ -105,61 +135,26 @@ $row = $result->fetch_assoc();
 </body>
 
 <script>
-    // Assuming you have elements with IDs 'startdate', 'priceperday', and 'enddate'
-    const startdate = document.getElementById('start-date');
-    const priceperday = document.getElementById('priceperday').value; // replace 'priceperday' with the actual ID
-    const enddate = document.getElementById('end-date'); // replace 'enddate' with the actual ID
-    const price = document.getElementById('pricese');
+    function calculatePrice() {
 
-    startdate.addEventListener('blur', function() {
-        const startvalue = startdate.value;
-        console.log(startvalue);
+      var startDate = new Date(document.getElementById('start-date').value);
+      var endDate = new Date(document.getElementById('end-date').value);
+      var pricePerDay = document.getElementById('pricepd').innerHTML;
+      console.log(pricePerDay);
 
-        if (startvalue.trim() !== "" && enddate.value.trim()!=="") {
-            $.ajax({
-                type: 'POST',
-                url: 'checkplate.php',
-                data: {
-                    priceperday: priceperday,
-                    start_date: startvalue, // use startvalue instead of startdate
-                    end_date: enddate.value
-                },
-                success: function(response) {
-                    if (!isNaN(response)) {
-                        console.log('unique office id');
-                        price.innerHTML=response;
-                        return true;
-                    } else {
-                        console.log('non-unique office id');
-                    }
-                },
-            });
-        }
-    });
+      var price = calculatePriceLogic(startDate, endDate, pricePerDay);
 
-    enddate.addEventListener('blur', function() {
-        const endvalue = enddate.value;
-        console.log(endvalue);
+      if(!isNaN(price)){
+            document.getElementById('result').innerText = price + "$";
+      }
+      
+    }
+    function calculatePriceLogic(startDate, endDate, pricePerDay) {      
+      var daysDifference = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+      var totalPrice = daysDifference * pricePerDay;
+      return totalPrice;
+    }
+  </script>
 
-        if (endvalue.trim() !== "" && startdate.value.trim()!=="") {
-            $.ajax({
-                type: 'POST',
-                url: 'checkplate.php',
-                data: {
-                    priceperday: priceperday,
-                    start_date: startdate.value, // use startvalue instead of startdate
-                    end_date: endvalue
-                },
-                success: function(response) {
-                    if (!isNaN(response)) {
-                        console.log('unique office id');
-                        console.log(response);
-                        price.innerHTML=response;
-                    } else {
-                        console.log('non-unique office id');
-                    }
-                },
-            });
-        }
-    });
-</script>
+
+

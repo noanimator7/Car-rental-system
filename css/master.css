@@ -717,7 +717,7 @@ a {
     text-align: left;
 }
 .cars-available .image-container .car-box .text .cname{
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 500;
     text-transform: uppercase;
 }
@@ -763,11 +763,18 @@ a {
 .section .top-box .text{
     flex: 1;
 }
+.section .top-box .text > div:not(.car-name){
+    font-size: 17px;
+    padding: 5px;
+    margin: 2px;
+    background-color: #EEE;
+    color: #393d46e6;
+}
 .section .top-box .text .car-name{
     font-size: 32px;
     font-weight: 500;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .section .top-box .text .car-name::before{
@@ -779,9 +786,7 @@ a {
     bottom: -10px;
     
 }
-.section .top-box .text .overview{
-    
-}
+
 .section .top-box .image{
     width: 350px;
     height: 240px;
@@ -796,17 +801,63 @@ a {
     max-width: 100%;
     
 }
+.section .top-box .price{
+    color: #cd1818;
+}
 .section .dates{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    gap: 10px;
+}
+.section .form-container .dates > div{
+    position: relative;
+}
+
+.section .form-container .dates .price{
+
+}
+.section .form-container .button{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section .form-container .button button{
+
+}
+.section .form-container .dates > div .icon{
+    position: absolute;
+    background-color: #cd1818;
+    height: 45px;
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.section .form-container .dates > div .icon i{
+    font-size: 17px;
+    margin-left: 5px;
 }
 .section input[type="date"]{
     width: 300px;
-    height: 40px;
-    background-color: white;
-    border: 5px solid red;
-    border-radius: 10px;
+    height: 45px;
+    background-color: #eee;
+    border: 2px solid #cd1818;
+    border-radius: 6px;
     outline: none;
+    padding-left: 55px;
+}
+.section .proceed{
+    bottom: -45px;
+    background-color: #cd1818;
+    padding: 5px 10px;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    margin-top: 20px;
+    transition: 0.3s;
 }
 /* End Reserve Page */
 

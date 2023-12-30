@@ -23,8 +23,8 @@ if (isset($_POST["register"])) {
   } else if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE SSN ='{$ssn}'")) > 0) {
     echo "ssn";
   } else {
-    $sql = "INSERT INTO users (SSN,FirstName, LastName, Email, Password, address, city, country,admin)
-      VALUES ('$ssn', '$fname', '$lname','$email', '$password', '$address', '$city', '$country', '0')";
+    $sql = "INSERT INTO users (SSN,FirstName, LastName, Email, Password, ContactNo, dob, address, city, country,admin)
+      VALUES ('$ssn', '$fname', '$lname','$email', '$password', '$contactNumber','$dob', '$address', '$city', '$country', '0')";
     $result = mysqli_query($conn, $sql);
     if ($result) {
       //header("Location: login.html");
