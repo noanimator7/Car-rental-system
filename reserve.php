@@ -61,7 +61,7 @@ $row = $result->fetch_assoc();
     </div>
     <!-- End Header -->
     <!-- Start Section -->
-    <div class="main-header">
+    <div class="main-header reserve">
         <div class="text">
             <h1>Reservations</h1>
             <p>Choose start and end dates to make a reservation </p>

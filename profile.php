@@ -65,11 +65,18 @@ if (mysqli_num_rows($result) > 0) {
     </div>
     <!-- End Header -->
     <!-- Start Cars Available -->
+    <div class="main-header reserve">
+        <div class="text">
+            <h1>Reservations</h1>
+            <p>Choose a car to make a reservation </p>
+        </div>
+        <div class="overlay"></div>
+    </div>
      <div class="cars-available">
         <div class="container">
-            <div class="main-heading">
+            <!-- <div class="main-heading">
                 <h2>Cars Available For Rent</h2>
-            </div>
+            </div> -->
             <?php
              $sql = "SELECT * FROM Car where status = 'Available'";
              $result = $conn->query($sql);
@@ -83,23 +90,20 @@ if (mysqli_num_rows($result) > 0) {
                      echo            '<img src="data:image/jpeg;base64,' . base64_encode($row["Image"]) . '" alt="Car Image">';
                      echo        '</div>';
                      echo        '<div class="text">';
-                     echo            $row["CarName"] . "<br>" . "<span>" . $row["Overview"] . "</span>";
+                     echo            '<div class="cname">' . $row["CarName"] . '</div>';
+                     echo            '<div class="ppd"> Now at <span>$' . $row["PricePerDay"] . '</span> per day</div>';
                      echo        '</div>';   
                      echo        '<form action="reserve.php" method="POST">';
                      echo            '<input type="text" name="plateid" id="plateid" value="' . $row["PlateId"] . '" readonly hidden>';
-                     echo            '<button class="submit">RENT NOW</button>';
+                     echo            '<button class="submit">RENT CAR</button>';
                      echo        '</form> '; 
                      echo  '</div>';
                  }
                  echo '</div>';
              }
-            
-
-
-
              ?>
         </div>
-    </div>
+    <!-- </div>. "<span>" . $row["Overview"] . "</span>" -->
     </div>
     <!-- End Cars Available -->
 

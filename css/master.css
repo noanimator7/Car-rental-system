@@ -97,6 +97,30 @@ a {
     align-items: center;
 
 }
+.main-header{
+    position: relative;
+    height: 140px;
+    width: 100%;
+    background-size: cover;
+}
+.main-header .overlay{
+    background-color: rgb(0 0 0 / 50%);
+}
+.main-header .text{
+    color: white;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 40%;
+    z-index: 2;
+    text-align: center;
+}
+.main-header .text h1{
+    font-size: 42px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1.5;
+}
 
 /* end components */
 
@@ -640,10 +664,17 @@ a {
 
 
 /* Start User Page */
+
+.main-header.reserve{
+    background-image: url(https://trials.vevs.website/web-demo/1/car-rental-website/app/web/upload/medium/1920x250-2704-1701156722.webp);
+}
+
 .cars-available{
     padding-top: 50px;
-    background-color: #f4f4f4;
+    background-color: #ebebeb;
     padding-bottom: 50px;
+    background-image: url(../images/reservation-bg.avif);
+    background-size: cover;
 
 }
 
@@ -660,10 +691,15 @@ a {
 
 .cars-available .image-container .car-box{
     background-color: white;
-    border-radius: 10px ;
-    padding: 10px;
+    border-radius: 10px;
+    padding: 20px;
     text-align: center;
     position: relative;
+    transition: 0.3s;
+}
+.cars-available .image-container .car-box:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 2px 15px rgb(0 0 0 / 20%);
 }
 .cars-available .image-container .car-box img{
     max-width: 100%;
@@ -678,43 +714,37 @@ a {
 }
 
 .cars-available .image-container .car-box .text{
-    font-size: 24px;
     text-align: left;
-    color: #cd1818;
-
 }
-.cars-available .image-container .car-box .text span{
-    
+.cars-available .image-container .car-box .text .cname{
+    font-size: 32px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.cars-available .image-container .car-box .text .ppd{
+    margin-top: 10px;
+}
+.cars-available .image-container .car-box .text .ppd span{
+    color: #cd1818;
+    font-size: 20px;
+    font-weight: 500;
+}
+.cars-available form button{
+    background-color: #cd1818;
+    padding: 5px 10px;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    margin-top: 20px;
 }
 /* End User Page */
 
 /* Start Reserve Page */
-
-.main-header{
-    position: relative;
+.main-header.reserve{
     background-image: url(https://trials.vevs.website/web-demo/1/car-rental-website/app/web/upload/medium/1920x250-2704-1701156722.webp);
-    height: 140px;
-    width: 100%;
-    background-size: cover;
 }
-.main-header .overlay{
-    background-color: rgb(0 0 0 / 50%);
-}
-.main-header .text{
-    color: white;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 40%;
-    z-index: 2;
-    text-align: center;
-}
-.main-header .text h1{
-    font-size: 40px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    letter-spacing: 1.5;
-}
+
 .section{
     background-color: #fff;
     height: 100vh;  
