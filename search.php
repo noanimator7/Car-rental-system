@@ -361,18 +361,15 @@ form.addEventListener("submit", (e) => {
     data: data,
   })
     .done((data) => {
-        if (typeof data === 'object') {
+
+        if(data==="error"){
+            return false;
+        }
+        else {
             
             // const para = document.createElement("p");
             // const node = document.createTextNode(item.a);
 
-
-
-
-
-
-        console.log(data[0].a);
-        console.log("hassan");
         for (let i = 0; i < data.length; i++){
             let maindiv = document.createElement("div");
             let item=data[i];
@@ -416,13 +413,6 @@ form.addEventListener("submit", (e) => {
 
             resultbox.appendChild(maindiv)
         }
-    } else {
-
-
-        // If data is a JSON string, parse it
-        const obj = JSON.parse(data);
-        console.log(obj.a);
-        console.log("megzo");
     }
     })
     .fail((err) => {

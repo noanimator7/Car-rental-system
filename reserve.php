@@ -70,7 +70,6 @@ $row = $result->fetch_assoc();
     </div>
     <div class="section">
         <div class="container">
-            
             <div class="top-box">
             <?php
                 echo    '<div class="image">';
@@ -78,8 +77,8 @@ $row = $result->fetch_assoc();
                 echo    '</div>';
                 ?>
                 <div class="text">
-                    <div class="brand"><?php echo $row["CarName"]?></div>
-                    <div class="overview"><?php echo $row["Overview"]?></div>
+                    <div class="car-name"><?php echo $row["CarName"]?></div>
+                    <!-- <div class="overview"><?php //echo $row["Overview"]?></div> -->
                     <div class="plate"><?php echo $row["PlateId"]?></div>
                 </div>
                 

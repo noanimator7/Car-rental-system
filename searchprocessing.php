@@ -52,16 +52,22 @@ if ($airconditioner !== "Null") {
 $result = $conn->query($sql);
 
 $data = array(); // Initialize an array to store results
-
-while($row = $result->fetch_assoc()) {
-    // Sample array for each row
-    $rowData = array("a" => $row["PricePerDay"], "b" => $row["CarName"], "c" => $row["Overview"], "d"=> $row["Year"],
-    "e"=> $row["DriverAirbag"], "f"=>$row["Seating_capacity"], "g"=> $row["Air_conditioner"]);
-
-    $data[] = $rowData; // Add the row data to the main array
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        // Sample array for each row
+        $rowData = array("a" => $row["PricePerDay"], "b" => $row["CarName"], "c" => $row["Overview"], "d"=> $row["Year"],
+        "e"=> $row["DriverAirbag"], "f"=>$row["Seating_capacity"], "g"=> $row["Air_conditioner"]);
+    
+        $data[] = $rowData; // Add the row data to the main array
+    }
+    
+    header("Content-Type: application/json");
+    echo json_encode($data);
+    }
+}
+else{
+    echo "error";
 }
 
-header("Content-Type: application/json");
-echo json_encode($data);
-}
+
 ?>
