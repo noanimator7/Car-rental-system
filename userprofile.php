@@ -11,7 +11,7 @@ if (!isset($_SESSION["SESSION_EMAIL"])) {
     $email = $_POST['Email'] ;
     }
 
-
+    $email = $_SESSION["SESSION_EMAIL"] ;
     $conn = new mysqli($host, $username, $password, $database);
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -27,6 +27,7 @@ if (!isset($_SESSION["SESSION_EMAIL"])) {
     FROM reservation AS r 
     JOIN  users AS  u
     ON r.SSN = u.SSN  
+    WHERE u.Email = '$email'
     "; 
     $result2 = $conn->query($sql2);
     $conn->close();
