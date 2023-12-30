@@ -26,7 +26,7 @@ if (mysqli_num_rows($result) > 0) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <body>
 
 
@@ -57,56 +57,52 @@ if (mysqli_num_rows($result) > 0) {
             </div>
             <div class="rl-container">
                 <div class="home"><a href="profile.php">HOME</a></div>
-                <div class="about-us"><a href="#about">ABOUT US</a></div>
+                <div class="about-us"><a href="search.php">SEARCH</a></div>
                 <div class="login "><a href="#testimonials" class="button">PROFILE</a></div>
                 <div class="register "><a href="logout.php">LOG OUT</a></div>
             </div>
         </div>
     </div>
     <!-- End Header -->
-
     <!-- Start Cars Available -->
-    <div class="cars-available">
+     <div class="cars-available">
         <div class="container">
             <div class="main-heading">
                 <h2>Cars Available For Rent</h2>
             </div>
             <?php
-            $sql = "SELECT * FROM Car where status = 'Available'";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
+             $sql = "SELECT * FROM Car where status = 'Available'";
+             $result = $conn->query($sql);
+             if ($result->num_rows > 0) {
 
 
-                echo '<div class="image-container">';
-                while ($row = $result->fetch_assoc()) {
-                    echo  '<div class="car-box">';
-                    echo        '<div class="image">';
-                    echo            '<img src="data:image/jpeg;base64,' . base64_encode($row["Image"]) . '" alt="Car Image">';
-                    echo        '</div>';
-                    echo        '<div class="text">';
-                    echo            $row["CarName"] . "<br>" . "<span>" . $row["Overview"] . "</span>";
-                    echo        '</div>';   
-                    echo        '<form action="reserve.php" method="POST">';
-                    echo            '<input type="text" name="plateid" id="plateid" value="' . $row["PlateId"] . '" readonly hidden>';
-                    echo            '<button class="submit">RENT NOW</button>';
-                    echo        '</form> '; 
-                    echo  '</div>';
-                }
-                echo '</div>';
-            }
+                 echo '<div class="image-container">';
+                 while ($row = $result->fetch_assoc()) {
+                     echo  '<div class="car-box">';
+                     echo        '<div class="image">';
+                     echo            '<img src="data:image/jpeg;base64,' . base64_encode($row["Image"]) . '" alt="Car Image">';
+                     echo        '</div>';
+                     echo        '<div class="text">';
+                     echo            $row["CarName"] . "<br>" . "<span>" . $row["Overview"] . "</span>";
+                     echo        '</div>';   
+                     echo        '<form action="reserve.php" method="POST">';
+                     echo            '<input type="text" name="plateid" id="plateid" value="' . $row["PlateId"] . '" readonly hidden>';
+                     echo            '<button class="submit">RENT NOW</button>';
+                     echo        '</form> '; 
+                     echo  '</div>';
+                 }
+                 echo '</div>';
+             }
             
 
 
 
-            ?>
+             ?>
         </div>
     </div>
     </div>
     <!-- End Cars Available -->
 
-    <!-- <h2>Welcome, <?php echo $data["SSN"]; ?> <p></p>
-    </h2> -->
 
 </body>
-
 </html>

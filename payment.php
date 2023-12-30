@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION["SESSION_EMAIL"])) {
+    header("Location: index.php");
+}
 
 $plateid=$_POST["plateids"];
 echo $plateid;
