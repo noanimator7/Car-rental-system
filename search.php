@@ -256,102 +256,18 @@ if ($result_country->num_rows > 0) {
 
             </div>
     </div>
-            
+    
+    <div class="output">
+        <div class="container">
+            <div class="search-result" id="search-result"></div>
+        </div>
+    </div>
 
 
     
-   <div class="output">
-    <div class="container">
-   <?php
-            // Display the results
-            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($result)) {
-                echo '<div class="results">';
-                // echo($result->num_rows );
-                if ($result->num_rows > 0) {
-                    // Output the car information in a box
-                    while ($row = $result->fetch_assoc()) {
+   
 
-                echo '<div class="car-info-box">';
-                echo '<h3>Car Information</h3>';
-                echo '<form action="edit.php" method="post">';
-                echo '<div class="results-box"> ';
-                echo '<label for="brand">Brand Name:</label>' ;
-                echo '<input type="text" id = "brand" name="brand" value="' . $row["CarName"] . '" readonly>';
-                echo '</div>';
-                
-                echo '<div class="results-box"> ';
-                echo '<label for="overview">OverView:</label>' ;
-                echo '<input type="text" id = "overview" name="overview" value="' . $row["Overview"] . '" readonly>';
-                echo '</div>';
-
-                // echo '<input type="text" id="color" name="color" value="' . $row["color"] . '" readonly>';
-                echo '<div class="results-box"> ';
-                echo '<label for="airbag">Airbag:</label>' ;
-                echo '<input type="text" id="airbag" name="airbag" value="' . $row["DriverAirbag"] . '" readonly>';
-                echo '</div>';
-
-
-                echo '<div class="results-box"> ';
-                echo '<label for="plate_id">Plate Id:</label>' ;
-                echo '<input type="text"  id="plate_id" name="plate_id" value="' . $row["PlateId"] . '" readonly>';
-                echo '</div>';
-
-                // echo '<input type="text" id="status" name="status" value="' . $row["status"] . '" readonly>';
-                echo '<div class="results-box"> ';
-                echo '<label for="price_per_day">Price Per Day:</label>' ;
-                echo '<input type="text" id="price_per_day" name="price_per_day" value="' . $row["PricePerDay"] . '" readonly>';
-                echo '</div>';
-
-
-                echo '<div class="results-box"> ';
-                echo '<label for="seatingcapacity">Seating Capacity:</label>' ;
-                echo '<input type="text" id="seatingcapacity" name="seatingcapacity" value="' . $row["Seating_capacity"] . '" readonly>';
-                echo '</div>';
-
-                echo '<div class="results-box"> ';
-                echo '<label for="year">Year:</label>' ;
-                echo '<input type="text" id="year" name="year" value="' . $row["Year"] . '" readonly>';
-                echo '</div>';
-
-                echo '<div class="results-box"> ';
-                echo '<label for="airconditioner">Air Conditioner:</label>' ;
-                echo '<input type="text" id="airconditioner" name="airconditioner" value="' . $row["Air_conditioner"] . '" readonly>';
-                echo '</div>';
-                echo '<div class="results-box"> ';
-                echo '<label for="status">Status:</label>' ;
-                echo '<input type="text" id="status" name="status" value="' . $row["Status"] . '" readonly>';
-                echo '</div>';
-                echo '<div class="results-box"> ';
-                echo '<label for="airconditioner">Office Id:</label>' ;
-                echo '<input type="text" id="oid" name="oid" value="' . $row["OId"] . '" readonly>';
-                echo '</div>';
-                echo '<div class="results-box"> ';
-                echo '<label for="color">Color:</label>' ;
-                echo '<input type="text" id="color" name="color" value="' . $row["Color"] . '" readonly>';
-                echo '</div>';
-
-
-                echo '<button type="submit" class="submit-btn" name="edit" value="EDIT">EDIT</button>';
-                echo '</form>';
-                echo '</div>';}
-
-                } else {
-                    echo '<div class="car-info-box">';
-
-                    echo '<p>No cars found matching the criteria.</p>';
-                    echo '</div>';
-
-                }
-                echo '</div>';
-            }
-            ?>
-            </div>
-            </div>
-
-
-            <div class="search-result" id="search-result">
-                
-            </div>
+            
 
 
     

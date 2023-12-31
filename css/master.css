@@ -1029,4 +1029,16 @@ input::-webkit-outer-spin-button{
     border-radius: 6px;
     font-size: 18px;
 }
+
+.caratts .search-result{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+    gap: 25px;
+    padding: 20px;
+    margin-top: 30px;
+}
+.caratts .search-result > div{
+    background-color: white;
+    padding: 20px;
+}
 /* End Search */
