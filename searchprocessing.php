@@ -1,5 +1,5 @@
 <?php 
-/*************************** */
+/********* */
 //trying to search the car by the specs the admin entered 
 //even if the admin didnot enter all the specs i will search with the entered specs
 include "config.php";
@@ -16,24 +16,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $year =  isset($_POST["year"]) ? $_POST["year"] : null;
     $country =  isset($_POST["country"]) ? $_POST["country"] : null;
 
-
+    
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 // echo($plate_id);
 $sql = "
 SELECT * 
-FROM car 
-WHERE Status ='Available' ";
-if ($country !== "Null") {
-    $sql = 
-"
-SELECT * 
-FROM car  AS c 
+FROM car  as c
 JOIN offices AS o 
 ON c.OId =  o.OId 
-WHERE  Status = 'Available'   AND o.Country = '$country' 
-" ;
+WHERE Status ='Available' ";
+if ($country !== "Null") {
+    $sql .= "  AND Country = '$country' ";
+
 }
 if ($color !== "Null") {
     $sql .= " AND Color = '$color'";
@@ -70,8 +66,9 @@ $data = array(); // Initialize an array to store results
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         // Sample array for each row
-        $rowData = array("a" => $row["PricePerDay"], "b" => $row["CarName"], "c" => $row["Overview"], "d"=> $row["Year"],
-        "e"=> $row["DriverAirbag"], "f"=>$row["Seating_capacity"], "g"=> $row["Air_conditioner"] , "h" => $row['Country'] , "i" => base64_encode($row["Image"]));
+        $rowData = array("a" => base64_encode($row["Image"]), "b" => $row["CarName"], "c" => $row["Overview"], "d"=> $row["Year"],
+        "e"=> $row["PricePerDay"], "f"=>$row["Seating_capacity"], "g"=> $row["Air_conditioner"] , "h" => $row["DriverAirbag"] , "i" => $row['Country']
+    ,"plateid" => $row["PlateId"]);
     
         $data[] = $rowData; // Add the row data to the main array
     }
