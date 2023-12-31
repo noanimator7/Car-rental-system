@@ -268,7 +268,7 @@ a {
     }
 }
 
-.header .rl-container .home a {
+.header .rl-container .active a {
     color: #cd1818;
 }
 
@@ -433,7 +433,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    left: 0px;
+    left: -1px;
 }
 
 .landing .auth-container .login-form form .icon i {
@@ -675,6 +675,7 @@ a {
     padding-bottom: 50px;
     background-image: url(../images/reservation-bg.avif);
     background-size: cover;
+    background-attachment: fixed;
 
 }
 
@@ -871,7 +872,8 @@ a {
     align-items: center;
     min-height: 100vh;
     padding: 25px;
-    background: #73B5BD;
+    background-image: url(../images/reservation-bg.avif);
+    background-size: cover;
 }
 
 .containers form {
@@ -879,6 +881,13 @@ a {
     padding: 20px;
     background: #fff;
     box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+}
+.containers form input{
+    height: 40px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    width: 100%;
 }
 
 .containers form .row{
@@ -893,7 +902,7 @@ a {
 
 .col .title{
     font-size: 20px;
-    color: #5e8f94;
+    color: #cd1818;
     padding-bottom: 5px;
 }
 
@@ -904,11 +913,13 @@ a {
 .col .inputBox label{
     margin-bottom: 10px;
     display: block;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .col .inputsBox input, .col .inputBox select{
     width: 100%;
-    border: 1px solid #000;
+    border: 1px solid #ddd;
     padding: 10px 15px;
     font-size: 15px;
 }
@@ -937,15 +948,16 @@ a {
     width: 100%;
     padding: 12px;
     font-size: 17px;
-    background: #5e8f94;
+    background: #cd1818;
     color: #fff;
     margin-top: 5px;
     cursor: pointer;
     letter-spacing: 1px;
+    border: none;
 }
 
 .containers form .submit_btn:hover{
-    background: #73B5BD;
+    background: #e31616;
 }
 
 input::-webkit-inner-spin-button,
@@ -954,3 +966,67 @@ input::-webkit-outer-spin-button{
 }
 
 /* End Payement */
+
+/* Start Search */
+.main-header.search{
+    background-image: url(https://trials.vevs.website/web-demo/1/car-rental-website/app/web/upload/medium/kahl-orr-mpdl02hysb0-unsplash-2403-1701156722.webp);
+    background-size: cover;
+}
+.caratts{
+    padding-top: 40px;
+    /* background-image: url(../images/reservation-bg.avif);
+    background-size: cover; */
+    background-color: #eee;
+    padding-bottom: 30px;
+
+}
+.caratts form .inputs-container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.caratts form input,
+.caratts form select{
+    height: 50px;
+    width: 500px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    padding: 10px;
+    background-color: #ffffffd9;
+}
+@media(max-width: 1199px){
+    .caratts form input,
+    .caratts form select{
+        width: 400px;
+    }
+}
+@media(max-width: 991px){
+    .caratts form input,
+    .caratts form select{
+        width: 300px;
+    }
+}
+.caratts form label{
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 3px;
+    margin-left: 12px;
+    color: #393e46;
+}
+.caratts form .submit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.caratts form .submit-btn{
+    padding: 5px 10px;
+    background-color: #cd1818;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+}
+/* End Search */

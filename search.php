@@ -122,84 +122,91 @@ if ($result_year->num_rows > 0) {
             </div>
             <div class="rl-container">
                 <div class="home"><a href="profile.php">HOME</a></div>
-                <div class="about-us"><a href="search.php">SEARCH</a></div>
+                <div class="search active"><a href="search.php">SEARCH</a></div>
                 <div class="login "><a href="#testimonials" class="button">PROFILE</a></div>
                 <div class="register "><a href="logout.php">LOG OUT</a></div>
             </div>
         </div>
     </div>
     <!-- End Header -->
+    <div class="main-header search">
+        <div class="text">
+            <h1>Search</h1>
+            <p>Search For A Car Suitable For You </p>
+        </div>
+        <div class="overlay"></div>
+    </div>
 
     <div class="caratts">
             <div class="container">
                 <form action="" method="post" id="form">
-
-                    <div class="brandatts">    
+                <div class="inputs-container">
+                    <div class="left">
+                    <div class="ppd">    
                         <label for="price">Price per Day:</label>
                         <input type="text" name="price" id="price">
                     </div>
 
-
-                <div class="brandatts">
-                    <label for="Brand">Car Name:</label>
-                    <input type="text" name="Brand" id="Brand">
-                        <label for="overview">OverView</label>
-                        
-                        <select name="overview" id="overview">
-                        <option value="Null"></option>
-
-                    <?php
-                    foreach ($overviews as $overview) {
-                    echo '<option value="' . $overview . '">' . $overview . '</option>';
-                    }
-                    ?>
-                    </select> 
-                </div>
-                <div class="brandatts">
-                        
-                    <label for="color">Car Color:</label>
-                    <select name="color" id="color">
-                        <option value="Null"></option>
-                    <?php
-                    // Generate HTML options for countries
-                    foreach ($colors as $color) {
-                    echo '<option value="' . $color . '">' . $color . '</option>';
-                    }
-                    ?>
-                    </select>
-
-
-
-                 
+                    <div class="brand-name">
+                        <label for="Brand">Car Name:</label>
+                        <input type="text" name="Brand" id="Brand">
                     </div>
-    
-                    <div class="brandatts">
+                    
+                    <div class="oview">                        
+                        <label for="overview">OverView</label>    
+                        <select name="overview" id="overview">
+                     <option value="Null"></option>
+                     <?php
+                        foreach ($overviews as $overview) {
+                        echo '<option value="' . $overview . '">' . $overview . '</option>';
+                        }
+                        ?>
+                        </select> 
+                    </div>
+                
+                    <div class="clr">
+                        
+                        <label for="color">Car Color:</label>
+                        <select name="color" id="color">
+                        <option value="Null"></option>
+                        <?php
+                        // Generate HTML options for countries
+                        foreach ($colors as $color) {
+                        echo '<option value="' . $color . '">' . $color . '</option>';
+                        }
+                        ?>
+                        </select>      
+                    </div>
+                    </div>
+                    <div class="right">
+                    <div class="sc">
                         <label for="seatingcapacity">Seating Capacity</label>
                         <select name="seatingcapacity" id="seatingcapacity">
                             <option value="Null"></option>
 
-                        <?php
-                        foreach ($seats as $s) {
-                        echo '<option value="'. $s .'">' . $s . '</option>';
-                        }
-                        ?>
-                        </select> 
+                            <?php
+                            foreach ($seats as $s) {
+                            echo '<option value="'. $s .'">' . $s . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
 
+                    <div class="yr">
                         <label for="year">Year</label>
-
                         <select name="year" id="year">
                             <option value="Null"></option>
 
-                        <?php
-                        foreach ($years as $y) {
-                        echo '<option value="' . $y . '">' . $y . '</option>';
-                        }
-                        ?>
+                            <?php
+                            foreach ($years as $y) {
+                            echo '<option value="' . $y . '">' . $y . '</option>';
+                            }
+                            ?>
                         </select> 
                     </div>
 
 
-                    <div class="brandatts">
+                    <div class="ab">
                         <label for="airbag">Airbag:</label>
                         <select name="airbag" id="airbag">
                             <option value="Null"></option>
@@ -207,6 +214,8 @@ if ($result_year->num_rows > 0) {
                             <option value="Y">Yes</option>
                             <option value="N">No</option>
                         </select>
+                    </div>
+                    <div class="ac">
                         <label for="airconditioner">Airconditioner:</label>
                         <select name="airconditioner" id="airconditioner">
                             <option value="Null"></option>
@@ -215,11 +224,15 @@ if ($result_year->num_rows > 0) {
                             <option value="N">No</option>
                         </select>
                     </div>
+                    </div>
+                        </div>
                    
                     <div class="submit">            
-                    <button class="submit-btn">Submit</button>
+                    <button class="submit-btn" onclick="scrollDown()">Search For Car</button>
                     </div>
                 </form>
+                
+
             </div>
     </div>
             
@@ -423,5 +436,11 @@ form.addEventListener("submit", (e) => {
     });
 });
 </script>
+<script>
+    function scrollDown() {
+      // You can adjust the scroll amount based on your needs
+      window.scrollBy(0, 500); // Scroll down by 100 pixels
+    }
+  </script>
 
 </html>

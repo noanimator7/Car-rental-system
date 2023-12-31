@@ -70,7 +70,7 @@ $price  =$_POST['priceperday'] ;
             </div>
             <div class="rl-container">
                 <div class="home"><a href="profile.php">HOME</a></div>
-                <div class="about-us"><a href="#about">ABOUT US</a></div>
+                <div class="search"><a href="search.php">SEARCH</a></div>
                 <div class="login "><a href="#testimonials" class="button">PROFILE</a></div>
                 <div class="register "><a href="logout.php">LOG OUT</a></div>
             </div>
@@ -201,7 +201,7 @@ $price  =$_POST['priceperday'] ;
 
             </div>
 
-            <input type="submit" value="Proceed to Checkout" class="submit_btn">
+            <input type="submit" value="Checkout" class="submit_btn">
         </form>
 
     </div>
