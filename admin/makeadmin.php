@@ -11,6 +11,9 @@ if (mysqli_connect_errno()) {
 
 $ssn = $_POST['ssn'] ; 
 
+
+
+
 $sql = "
 UPDATE users 
 SET admin = 1

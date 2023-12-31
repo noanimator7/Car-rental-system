@@ -26,8 +26,8 @@ if (!isset($_SESSION["SESSION_EMAIL"])) {
 </head>
 
 <body>
-    <!-- Start Header bar -->
-    <div class="header-bar">
+        <!-- Start Header bar -->
+        <div class="header-bar">
         <div class="container">
             <div class="icons">
                 <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
@@ -47,43 +47,45 @@ if (!isset($_SESSION["SESSION_EMAIL"])) {
     <!-- End Header bar -->
     <!-- Start Header -->
     <div class="header" id="header" style="margin-bottom:200px;">
-        <div class="container">
-            <div class="logo">
-                <img src="logo.png" alt="">
-            </div>
-            <div class="rl-container">
-                <nav>
-                    <ul>
-                        <li class="home"><a href="temp.php">HOME</a></li>
-                        <li class="about-us"><a href="add.php">ADD NEW CAR</a></li>
-                        <li class="login"><a href="addnewoffice.php" class="button">ADD NEW OFFICE</a></li>
-                        <li class="register"><a href="../logout.php" class="button">LOGOUT</a></li>
-                        <li class="dropdown">
-                            <a href="#" aria-haspopup="true">Advanced Search</a>
-                            <ul class="dropdown-menu" aria-label="submenu">
-                                <li><a href="customeradvancesearch.php">By Customer</a></li>
-                                <li><a href="caradvancedsearch.php">By Car</a></li>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.png" alt="">
+        </div>
+        <div class="rl-container">
+            <nav>
+                <ul>
+                    <li class="home"><a href="temp.php">HOME</a></li>
+                    <li class="about-us"><a href="add.php">ADD NEW CAR</a></li>
+                    <li class="login"><a href="addnewoffice.php" class="button">ADD NEW OFFICE</a></li>
+                    <li class="dropdown">
+                        <a href="#" aria-haspopup="true">Advanced Search</a>
+                        <ul class="dropdown-menu" aria-label="submenu">
+                            <li><a href="customeradvancesearch.php">By Customer</a></li>
+                            <li><a href="caradvancedsearch.php">By Car</a></li>
+                            <li><a href="reservationadvancedsearch.php">By Reservation</a></li>
 
 
-                            </ul>
-                        </li>
+                        </ul>
+                    </li>
 
-                        <li class="dropdown">
-                            <a href="#" aria-haspopup="true"> Search</a>
+                    <li class="dropdown">
+                    <a href="#" aria-haspopup="true"> Search</a>
 
-                            <ul class="dropdown-menu" aria-label="submenu">
-                                <li><a href="reservecar.php">Reservations of car</a></li>
-                                <li><a href="daily_payments.php">Daily Payments</a></li>
-                                <li><a href="statusofcar.php">Status of cars</a></li>
-                                <li><a href="reservecustomer.php">Reservations of customer</a></li>
-                                <li><a href="reserveperiod.php">Reservations of period</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+                        <ul class="dropdown-menu" aria-label="submenu">
+                            <li><a href="reservecar.php">Reservations of car</a></li>
+                            <li><a href="daily_payments.php">Daily Payments</a></li>
+                            <li><a href="statusofcar.php">Status of cars</a></li>
+                            <li><a href="reservecustomer.php">Reservations of customer</a></li>
+                            <li><a href="reserveperiod.php">Reservations of period</a></li>
+                        </ul>
+                    </li>
+                    <li class="register"><a href="../logout.php" class="button">LOGOUT</a></li>
+
+                </ul>
+            </nav>
         </div>
     </div>
+</div>
 
     <!-- End Header -->
 

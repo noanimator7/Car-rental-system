@@ -11,28 +11,18 @@ $conn = new mysqli($host, $username, $password, $database);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $start = $_POST['startdate'];
-    $sqlav = "
-    SELECT c.PlateId
-    FROM car AS c
-    WHERE c.PlateId NOT IN (
-        SELECT c.PlateID
-        FROM car AS c
-        NATURAL JOIN reservation as r
-        WHERE '$start' BETWEEN r.pickup_date AND r.return_date
-    )
-    ";
 
-    $resultavailable = $conn->query($sqlav);
-    // echo  $sqlav ;
-    if ($resultavailable === false) {
-        echo "Error: " . $conn->error;
-    }
 
     $sqlrented = "
-    SELECT c.PlateID
-    FROM car AS c
-     JOIN reservation as r ON c.PlateId = r.PlateId
-    WHERE '$start' BETWEEN r.pickup_date AND r.return_date
+    SELECT r.*
+    FROM reservation as  r 
+    where r.SSN LIKE '%$start%' OR 
+    r.Reservation_number LIKE '%$start%' OR 
+    r.PlateId LIKE '%$start%' OR 
+    r.pickup_date LIKE '%$start%' OR 
+    r.return_date LIKE '%$start%' OR 
+    r.Payment_method LIKE '%$start%' OR 
+    r.Total_price LIKE '%$start%' 
 ";
 //  echo $sqlrented;
 $resultrented = $conn->query($sqlrented);
@@ -66,7 +56,7 @@ if ($resultrented === false) {
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
         <link rel="stylesheet" href="master.css">
-   
+
 </head>
 <body>
         <!-- Start Header bar -->
@@ -131,13 +121,12 @@ if ($resultrented === false) {
 </div>
 
     <!-- End Header -->
-
     <div class="caratts">
             <div class="container">
                 <form action="" method="post" id="form">
         <div class="brandatts">
-                <label for="startdate">Enter A Day</label>
-                <input type="date" id="startdate" name="startdate">
+                <label for="startdate">Enter Reservation data</label>
+                <input type="text" id="startdate" name="startdate">
                 <div class="error"></div>
                
         </div>
@@ -149,85 +138,69 @@ if ($resultrented === false) {
     </form>
 </div>
 </div>
-
 <div class="output">
     <div class="container">
-        <!-- <h2>Rented Cars On D</h2> -->
         <?php
-        // Display the results
+        // Display user information
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($resultrented)) {
             echo '<div class="results">';
-            // Check if there are rows in the result
-            echo '<h3 style="width :100% ;" >Reserved Cars On This Day</h3>';
+            echo '<h3 style="width:100%;">Reservation  Information</h3>';
 
             if ($resultrented->num_rows > 0) {
-                // Output the car information in a box
-                while ($row = $resultrented->fetch_assoc()) {
+                // Output user information in a box
+                while ($userRow = $resultrented->fetch_assoc()) {
                     echo '<div class="car-info-box">';
-                    echo '<form action="" method="post">';
-                    
+                    echo '<form action="makeadmin.php" method="post">';
+
+                    // Display user data attributes
                     echo '<div class="results-box"> ';
-                    echo '<label for="plateid">Plate Id:</label>' ;
-                    // print_r( $row );
-                    echo '<input type="text" id="plateid" name="plateid" value="' . $row["PlateID"] . '" readonly>';
-                    // echo '<input type="text" id="plateid" name="plateid" value="7amada" readonly>';
+                    echo '<label for="ssn">Reservation Number:</label>';
+                    echo '<input type="text" id="ssn" name="ssn" value="' . $userRow["Reservation_number"] . '" readonly>';
                     echo '</div>';
+
                     echo '<div class="results-box"> ';
-                    echo '<label for="status">Status:</label>' ;
-                    echo '<input type="text" id="status" name="status" value="Rented" readonly>';
+                    echo '<label for="fname">SSN:</label>';
+                    echo '<input type="text" id="fname" name="fname" value="' . $userRow["SSN"] . '" readonly>';
                     echo '</div>';
+
+                    echo '<div class="results-box"> ';
+                    echo '<label for="lname">Plate Id:</label>';
+                    echo '<input type="text" id="lname" name="lname" value="' . $userRow["PlateId"] . '" readonly>';
+                    echo '</div>';
+
+                    echo '<div class="results-box"> ';
+                    echo '<label for="email">Pick Up Date:</label>';
+                    echo '<input type="text" id="email" name="email" value="' . $userRow["pickup_date"] . '" readonly>';
+                    echo '</div>';
+
+                    echo '<div class="results-box"> ';
+                    echo '<label for="address">Return Date:</label>';
+                    echo '<input type="text" id="address" name="address" value="' . $userRow["return_date"] . '" readonly>';
+                    echo '</div>';
+
+                    echo '<div class="results-box"> ';
+                    echo '<label for="city">Payment Method:</label>';
+                    echo '<input type="text" id="city" name="city" value="' . $userRow["Payment_method"] . '" readonly>';
+                    echo '</div>';
+
+                    echo '<div class="results-box"> ';
+                    echo '<label for="country">Total Price:</label>';
+                    echo '<input type="text" id="country" name="country" value="' . $userRow["Total_price"] . '" readonly>';
+                    echo '</div>';
+
+
+
                     echo '</form>';
                     echo '</div>';
                 }
             } else {
-                echo '<div class="car-info-box">';
-                echo '<p>No reservations found matching the criteria.</p>';
+                echo '<div class="user-info-box">';
+                echo '<p>No users found matching the criteria.</p>';
                 echo '</div>';
             }
             echo '</div>';
         }
-
-        
         ?>
-
-
-
-    <!-- <h2>Available Cars On Day </h2> -->
-        <?php
-        // Display the results
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($resultavailable)) {
-            echo '<div class="results av">';
-            echo '<h3 style="width :100% ;" ">Available Cars On This Day</h3>';
-
-            // Check if there are rows in the result
-            if ($resultavailable->num_rows > 0) {
-                // Output the car information in a box
-                while ($row = $resultavailable->fetch_assoc()) {
-                    echo '<div class="car-info-box">';
-                    // echo '<h3>Reservation Information</h3>';
-                    echo '<form action="" method="post">';
-                    
-                    echo '<div class="results-box"> ';
-                    echo '<label for="plateid">Plate Id:</label>' ;
-                    echo '<input type="text" id="plateid" name="plateid" value="' . $row["PlateId"] . '" readonly>';
-                    echo '</div>';
-                    echo '<div class="results-box"> ';
-                    echo '<label for="status">Status:</label>' ;
-                    echo '<input type="text" id="status" name="status" value="Available" readonly>';
-                    echo '</div>';
-                    echo '</form>';
-                    echo '</div>';
-                }
-            } else {
-                echo '<div class="car-info-box">';
-                echo '<p>No reservations found matching the criteria.</p>';
-                echo '</div>';
-            }
-            echo '</div>';
-        }
-
-            ?>
-
     </div>
 </div>
 
@@ -245,16 +218,12 @@ if ($resultrented === false) {
         console.log(startdate.value);
         form.addEventListener("submit", (e) => {
             let resultsElement = document.querySelector('.output .results');
-            let resultsElement2 = document.querySelector('.output .av');
     if (resultsElement) {
         resultsElement.innerHTML = "";
     }
-    if (resultsElement2) {
-        resultsElement2.innerHTML = "";
-    }
-
+ 
             let validationPassed2 = true;
-            validationPassed2 = validationPassed2 && engine(startdate, 0, "Date cannot be blank") ;
+            validationPassed2 = validationPassed2 && engine(startdate, 0, "Please Enter any value") ;
             if (!validationPassed2 ) {
                 results.innerHTML = "" ;
 
@@ -279,5 +248,4 @@ if ($resultrented === false) {
         };
 
     </script>
-
 </html>

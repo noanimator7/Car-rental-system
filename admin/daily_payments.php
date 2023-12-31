@@ -57,12 +57,12 @@ if (!isset($_SESSION["SESSION_EMAIL"])) {
                     <li class="home"><a href="temp.php">HOME</a></li>
                     <li class="about-us"><a href="add.php">ADD NEW CAR</a></li>
                     <li class="login"><a href="addnewoffice.php" class="button">ADD NEW OFFICE</a></li>
-                    <li class="register"><a href="../logout.php" class="button">LOGOUT</a></li>
                     <li class="dropdown">
                         <a href="#" aria-haspopup="true">Advanced Search</a>
                         <ul class="dropdown-menu" aria-label="submenu">
                             <li><a href="customeradvancesearch.php">By Customer</a></li>
                             <li><a href="caradvancedsearch.php">By Car</a></li>
+                            <li><a href="reservationadvancedsearch.php">By Reservation</a></li>
 
 
                         </ul>
@@ -79,6 +79,8 @@ if (!isset($_SESSION["SESSION_EMAIL"])) {
                             <li><a href="reserveperiod.php">Reservations of period</a></li>
                         </ul>
                     </li>
+                    <li class="register"><a href="../logout.php" class="button">LOGOUT</a></li>
+
                 </ul>
             </nav>
         </div>

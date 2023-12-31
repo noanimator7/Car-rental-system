@@ -252,12 +252,23 @@ a {
 
 
 }   
+
+form{
+    border-radius: 30px;
+}
+
+
         .caratts{
             margin-top: 100px;
         }
         .results-box{
             width: 100%;
             margin: 10px;
+            border-radius: 20px;
+        }
+        .car-info-box form{
+            border-radius: 20px;
+
         }
         .image-box{
             display: flex;
