@@ -64,12 +64,12 @@ if ($result_office->num_rows > 0) {
                     <li class="home"><a href="temp.php">HOME</a></li>
                     <li class="about-us"><a href="add.php">ADD NEW CAR</a></li>
                     <li class="login"><a href="addnewoffice.php" class="button">ADD NEW OFFICE</a></li>
-                    <li class="register"><a href="../logout.php" class="button">LOGOUT</a></li>
                     <li class="dropdown">
                         <a href="#" aria-haspopup="true">Advanced Search</a>
                         <ul class="dropdown-menu" aria-label="submenu">
                             <li><a href="customeradvancesearch.php">By Customer</a></li>
                             <li><a href="caradvancedsearch.php">By Car</a></li>
+                            <li><a href="reservationadvancedsearch.php">By Reservation</a></li>
 
 
                         </ul>
@@ -86,6 +86,8 @@ if ($result_office->num_rows > 0) {
                             <li><a href="reserveperiod.php">Reservations of period</a></li>
                         </ul>
                     </li>
+                    <li class="register"><a href="../logout.php" class="button">LOGOUT</a></li>
+
                 </ul>
             </nav>
         </div>
@@ -93,7 +95,6 @@ if ($result_office->num_rows > 0) {
 </div>
 
     <!-- End Header -->
-
     <section class="welcome">
         <div class="container">
             <div class="welpar">
@@ -349,22 +350,7 @@ if ($result_office->num_rows > 0) {
                 return true;
             }
         };
-//         window.addEventListener('pageshow', function(event) {
-//       if (event.persisted) {
-//           document.getElementById('form').reset();
-//           for(let i =0 ; i<4 ; i++){
-//             errorMsg[i].innerHTML="" ;
 
-//           }
-//           ofid.style.border="none";
-//           country.style.border="none";
-//           password.style.border="none";
-//           confirm_pass.style.border="none";
-//       }
-//   });
-//         ofid.value = "";
- 
-//         country.value = "";
     </script>
 
 

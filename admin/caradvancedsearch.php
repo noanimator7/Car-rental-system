@@ -16,17 +16,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sqlrented = "
     SELECT c.*
     FROM car as  c 
-    where c.PlateId LIKE '$start' OR 
-    c.CarName LIKE '$start' OR 
-    c.Overview LIKE '$start' OR 
-    c.PricePerDay LIKE '$start' OR 
-    c.Year LIKE '$start' OR 
-    c.DriverAirbag LIKE '$start' OR 
-    c.Status LIKE '$start'  OR
-    c.Color LIKE '$start'  OR
-    c.OId LIKE '$start'  OR
-    c.Seating_capacity LIKE '$start'  OR
-    c.Air_conditioner LIKE '$start'  
+    where c.PlateId LIKE '%$start%' OR 
+    c.CarName LIKE '%$start%' OR 
+    c.Overview LIKE '%$start%' OR 
+    c.PricePerDay LIKE '%$start%' OR 
+    c.Year LIKE '%$start%' OR 
+    c.DriverAirbag LIKE '%$start%' OR 
+    c.Status LIKE '%$start%'  OR
+    c.Color LIKE '%$start%'  OR
+    c.OId LIKE '%$start%'  OR
+    c.Seating_capacity LIKE '%$start%'  OR
+    c.Air_conditioner LIKE '%$start%'  
 ";
 //  echo $sqlrented;
 $resultrented = $conn->query($sqlrented);
@@ -63,8 +63,6 @@ if ($resultrented === false) {
 
 </head>
 <body>
-        
-
         <!-- Start Header bar -->
         <div class="header-bar">
         <div class="container">
@@ -96,12 +94,12 @@ if ($resultrented === false) {
                     <li class="home"><a href="temp.php">HOME</a></li>
                     <li class="about-us"><a href="add.php">ADD NEW CAR</a></li>
                     <li class="login"><a href="addnewoffice.php" class="button">ADD NEW OFFICE</a></li>
-                    <li class="register"><a href="../logout.php" class="button">LOGOUT</a></li>
                     <li class="dropdown">
                         <a href="#" aria-haspopup="true">Advanced Search</a>
                         <ul class="dropdown-menu" aria-label="submenu">
                             <li><a href="customeradvancesearch.php">By Customer</a></li>
                             <li><a href="caradvancedsearch.php">By Car</a></li>
+                            <li><a href="reservationadvancedsearch.php">By Reservation</a></li>
 
 
                         </ul>
@@ -118,6 +116,8 @@ if ($resultrented === false) {
                             <li><a href="reserveperiod.php">Reservations of period</a></li>
                         </ul>
                     </li>
+                    <li class="register"><a href="../logout.php" class="button">LOGOUT</a></li>
+
                 </ul>
             </nav>
         </div>
@@ -128,10 +128,11 @@ if ($resultrented === false) {
 
     <div class="caratts">
             <div class="container">
-                <form action="" method="post">
+                <form action="" method="post" id="form">
         <div class="brandatts">
                 <label for="startdate">Enter Car data</label>
                 <input type="text" id="startdate" name="startdate">
+                <div class="error"></div>
                
         </div>
    
@@ -234,4 +235,47 @@ if ($resultrented === false) {
 
 
 </body>
+<script>
+        let id = (id) => document.getElementById(id);
+        let classes = (classes) => document.getElementsByClassName(classes);
+        let startdate = id("startdate");
+        let form = id("form");
+        let errorMsg = classes("error");
+        let results = classes("results");
+        console.log("SIU") ;
+        console.log(startdate.value);
+        form.addEventListener("submit", (e) => {
+            let resultsElement = document.querySelector('.output .results');
+    if (resultsElement) {
+        resultsElement.innerHTML = "";
+    }
+ 
+            let validationPassed2 = true;
+            validationPassed2 = validationPassed2 && engine(startdate, 0, "Please Enter any value") ;
+            if (!validationPassed2 ) {
+                results.innerHTML = "" ;
+
+            e.preventDefault();
+
+        }
+        });
+
+        let engine = (id, serial, message) => {
+            if (id.value.trim() === "") {
+                errorMsg[serial].innerHTML = "";
+                errorMsg[serial].innerHTML = message;
+                id.style.border = "2px solid red";
+                return false;
+            } else {
+ 
+
+                errorMsg[serial].innerHTML = "";
+                id.style.border = "2px solid green";
+                return true;
+            }
+        };
+
+    </script>
+
+
 </html>
