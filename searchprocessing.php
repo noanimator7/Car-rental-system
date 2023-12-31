@@ -1,5 +1,5 @@
 <?php 
-/******************************************************************************* */
+/*************************** */
 //trying to search the car by the specs the admin entered 
 //even if the admin didnot enter all the specs i will search with the entered specs
 include "config.php";

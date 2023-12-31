@@ -185,8 +185,6 @@ if ($result_country->num_rows > 0) {
                         ?>
                         </select>      
                     </div>
-                    </div>
-                    <div class="right">
                     <div class="sc">
                         <label for="seatingcapacity">Seating Capacity</label>
                         <select name="seatingcapacity" id="seatingcapacity">
@@ -199,6 +197,9 @@ if ($result_country->num_rows > 0) {
                             ?>
                         </select>
                     </div>
+                    </div>
+                    <div class="right">
+                    
 
                     <div class="yr">
                         <label for="year">Year</label>
@@ -233,7 +234,7 @@ if ($result_country->num_rows > 0) {
                         </select>
                     </div>
 
-                    <div class="brandatts">
+                    <div class="cty">
                     <label for="country">Select Country:</label>
                         <select name="country" id="country">
                             <option value="Null"></option> 
@@ -244,6 +245,7 @@ if ($result_country->num_rows > 0) {
                         ?> 
 
                         </select>
+                    </div>
                     </div>
                    
                     <div class="submit">            
