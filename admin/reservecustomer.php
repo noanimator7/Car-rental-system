@@ -120,9 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <h1>Welcome!</h1>
                     <h2>Explore Cars</h2>
                 </div>
-                <div class="image">
-                    <img src="./images.jfif" alt="car photo is not here now">
-                </div>
+
             </div>
             </div>
     </section>
