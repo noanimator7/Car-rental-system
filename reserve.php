@@ -180,7 +180,7 @@ $row2 = $result2->fetch_assoc();
       var startDate = new Date(document.getElementById('start-date').value);
       var endDate = new Date(document.getElementById('end-date').value);
       console.log("Migzo is here");
-      if (startDate >= endDate  || isValidDate(endDate) === false || isValidDate(startDate)){
+      if (startDate >= endDate  || isValidDate(endDate) === false || isValidDate(startDate) ===  false ){
         console.log("Migzo is here part2 ");
         console.log(error) ;
 

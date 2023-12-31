@@ -14,16 +14,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $overview =  isset($_POST["overview"]) ? $_POST["overview"] : null;
     $seatingcapacity =  isset($_POST["seatingcapacity"]) ? $_POST["seatingcapacity"] : null;
     $year =  isset($_POST["year"]) ? $_POST["year"] : null;
+    $country =  isset($_POST["country"]) ? $_POST["country"] : null;
 
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 // echo($plate_id);
-$sql = "SELECT * FROM car WHERE 1";
+$sql = "
+SELECT * 
+FROM car 
+WHERE Status ='Available' ";
+if ($country !== "Null") {
+    $sql = 
+"
+SELECT * 
+FROM car  AS c 
+JOIN offices AS o 
+ON c.OId =  o.OId 
+WHERE  Status = 'Available'   AND o.Country = '$country' 
+" ;
+}
 if ($color !== "Null") {
     $sql .= " AND Color = '$color'";
 }
+
 
 if (!empty($brand)) {
     $sql .= " AND CarName = '$brand'";
@@ -56,7 +71,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         // Sample array for each row
         $rowData = array("a" => $row["PricePerDay"], "b" => $row["CarName"], "c" => $row["Overview"], "d"=> $row["Year"],
-        "e"=> $row["DriverAirbag"], "f"=>$row["Seating_capacity"], "g"=> $row["Air_conditioner"]);
+        "e"=> $row["DriverAirbag"], "f"=>$row["Seating_capacity"], "g"=> $row["Air_conditioner"] , "h" => $row['Country']);
     
         $data[] = $rowData; // Add the row data to the main array
     }
