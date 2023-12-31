@@ -23,7 +23,7 @@ h3{
 h1{
     font-size: 70px;
 
-    color:var(--main-color) ;
+    color: #cd1818; ;
 
 }
 h2{
@@ -210,7 +210,7 @@ a {
             margin-bottom: 50px; 
         }
 
-        .submit-btn {
+        /* .submit-btn {
             margin-top: 20px;
             margin-bottom: 30px;
             background-color: #4CAF50;
@@ -223,6 +223,18 @@ a {
             font-size: 16px;
             cursor: pointer;
             width: 100%;
+        } */
+        .submit-btn{
+            padding: 5px 10px;
+            text-align: center;
+
+    background-color: #cd1818;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    width: 100%;
+
+    font-size: 18px;
         }
         .delete-btn {
             margin-top: 20px;

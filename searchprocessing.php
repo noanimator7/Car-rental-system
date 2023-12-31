@@ -16,24 +16,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $year =  isset($_POST["year"]) ? $_POST["year"] : null;
     $country =  isset($_POST["country"]) ? $_POST["country"] : null;
 
-
+    
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 // echo($plate_id);
 $sql = "
 SELECT * 
-FROM car 
-WHERE Status ='Available' ";
-if ($country !== "Null") {
-    $sql = 
-"
-SELECT * 
-FROM car  AS c 
+FROM car  as c
 JOIN offices AS o 
 ON c.OId =  o.OId 
-WHERE  Status = 'Available'   AND o.Country = '$country' 
-" ;
+WHERE Status ='Available' ";
+if ($country !== "Null") {
+    $sql .= "  AND Country = '$country' ";
+
 }
 if ($color !== "Null") {
     $sql .= " AND Color = '$color'";
