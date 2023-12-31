@@ -96,9 +96,7 @@ if (!isset($_SESSION["SESSION_EMAIL"])) {
                     <h1>Welcome!</h1>
                     <h2>Add New Office</h2>
                 </div>
-                <div class="image">
-                    <img src="./images.jfif" alt="car photo is not here now">
-                </div>
+
             </div>
         </div>
     </section>

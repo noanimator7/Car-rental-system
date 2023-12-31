@@ -74,8 +74,50 @@ if ($result_office->num_rows > 0) {
     }
 }
 /******************************************************************************* */
+$conn9 = new mysqli($host, $username, $password, $database);
+
+$sql_count = "SELECT count(*) AS counter FROM car   Where Status = 'Available'  "; 
+$result_count = $conn9->query($sql_count);
+$counts = 0 ;
+
+if ($result_count->num_rows > 0) {
+    while ($row_count = $result_count->fetch_assoc()) {
+        $counts = $row_count["counter"];
+    }
+}
 
 /******************************************************************************* */
+$conn10 = new mysqli($host, $username, $password, $database);
+
+$sql_count_rented = "SELECT count(*) AS counter FROM car   Where Status = 'Rented'  "; 
+$result_count2 = $conn10->query($sql_count_rented);
+$countsr = 0 ;
+
+if ($result_count2->num_rows > 0) {
+    while ($row_count = $result_count2->fetch_assoc()) {
+        $countsr = $row_count["counter"];
+    }
+}
+
+
+
+
+/******************************************************************************* */
+$conn11 = new mysqli($host, $username, $password, $database);
+
+$sql_count_oos = "SELECT count(*) AS counter FROM car   Where Status = 'OutOfService'  "; 
+$result_count3 = $conn11->query($sql_count_oos);
+$countoos = 0 ;
+
+if ($result_count3->num_rows > 0) {
+    while ($row_count3 = $result_count3->fetch_assoc()) {
+        $countoos = $row_count3["counter"];
+    }
+}
+
+/******************************************************************************* */
+
+
 //trying to search the car by the specs the admin entered 
 //even if the admin didnot enter all the specs i will search with the entered specs
 
@@ -163,6 +205,67 @@ $result = $conn5->query($sql);
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
         <link rel="stylesheet" href="master.css">
+        <style>
+             .cards {
+            background-color: #f4f4f4;
+            padding: 20px 0;
+            text-align: center;
+          
+        }
+        .cards .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+                  .cardbox {
+                    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    border-radius: 8px;
+    width: 300px;
+        }
+
+        h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        h5 {
+            color: #007bff;
+            font-size: 24px;
+        }
+
+        .fas {
+            color: #007bff;
+            font-size: 36px;
+        }
+
+.main-header.reserve{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    z-index: -1;
+    height: 100vh;
+    margin-top: -200px;
+    margin-bottom: 100px;
+    position: relative;
+    background-size: cover;
+    background-image: url(./luxurious-car.avif);
+}
+.overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 25%);
+    z-index: 0;
+    display: flex;
+    align-items: center;
+
+}
+        </style>
         
 
 </head>
@@ -230,23 +333,70 @@ $result = $conn5->query($sql);
 
     <!-- End Header -->
 
-    <section class="welcome">
+    <!-- <section class="welcome">
         <div class="container">
             <div class="welpar">
                 <div class="welh1">
                     <h1>Welcome!</h1>
                     <h2>Explore Cars</h2>
                 </div>
-                <!-- <div class="image">
-                    <img src="../images/reserve.jpg" alt="car photo is not here now">
-                </div> -->
+         
             </div>
             </div>
-    </section>
+    </section> -->
+
+    <div class="main-header reserve">
+        <div class="text">
+            <h1>Welcome</h1>
+            <h2>Explore Cars</h2>
+        </div>
+        <div class="overlay"></div>
+    </div>
+
+<section class="cards">
+    <div class="container">
+        <div class="cardbox">
+            <h4>Available cars</h4>
+            <h5>
+            <?php
+            echo $counts ;
+            ?>
+
+            </h5>
+            <i class="fas fa-car"></i>
+        </div>
+        <div class="cardbox">
+            <h4>Rented cars</h4>
+            <h5>
+            <?php
+            echo $countsr ;
+            ?>
+
+            </h5>
+            <i class="fas fa-handshake"></i>
+        </div>
+        <div class="cardbox">
+            <h4>Out Of Service Cars</h4>
+            <h5>
+            <?php
+            echo $countoos ;
+            ?>
+
+            </h5>
+            <i class="fas fa-ban"></i>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
      
     <div class="caratts">
             <div class="container">
-                <form action="" method="post">
+                <form action="#output" method="post">
 
                     <div class="brandatts">
                         <label for="plate">Plate ID:</label>
@@ -367,7 +517,7 @@ $result = $conn5->query($sql);
 
 
     
-   <div class="output">
+   <div class="output" id="output">
     <div class="container">
    <?php
             // Display the results
