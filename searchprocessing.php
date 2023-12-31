@@ -71,7 +71,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         // Sample array for each row
         $rowData = array("a" => $row["PricePerDay"], "b" => $row["CarName"], "c" => $row["Overview"], "d"=> $row["Year"],
-        "e"=> $row["DriverAirbag"], "f"=>$row["Seating_capacity"], "g"=> $row["Air_conditioner"] , "h" => $row['Country']);
+        "e"=> $row["DriverAirbag"], "f"=>$row["Seating_capacity"], "g"=> $row["Air_conditioner"] , "h" => $row['Country'] , "i" => base64_encode($row["Image"]));
     
         $data[] = $rowData; // Add the row data to the main array
     }

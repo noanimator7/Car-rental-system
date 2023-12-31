@@ -257,18 +257,11 @@ if ($result_country->num_rows > 0) {
             </div>
     </div>
     
-    <div class="output">
+    <div class="output-search">
         <div class="container">
             <div class="search-result" id="search-result"></div>
         </div>
     </div>
-
-
-    
-   
-
-            
-
 
     
 </body>
@@ -324,13 +317,16 @@ form.addEventListener("submit", (e) => {
         for (let i = 0; i < data.length; i++){
             let maindiv = document.createElement("div");
             let item=data[i];
-            const para = document.createElement("p");
-            const node = document.createTextNode(item.a);
-            para.appendChild(node);
-            maindiv.appendChild(para);
+            const imgdiv = document.createElement("div");
+            imgdiv.classList.add("image");
+            const para = document.createElement("img");
+            para.src = "data:image/jpeg;base64," + item.a;
+            imgdiv.appendChild(para);
+            maindiv.appendChild(imgdiv);
 
 
             const para2 = document.createElement("p");
+            para2.classList.add("c-name");
             const nodeb = document.createTextNode(item.b);
             para2.appendChild(nodeb);
             maindiv.appendChild(para2);
@@ -345,38 +341,48 @@ form.addEventListener("submit", (e) => {
 
 
             const para4 = document.createElement("p");
-            const noded = document.createTextNode(item.d);
+            const noded = document.createTextNode("Year : " + item.d);
             para4.appendChild(noded);
             maindiv.appendChild(para4);
 
 
 
             const para5 = document.createElement("p");
-            const nodee = document.createTextNode(item.e);
+            const nodee = document.createTextNode("Price : $"+ item.e);
             para5.appendChild(nodee);
             maindiv.appendChild(para5);
 
 
             const para6 = document.createElement("p");
-            const nodef = document.createTextNode(item.f);
+            const nodef = document.createTextNode("Seating Capacity : " + item.f);
             para6.appendChild(nodef);
             maindiv.appendChild(para6);
 
             const para7 = document.createElement("p");
-            const nodeg = document.createTextNode(item.g);
+            var nodeg;
+            if(item.g === 'Y'){
+                nodeg = document.createTextNode("Air Conditioner : Yes");
+            }
+            else{
+                nodeg = document.createTextNode("Air Conditioner : No");
+            }
             para7.appendChild(nodeg);
             maindiv.appendChild(para7);
 
             const para8 = document.createElement("p");
-            const nodeh = document.createTextNode(item.h);
+            var nodeh;
+            if(item.h === 'Y'){
+                nodeh = document.createTextNode("Air Bag : Yes");
+            }
+            else{
+                nodeh = document.createTextNode("Air Bag : No");
+            }
             para8.appendChild(nodeh);
             maindiv.appendChild(para8);
 
-            const para9 = document.createElement("img");
-            para9.src = "data:image/jpeg;base64," + item.i;
-
-            // const nodei = document.createTextNode(item.i);
-            // para9.appendChild(nodei);
+            const para9 = document.createElement("p");
+            const nodei = document.createTextNode("Country : " + item.i);
+            para9.appendChild(nodei);
             maindiv.appendChild(para9);
 
             resultbox.appendChild(maindiv)

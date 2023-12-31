@@ -1040,5 +1040,41 @@ input::-webkit-outer-spin-button{
 .caratts .search-result > div{
     background-color: white;
     padding: 20px;
+    border-radius: 10px;
+}
+
+.caratts .search-result > div .image{
+    height: 250px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.caratts .search-result > div .image img{
+    max-width: 100%;
+    max-height: 100%;
+}
+.caratts .search-result > div p{
+    font-size: 16px;
+    padding: 5px;
+    margin: 2px;
+    background-color: #EEE;
+    color: #393d46e6;
+}
+.caratts .search-result > div p.c-name{
+    color: #393e46;
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    position: relative;
+    background-color: white;
+}
+.caratts .search-result > div p.c-name::before{
+    content: "";
+    position: absolute;
+    height: 2px;
+    background-color: #cd1818;
+    width: 70%;
+    bottom: -10px;
 }
 /* End Search */
