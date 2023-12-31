@@ -65,7 +65,15 @@ if ($result_year->num_rows > 0) {
     }
 }
 /******************************************************************************* */
+$sql_overview = "SELECT DISTINCT Country FROM offices"; 
+$result_country = $conn->query($sql_overview);
+$countries = [];
 
+if ($result_country->num_rows > 0) {
+    while ($row_country = $result_country->fetch_assoc()) {
+        $countries[] = $row_country["Country"];
+    }
+}
 
 
 // print($result->num_rows);
@@ -215,6 +223,19 @@ if ($result_year->num_rows > 0) {
                             <option value="N">No</option>
                         </select>
                     </div>
+
+                    <div class="brandatts">
+                    <label for="country">Select Country:</label>
+                        <select name="country" id="country">
+                            <option value="Null"></option> 
+                            <?php
+                        foreach ($countries as $y) {
+                        echo '<option value="' . $y . '">' . $y . '</option>';
+                        }
+                        ?> 
+
+                        </select>
+                    </div>
                    
                     <div class="submit">            
                     <button class="submit-btn">Submit</button>
@@ -342,6 +363,7 @@ form.addEventListener("submit", (e) => {
     const seatingcapacity =document.getElementById("seatingcapacity") ; 
     const year =document.getElementById("year") ; 
     const airconditioner =document.getElementById("airconditioner") ;
+    const country =document.getElementById("country") ;
     e.preventDefault();
     const data = {
     brand : brand.value  ,
@@ -352,7 +374,7 @@ form.addEventListener("submit", (e) => {
     seatingcapacity : seatingcapacity.value  ,
     year : year.value  ,
     airconditioner : airconditioner.value  ,
-    
+     country  : country.value
   };
   console.log("megzo is 3ars");
   $.ajax({
@@ -410,6 +432,16 @@ form.addEventListener("submit", (e) => {
             const nodef = document.createTextNode(item.f);
             para6.appendChild(nodef);
             maindiv.appendChild(para6);
+
+            const para7 = document.createElement("p");
+            const nodeg = document.createTextNode(item.g);
+            para7.appendChild(nodeg);
+            maindiv.appendChild(para7);
+
+            const para8 = document.createElement("p");
+            const nodeh = document.createTextNode(item.h);
+            para8.appendChild(nodeh);
+            maindiv.appendChild(para8);
 
             resultbox.appendChild(maindiv)
         }

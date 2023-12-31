@@ -349,8 +349,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var priceInput = document.getElementById('price_per_day');
 
     submitButton.addEventListener('click', function (event) {
-        if (priceInput.value.trim() === '') {
-            alert('Please enter a price before submitting.');
+        if (priceInput.value.trim() === '' || priceInput.value <= 0 ) {
+            alert('Please enter a valid price ');
             event.preventDefault(); // Prevent form submission if validation fails
         }
     });
