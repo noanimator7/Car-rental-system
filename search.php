@@ -385,7 +385,7 @@ form.addEventListener("submit", (e) => {
     seatingcapacity : seatingcapacity.value  ,
     year : year.value  ,
     airconditioner : airconditioner.value  ,
-     country  : country.value
+    country  : country.value
   };
   console.log("megzo is 3ars");
   $.ajax({

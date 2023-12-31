@@ -291,6 +291,7 @@ $result = $conn5->query($sql);
                         <option value="Null"></option>
                         <option value="Available">Available</option>
                         <option value="Reserved">Reserved</option>
+                        <option value="OutOfService">OutOfService</option>
                     </select> 
                 </div>
     

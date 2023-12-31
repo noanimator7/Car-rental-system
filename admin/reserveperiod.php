@@ -50,74 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
         <link rel="stylesheet" href="master.css">
-    <style>
-            .header a {
-    text-decoration: none;
-}
-
-.header .rl-container nav {
-    font-family: monospace;
-}
-
-.header .rl-container ul {
-    /* background: darkorange; */
-    list-style: none;
-    margin: 0;
-    padding-left: 0;
-}
-
-.header .rl-container li {
-    color: #fff;
-    background:  #2196F3;
-    display: inline-block;
-    padding: 1rem;
-    position: relative;
-    text-decoration: none;
-    transition-duration: 0.5s;
-}
-
-.header .rl-container li a {
-    color: #fff;
-}
-
-.header .rl-container li:hover,
-.header .rl-container li:focus-within {
-    background: red;
-    cursor: pointer;
-}
-
-.header .rl-container li:focus-within a {
-    outline: none;
-}
-
-.header .rl-container .dropdown {
-    position: relative;
-}
-
-.header .rl-container .dropdown-menu {
-    background: orange;
-    visibility: hidden;
-    opacity: 0;
-    position: absolute;
-    transition: all 0.5s ease;
-    margin-top: 1rem;
-    left: 0;
-    display: none;
-}
-
-.header .rl-container .dropdown:hover > .dropdown-menu,
-.header .rl-container .dropdown:focus-within > .dropdown-menu {
-    visibility: visible;
-    opacity: 1;
-    display: block;
-}
-
-.header .rl-container .dropdown-menu li {
-    clear: both;
-    width: 100%;
-}
-
-        </style>
+  
 </head>
 <body>
         <!-- Start Header bar -->
