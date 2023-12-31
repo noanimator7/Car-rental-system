@@ -456,6 +456,13 @@ form.addEventListener("submit", (e) => {
             para8.appendChild(nodeh);
             maindiv.appendChild(para8);
 
+            const para9 = document.createElement("img");
+            para9.src = "data:image/jpeg;base64," + item.i;
+
+            // const nodei = document.createTextNode(item.i);
+            // para9.appendChild(nodei);
+            maindiv.appendChild(para9);
+
             resultbox.appendChild(maindiv)
         }
     }
