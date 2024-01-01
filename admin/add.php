@@ -312,7 +312,9 @@ if ($result_office->num_rows > 0) {
                 errorMsg[3].innerHTML = "Office Id already exists";
             }
 
-            if (!validationPassed1 || !validationPassed2 ||  !validationPassed4 || !validationPassed5 || !validationPassed6 || !validationPassed7 || !validationPassed8 || !validationPassed9 || !validationPassed10 || uniqueerror) {
+            if (!validationPassed1 || !validationPassed2 ||  !validationPassed4 ||
+             !validationPassed5 || !validationPassed6 || !validationPassed7 || !validationPassed8 ||
+              !validationPassed9 || !validationPassed10 || uniqueerror) {
             e.preventDefault();
         }
         });

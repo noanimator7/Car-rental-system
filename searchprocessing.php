@@ -68,7 +68,7 @@ if ($result->num_rows > 0) {
         // Sample array for each row
         $rowData = array("a" => base64_encode($row["Image"]), "b" => $row["CarName"], "c" => $row["Overview"], "d"=> $row["Year"],
         "e"=> $row["PricePerDay"], "f"=>$row["Seating_capacity"], "g"=> $row["Air_conditioner"] , "h" => $row["DriverAirbag"] , "i" => $row['Country']
-    ,"plateid" => $row["PlateId"]);
+    ,"plateid" => $row["PlateId"], "brandName" => $row["brandName"]);
     
         $data[] = $rowData; // Add the row data to the main array
     }

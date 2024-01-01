@@ -57,7 +57,7 @@
     <div class="landing">
         <div class="overlay"></div>
         <div class="container auth-container signup">
-            <div id="error" style="display: block; height: 20px; text-align: center; color: #ddd; margin-bottom: 20px;"></div>
+            <!-- <div id="error" style="display: block; height: 20px; text-align: center; color: #ddd; margin-bottom: 20px;"></div> -->
             <div class="signup-form">
                 <div class="text">
                     <span>LUXURY CARS FOR <br> RENT!</span>
@@ -67,39 +67,50 @@
                     <div class="left">
                         <div class="first-name">
                             <input type="text" id="fname" name="fname" placeholder="Enter Your Firstname" class="inputs">
+                            <div class="error"></div>
                         </div>
                         <div class="last-name">
                             <input type="text" id="lname" name="lname" placeholder="Enter Your Lastname" class="inputs">
+                            <div class="error"></div>
                         </div>
                         <div class="email">
-                            <input type="email" id="email" name="email" placeholder="Enter Your Email" class="inputs">
+                            <input type="text" id="email" name="email" placeholder="Enter Your Email" class="inputs">
+                            <div class="error"></div>
                         </div>
                         <div class="password">
                             <input type="password" id="password" name="password" placeholder="Enter Your Password" class="inputs">
+                            <div class="error"></div>
                         </div>
                         <div class="cpassword">
                             <input type="password" id="cpassword" name="cpassword" placeholder="Confirm Password" class="inputs">
+                            <div class="error"></div>
                         </div>
                         <div class="ssn">
                             <input type="text" name="ssn" id="ssn" placeholder="Enter Your SSN" class="inputs">
+                            <div class="error"></div>
                         </div>
                     </div>
 
                     <div class="right">
                         <div class="dob">
                             <input type="text" placeholder="Enter Date Of Birth" name="dob" id="dob" onfocus="(this.type='date')" class="inputs">
+                            <div class="error"></div>
                         </div>
                         <div class="address">
                             <input type="text" name="address" id="address" placeholder="Enter Address" class="inputs">
+                            <div class="error"></div>
                         </div>
                         <div class="contact">
                             <input type="tel" name="contact_number" id="contact_number" placeholder="Enter Contact Number" class="inputs">
+                            <div class="error"></div>
                         </div>
                         <div class="city">
                             <input type="text" name="city" id="city" placeholder="Enter City" class="inputs">
+                            <div class="error"></div>
                         </div>
                         <div class="country">
                             <input type="text" name="country" id="country" placeholder="Enter Country" class="inputs">
+                            <div class="error"></div>
                         </div>
                         <div class="submit">
                             <input type="submit" value="SIGN UP">
@@ -110,9 +121,9 @@
             </div>
         </div>
     </div>
-    <!-- End Landing -->
 
 
 </body>
+
 
 </html>

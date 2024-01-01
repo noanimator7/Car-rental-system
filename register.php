@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST["register"])) {
+if (isset($_POST["email"])) {
   include 'config.php';
   $fname = $_POST["fname"];
   $lname = $_POST["lname"];
@@ -14,7 +14,7 @@ if (isset($_POST["register"])) {
   $country = $_POST["country"];
   //md5 to make password hashed
   $password = md5($_POST["password"]);
-  if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE email='{$email}'")) > 0) {
+  if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE Email='$email'")) > 0) {
     // Email Already Exists    
     echo "email";
   } else if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE SSN ='{$ssn}'")) > 0) {

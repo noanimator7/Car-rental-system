@@ -309,7 +309,7 @@ a {
     max-width: 800px;
     min-width: 600px;
     left: 50%;
-    top: -56%;
+    top: -69%;
     padding: 20px;
     border-radius: 10px;
 }
@@ -547,7 +547,7 @@ a {
         max-width: 700px;
         min-width: 390px;
         left: 50%;
-        top: -42%;
+        top: -41%;
         padding: 57px;
         border-radius: 10px;
     }
@@ -561,7 +561,7 @@ a {
     }
 }
 .error{
-    margin: 5px 0px 0px 5px;
+    margin: -17px 0px 0px 5px;
     text-align: left;
     height: 13px;
     font-size: 12px;
@@ -771,18 +771,28 @@ a {
 .section .top-box .text{
     flex: 1;
 }
-.section .top-box .text > div:not(.car-name){
+.section .top-box .text .spec
+{
     font-size: 17px;
     padding: 5px;
     margin: 2px;
     background-color: #EEE;
     color: #393d46e6;
 }
+
+.section .top-box .text .brand-name{
+    color: #cd1818;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 10px;
+    background-color: white;
+}
 .section .top-box .text .car-name{
     font-size: 32px;
     font-weight: 500;
     position: relative;
     margin-bottom: 25px;
+    text-transform: capitalize;
 }
 
 .section .top-box .text .car-name::before{
@@ -1074,7 +1084,7 @@ input::-webkit-outer-spin-button{
     background-color: #cd1818;
     height: 2px;
     width: 75%;
-    bottom: -45px;
+    bottom: -81px;
     left: 0px;
 }
 .caratts .search-result > form .image img{
@@ -1094,6 +1104,15 @@ input::-webkit-outer-spin-button{
     width: 100%;
     height: fit-content;
 }
+.caratts .search-result > form input.brandName{
+    color: #cd1818;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 10px;
+    background-color: white;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
 .caratts .search-result > form input.c-name{
     display: block;
     color: #393e46;
@@ -1104,6 +1123,7 @@ input::-webkit-outer-spin-button{
     background-color: white;
     width: 100%;
     border: none;
+    text-transform: capitalize;
 }
 .caratts .search-result > form input:focus{
     outline: none;
