@@ -90,6 +90,7 @@ if (mysqli_num_rows($result) > 0) {
                      echo            '<img src="data:image/jpeg;base64,' . base64_encode($row["Image"]) . '" alt="Car Image">';
                      echo        '</div>';
                      echo        '<div class="text">';
+                     echo            '<div class="brand-name">'. $row["brandName"] . '</div>';
                      echo            '<div class="cname">' . $row["CarName"] . '</div>';
                      echo            '<div class="ppd"> Now at <span>$' . $row["PricePerDay"] . '</span> per day</div>';
                      echo        '</div>';   

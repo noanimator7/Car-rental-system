@@ -402,12 +402,24 @@ form.addEventListener("submit", (e) => {
 
         createInput(maindiv, "a", item.b);
         createInput(maindiv, "b", item.c);
-        createInput(maindiv, "c", item.d);
-        createInput(maindiv, "d", item.e);
-        createInput(maindiv, "e", item.f);
-        createInput(maindiv, "f", item.g);
-        createInput(maindiv, "g", item.h);
-        createInput(maindiv, "h", item.i);
+        createInput(maindiv, "c", "Year : " + item.d);
+        createInput(maindiv, "d", "Price Per Day : "+item.e);
+        createInput(maindiv, "e", "Seating Capacity : "+item.f);
+        if(item.g==="Y"){
+            createInput(maindiv, "f", "Air Conditioner : Yes");
+        }
+        else{
+            createInput(maindiv, "f", "Air Conditioner : No");
+        }
+
+        if(item.h==="Y"){
+            createInput(maindiv, "g", "Airbag : Yes");
+        }
+        else{
+            createInput(maindiv, "g", "Airbag : No");
+        }
+
+        createInput(maindiv, "h","Country : "+ item.i);
         createInput(maindiv, "plateid", item.plateid);
  
 
@@ -415,7 +427,7 @@ form.addEventListener("submit", (e) => {
         const submitButton = document.createElement("button");
     submitButton.type = "submit";
     submitButton.classList.add("submit-btn")
-    submitButton.textContent = "Rent";
+    submitButton.textContent = "RENT CAR";
     maindiv.appendChild(submitButton);
 
         document.getElementById("search-result").appendChild(maindiv);
@@ -429,11 +441,14 @@ form.addEventListener("submit", (e) => {
 function createInput(parent, name, value) {
 
     const input = document.createElement("input");
-    input.type = "text"; // Change this based on the type of input you need
+    input.readOnly = true;
+    input.type = "text";
     input.name = name.toLowerCase();
     if(name === "a"){
         input.classList.add("c-name");
-
+    }
+    if(name==="plateid"){
+        input.classList.add("pid");
     }
     console.log(input.name);
     input.value = value;

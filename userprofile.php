@@ -1,36 +1,36 @@
-<?php 
+<?php
 session_start();
 if (!isset($_SESSION["SESSION_EMAIL"])) {
     header("Location: ../index.php");
 }
-    $host = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "car_rental_system";
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['Email'] ;
-    }
+$host = "localhost";
+$username = "root";
+$password = "";
+$database = "car_rental_system";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['Email'];
+}
 
-    $email = $_SESSION["SESSION_EMAIL"] ;
-    $conn = new mysqli($host, $username, $password, $database);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-
-    $sql = "SELECT * FROM users WHERE EMAIL = '$email'" ; 
-    $result = $conn->query($sql);
+$email = $_SESSION["SESSION_EMAIL"];
+$conn = new mysqli($host, $username, $password, $database);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 
-    $sql2 = 
+$sql = "SELECT * FROM users WHERE EMAIL = '$email'";
+$result = $conn->query($sql);
+
+
+$sql2 =
     " SELECT r.*  
     FROM reservation AS r 
     JOIN  users AS  u
     ON r.SSN = u.SSN  
     WHERE u.Email = '$email'
-    "; 
-    $result2 = $conn->query($sql2);
-    $conn->close();
+    ";
+$result2 = $conn->query($sql2);
+$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,6 +49,7 @@ if (!isset($_SESSION["SESSION_EMAIL"])) {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <body>
     <div class="header-bar">
         <div class="container">
@@ -84,54 +85,64 @@ if (!isset($_SESSION["SESSION_EMAIL"])) {
         </div>
     </div>
     <!-- End Header -->
-    
+    <div class="main-header profile">
+        <div class="text">
+            <h1>Profile</h1>
+            <p>Reservations And User Info</p>
+        </div>
+        <div class="overlay"></div>
+    </div>
+
     <div class="profile-info">
         <div class="container">
 
-<?php   
-                if ($result->num_rows > 0) {
-                    // Output the car information in a box
-                    while ($row = $result->fetch_assoc()) {
-                        echo '<div class="input-container">';
-                        echo '<input type="text" id = "ssn" name="ssn" value="SSN : ' . $row["SSN"] . '" readonly>';
-                        echo '<input type="text" id = "fname" name="fname" value="First Name : ' . $row["FirstName"] . '" readonly>'; 
-                        echo '<input type="text" id = "lname" name="lname" value="Last Name : ' . $row["LastName"] . '" readonly>'; 
-                        echo '<input type="text" id = "email" name="email" value="Email : ' . $row["Email"] . '" readonly>'; 
-                        echo '<input type="text" id = "contactno" name="contactno" value=" Contact Number : ' . $row["ContactNo"] . '" readonly>'; 
-                        echo '<input type="text" id = "dob" name="dob" value="Date Of Birth : ' . $row["dob"] . '" readonly>'; 
-                        echo '<input type="text" id = "address" name="address" value="Address : ' . $row["Address"] . '" readonly>'; 
-                        echo '<input type="text" id = "city" name="city" value="City : ' . $row["City"] . '" readonly>'; 
-                        echo '<input type="text" id = "country" name="country" value="Country : ' . $row["Country"] . '" readonly>'; 
-                        echo '</div>';
-                    }
+            <?php
+            if ($result->num_rows > 0) {
+                // Output the car information in a box
+                while ($row = $result->fetch_assoc()) {
+                    echo '<div class="input-container">';
+                    echo '<input type="text" id = "ssn" name="ssn" value="SSN : ' . $row["SSN"] . '" readonly>';
+                    echo '<input type="text" id = "fname" name="fname" value="First Name : ' . $row["FirstName"] . '" readonly>';
+                    echo '<input type="text" id = "lname" name="lname" value="Last Name : ' . $row["LastName"] . '" readonly>';
+                    echo '<input type="text" id = "email" name="email" value="Email : ' . $row["Email"] . '" readonly>';
+                    echo '<input type="text" id = "contactno" name="contactno" value="Contact Number : ' . $row["ContactNo"] . '" readonly>';
+                    echo '<input type="text" id = "dob" name="dob" value="Date Of Birth : ' . $row["dob"] . '" readonly>';
+                    echo '<input type="text" id = "address" name="address" value="Address : ' . $row["Address"] . '" readonly>';
+                    echo '<input type="text" id = "city" name="city" value="City : ' . $row["City"] . '" readonly>';
+                    echo '<input type="text" id = "country" name="country" value="Country : ' . $row["Country"] . '" readonly>';
+                    echo '</div>';
                 }
-?>
+            }
+            ?>
         </div>
     </div>
 
 
-        <div class="reservation-info">
-            <div class="container">
-        <?php
-                        if ($result2->num_rows > 0) {
-                            while ($row = $result2->fetch_assoc()) {
-                                echo '<div class="reserve">' ; 
-                                echo '<input type="text" id = "rnum" name="rnum" value="' . $row["Reservation_number"] . '" readonly>';
-                                echo '<input type="text" id = "plateid" name="plateid" value="' . $row["PlateId"] . '" readonly>';
-                                echo '<input type="text" id = "pickupdate" name="pickupdate" value="' . $row["pickup_date"] . '" readonly>';
-                                echo '<input type="text" id = "returndate" name="returndate" value="' . $row["return_date"] . '" readonly>';
-                                echo '<input type="text" id = "paymentmethod" name="paymentmethod" value="' . $row["Payment_method"] . '" readonly>';
-                                echo '<input type="text" id = "totalprice" name="totalprice" value="' . $row["Total_price"] . '" readonly>';
-                                echo '</div>' ;
-                            }
-                        
-                        
-                        }
-                        else{
-                            echo '<div class="no-res">No Reservations Available!</div>';
+    <div class="main-heading">
+        <h2>Reservations</h2>
+    </div>
+    <div class="reservation-info">
+        <div class="container">
+            <div class="reservations-holder">
+                <?php
+                if ($result2->num_rows > 0) {
+                    while ($row = $result2->fetch_assoc()) {
+                        echo '<div class="separator"></div>';
+                        echo '<div class="reserve">';
+                        echo '<input type="text" id = "rnum" name="rnum" value="Reservation # : ' . $row["Reservation_number"] . '" readonly>';
+                        echo '<input type="text" id = "plateid" name="plateid" value="Plate Id : ' . $row["PlateId"] . '" readonly>';
+                        echo '<input type="text" id = "pickupdate" name="pickupdate" value="Pickup Date : ' . $row["pickup_date"] . '" readonly>';
+                        echo '<input type="text" id = "returndate" name="returndate" value="Return Date : ' . $row["return_date"] . '" readonly>';
+                        echo '<input type="text" id = "paymentmethod" name="paymentmethod" value="Payment Method : ' . $row["Payment_method"] . '" readonly>';
+                        echo '<input type="text" id = "totalprice" name="totalprice" value="Total Price : $' . $row["Total_price"] . '" readonly>';
+                        echo '</div>';
                     }
-        ?>
+                } else {
+                    echo '<div class="no-res">No Reservations Available!</div>';
+                }
+                ?>
             </div>
+        </div>
     </div>
 
 
@@ -139,4 +150,5 @@ if (!isset($_SESSION["SESSION_EMAIL"])) {
 
 
 </body>
+
 </html>

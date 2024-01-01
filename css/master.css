@@ -717,6 +717,12 @@ a {
 .cars-available .image-container .car-box .text{
     text-align: left;
 }
+.cars-available .image-container .car-box .text .brand-name{
+    color: #cd1818;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 10px;
+}
 .cars-available .image-container .car-box .text .cname{
     font-size: 24px;
     font-weight: 500;
@@ -739,6 +745,7 @@ a {
     border-radius: 6px;
     margin-top: 20px;
     transition: 0.3s;
+    cursor: pointer;
 }
 .cars-available form button:hover{
     background-color: #e31616;
@@ -1020,14 +1027,21 @@ input::-webkit-outer-spin-button{
     align-items: center;
     justify-content: center;
     margin-top: 20px;
+    width: 100%;
 }
 .caratts form .submit-btn{
-    padding: 5px 10px;
     background-color: #cd1818;
+    padding: 5px 10px;
     color: white;
+    outline: none;
     border: none;
     border-radius: 6px;
-    font-size: 18px;
+    margin-top: 15px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.caratts form .submit-btn:hover{
+    background-color: #e31616;
 }
 
 .caratts .search-result{
@@ -1036,38 +1050,64 @@ input::-webkit-outer-spin-button{
     gap: 25px;
     padding: 20px;
     margin-top: 30px;
+    text-align: center;
 }
 .caratts .search-result > form{
     background-color: white;
     padding: 20px;
     border-radius: 10px;
+    transition: 0.3s;
 }
-
+.caratts .search-result > form:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 2px 15px rgb(0 0 0 / 20%);
+}
 .caratts .search-result >  form .image{
     height: 250px;
-    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+.caratts .search-result >  form .image::after{
+    content: "";
+    position: absolute;
+    background-color: #cd1818;
+    height: 2px;
+    width: 75%;
+    bottom: -45px;
+    left: 0px;
 }
 .caratts .search-result > form .image img{
     max-width: 100%;
     max-height: 100%;
 }
 .caratts .search-result > form input{
-    font-size: 16px;
+    font-size: 17px;
     padding: 5px;
-    margin: 2px;
+    display: block;
+    margin-bottom: 2px;
     background-color: #EEE;
     color: #393d46e6;
+    border-radius: 0;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: fit-content;
 }
 .caratts .search-result > form input.c-name{
+    display: block;
     color: #393e46;
     font-size: 26px;
     font-weight: 500;
     margin-bottom: 20px;
     position: relative;
     background-color: white;
+    width: 100%;
+    border: none;
+}
+.caratts .search-result > form input:focus{
+    outline: none;
 }
 .caratts .search-result > form input.c-name::before{
     content: "";
@@ -1077,9 +1117,50 @@ input::-webkit-outer-spin-button{
     width: 70%;
     bottom: -10px;
 }
+.caratts .search-result > form input.pid{
+    display: none;
+}
 /* End Search */
 /* Start User Profile */
+.main-header.profile{
+    background-image: url(../images/background-home.PNG);
+    background-size: cover;
+    background-position: center;
+}
 .profile-info{
-    
+padding-top: 50px;
+padding-bottom: 20px;
+}
+.profile-info .input-container{
+
+}
+.profile-info .input-container input{
+    width: 100%;
+    margin: 2px;
+    border: none;
+    background-color: #eee;
+    padding: 5px;
+    font-size: 17px;
+}
+.reservation-info{
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+.reservation-info .reservations-holder{
+    /* display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px,1fr));
+    gap: 20px; */
+}
+.reservation-info .reservations-holder .reserve{
+    background-color: white;
+    margin-bottom: 20px;
+}
+.reservation-info .reservations-holder input{
+    width: 100%;
+    margin: 2px;
+    border: none;
+    background-color: #eee;
+    padding: 5px;
+    font-size: 17px;
 }
 /* End User Profile */
