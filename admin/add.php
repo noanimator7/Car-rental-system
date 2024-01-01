@@ -139,7 +139,6 @@ if ($result_office->num_rows > 0) {
 
 
 
-                        <label for=""></label>
 
 
                         <label for="plate">Plate ID:</label>
@@ -171,9 +170,8 @@ if ($result_office->num_rows > 0) {
 
 
                     <label for="color">Car Color:</label>
-                    <input type="text" name="color" id="color">
-
-                        <div class="error"></div>
+                    <input type="text" name="color" id="color" >
+                    <div class="error"></div>
 
                         <label for="overview">OverView</label>
                         <input type="text" name="overview" id="overview">
@@ -288,20 +286,14 @@ if ($result_office->num_rows > 0) {
             let validationPassed11= true;
             let validationPassed12= true;
             validationPassed1 = validationPassed1 && engine(brand, 0, "Brand cannot be blank");
-
-
             validationPassed2 = validationPassed2 && engine(price, 1, "price cannot be blank");
             validationPassed4 = validationPassed4 && engine(plate, 3, "plate cannot be blank");
-            // validationPassed5 = validationPassed5 && engine(oid, 4, "office id cannot be blank");
-            // validationPassed6 = validationPassed6 && engine(status, 5, "status  cannot be blank");
             validationPassed7 = validationPassed7 && engine(color, 6, "color  cannot be blank");
             validationPassed8 = validationPassed8 && engine(overview, 7, "overview  cannot be blank");
             validationPassed9 = validationPassed9 && engine(seatingcapacity, 8, "seating capacity  cannot be blank");
             validationPassed10 = validationPassed10 && engine(year, 9, "year  cannot be blank");
             validationPassed11 = validationPassed11 && engine(brandname, 11, "brand name  cannot be blank");
             validationPassed12 = validationPassed12 && engine(category, 12, "category  cannot be blank");
-
-            // validationPassed1 = validationPassed1 && engine(price, 1, "price cannot be blank");
             
 
 
@@ -326,6 +318,17 @@ if ($result_office->num_rows > 0) {
                 id.style.border = "2px solid red";
                 return false;
             } else {
+                if(id === color){
+                    if(/\d/.test(id.value)){
+                        errorMsg[serial].innerHTML="" ;
+                        errorMsg[serial].innerHTML="You Shouldnot enter number in colors" ;
+                                                id.style.border = "2px solid red";
+                        return false;
+
+                    }
+
+                }
+
                 if(id === price){
                    if( isNaN(id.value) || id.value <= 0){
 
@@ -359,6 +362,17 @@ if ($result_office->num_rows > 0) {
                 return true;
             }
         };
+
+        function checkForNumbers(inputValue) {
+      var containsNumbers = /\d/.test(inputValue);
+      
+      var resultElement = document.getElementById("no");
+      if (containsNumbers) {
+        resultElement.innerText = "Input contains numbers!";
+      } else {
+        resultElement.innerText = "";
+      }
+    }
 
     </script>
 

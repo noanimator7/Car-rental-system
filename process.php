@@ -32,8 +32,6 @@ $totalprice = $daysDifference * intval($price);
 echo "\n" ;
 
 echo $totalprice ;
-$sql="UPDATE car set status = 'Rented' where PlateId = '$plateid' ";
-$result = $conn->query($sql);
 $patterns = [
     'Visa'       => '/^4[0-9]{12}(?:[0-9]{3})?$/',
     'MasterCard' => '/^5[1-5][0-9]{14}$/',
