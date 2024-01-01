@@ -26,8 +26,8 @@ $status =$_POST['status'] ;
 // $imageblob=$conn->real_escape_string(file_get_contents($image)) ;
 $sql = "INSERT INTO `car` (`CarName`, `PricePerDay`, `DriverAirbag`, `PlateId`, `Overview`, `Seating_capacity`, `Year`, 
 `Air_conditioner` ,`Status` , `Color` ,`OId` , `Image` ,`category` , `brandName`) VALUES 
-('$brand', '$price', '$airbag', '$plate', '$overview', '$seatingcapacity', '$year', '$airconditioner','$status','$color','$oid' , '{$image}'),
-'$category' , '$brandname'
+('$brand', '$price', '$airbag', '$plate', '$overview', '$seatingcapacity', '$year', '$airconditioner','$status','$color','$oid' , '{$image}',
+'$category' , '$brandname' )
 ";
 
 $rs = mysqli_query($con, $sql);

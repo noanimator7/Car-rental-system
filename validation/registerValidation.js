@@ -14,27 +14,31 @@ $(document).ready(function(){
 
 function validates() {
   var inputs = document.getElementsByClassName('inputs');
-  var error = document.getElementById('error');
-  error.innerText = "";
+  var error = document.getElementsByClassName('error');
+  // error.innerText = "";
 
   console.log(inputs.length);
 
   for (let i = 0; i < inputs.length; i++) {
     if(inputs[i].value.trim().length == 0){
-      error.innerText = "INVALID!! " + inputs[i].getAttribute('placeholder');
-      return;
+      console.log("IAM HERE MEGZO");
+      error[i].innerText = "INVALID!! " + inputs[i].getAttribute('placeholder');
+      // return;
+    }
+    else{
+      error[i].innerText="";
     }
   }
   //password and confirm password validation
   if(inputs[3].value != inputs[4].value){
-    error.innerText = "Password and confirm password don't match.";
+    error[4].innerText = "Password and confirm password don't match.";
     return;
   }
   // //email validation
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if(!emailRegex.test(inputs[2].value)){
     console.log("invalid email");
-    error.innerText = "INVALID email format.";
+    error[2].innerText = "INVALID email format.";
     return;
   }
 
@@ -60,12 +64,12 @@ function validates() {
       if(response === 'success'){
         window.location.href = "profile.php";
       } else if(response === 'email'){
-        error.innerText = "Email Already Exists";
+        error[2].innerText = "Email Already Exists";
       } else if(response === 'sqlfailure'){
         error.innerText = "Error sql query failure";
       }
       else if(response === 'ssn'){
-        error.innerText = "SSN already exists"
+        error[5].innerText = "SSN already exists"
       }
       else {
         error.innerText = "Error";
