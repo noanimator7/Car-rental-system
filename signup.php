@@ -45,10 +45,10 @@
                 <img src="../Car-rental-system/images/logo.png" alt="">
             </div>
             <div class="rl-container">
-                <div class="home"><a href="#">HOME</a></div>
-                <div class="about-us"><a href="#about">ABOUT US</a></div>
-                <div class="login "><a href="#testimonials" class="button">TESTIMONIALS</a></div>
-                <div class="register "><a href="#contact" class="button">CONTACT US</a></div>
+                <div class="home"><a href="index.php">HOME</a></div>
+                <div class="about-us"><a href="index.php#about">ABOUT US</a></div>
+                <div class="login "><a href="index.php#testimonials" class="button">TESTIMONIALS</a></div>
+                <div class="register "><a href="index.php#contact" class="button">CONTACT US</a></div>
             </div>
         </div>
     </div>

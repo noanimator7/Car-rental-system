@@ -263,7 +263,7 @@ a {
         display: none;
     }
 
-    .header .rl-container .home a::before {
+    .header .rl-container .active a::before {
         display: block;
     }
 }
@@ -759,7 +759,7 @@ a {
 
 .section{
     background-color: #fff;
-    height: 100vh;  
+    height: 70vh;  
 }
 
 
@@ -984,7 +984,6 @@ input::-webkit-outer-spin-button{
     /* background-image: url(../images/reservation-bg.avif);
     background-size: cover; */
     background-color: #eee;
-    padding-bottom: 30px;
 
 }
 .caratts form .inputs-container{
@@ -1178,7 +1177,7 @@ padding-bottom: 20px;
   }
   .footer .container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 40px;
   }
   .footer .box h3 {

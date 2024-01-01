@@ -155,7 +155,7 @@ $price  =$_POST['priceperday'] ;
 
                     <div class="inputBox">
                         <label for="cardNum">Credit Card Number:</label>
-                        <input type="text" id="cardNum" placeholder="1111-2222-3333-4444" maxlength="19" required>
+                        <input type="text" name= "cardNum" id="cardNum" placeholder="1111-2222-3333-4444" maxlength="19" required>
                     </div>
 
                     <div class="inputBox">
@@ -209,6 +209,8 @@ $price  =$_POST['priceperday'] ;
 
 
 </body>
+
+
 <script>
     var cardNumInput = document.querySelector('#cardNum')
 

@@ -135,26 +135,25 @@ if (mysqli_num_rows($result) > 0) {
             </div>
             <div class="box">
                 <ul class="links">
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="profile.php">Home</a></li>
+                    <li><a href="search.php">Search</a></li>
+                    <li><a href="userprofile.php">Profile</a></li>
+                    <li><a href="logout.php">Log Out</a></li>
                 </ul>
             </div>
             <div class="box">
                 <div class="line">
                     <i class="fas fa-map-marker-alt fa-fw"></i>
-                    <div class="info">Egypt, Giza, Inside The Sphinx, Room Number 220</div>
+                    <div class="info">Room 100, Street 1111, Smouha, Alexandria, Egypt</div>
                 </div>
                 <div class="line">
                     <i class="far fa-clock fa-fw"></i>
-                    <div class="info">Business Hours: From 10:00 To 18:00</div>
+                    <div class="info">Business Hours: From 8:00 AM To 4:00 PM</div>
                 </div>
                 <div class="line">
                     <i class="fas fa-phone-volume fa-fw"></i>
                     <div class="info">
-                        <span>+20123456789</span>
-                        <span>+20198765432</span>
+                        <span>+01234567891</span>
                     </div>
                 </div>
             </div>
