@@ -27,6 +27,7 @@ if (mysqli_num_rows($result) > 0) {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <body>
 
 
@@ -72,40 +73,99 @@ if (mysqli_num_rows($result) > 0) {
         </div>
         <div class="overlay"></div>
     </div>
-     <div class="cars-available">
+    <div class="cars-available">
         <div class="container">
             <!-- <div class="main-heading">
                 <h2>Cars Available For Rent</h2>
             </div> -->
             <?php
-             $sql = "SELECT * FROM Car where status = 'Available'";
-             $result = $conn->query($sql);
-             if ($result->num_rows > 0) {
+            $sql = "SELECT * FROM Car where status = 'Available'";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
 
 
-                 echo '<div class="image-container">';
-                 while ($row = $result->fetch_assoc()) {
-                     echo  '<div class="car-box">';
-                     echo        '<div class="image">';
-                     echo            '<img src="data:image/jpeg;base64,' . base64_encode($row["Image"]) . '" alt="Car Image">';
-                     echo        '</div>';
-                     echo        '<div class="text">';
-                     echo            '<div class="brand-name">'. $row["brandName"] . '</div>';
-                     echo            '<div class="cname">' . $row["CarName"] . '</div>';
-                     echo            '<div class="ppd"> Now at <span>$' . $row["PricePerDay"] . '</span> per day</div>';
-                     echo        '</div>';   
-                     echo        '<form action="reserve.php" method="POST">';
-                     echo            '<input type="text" name="plateid" id="plateid" value="' . $row["PlateId"] . '" readonly hidden>';
-                     echo            '<button class="submit">RENT CAR</button>';
-                     echo        '</form> '; 
-                     echo  '</div>';
-                 }
-                 echo '</div>';
-             }
-             ?>
+                echo '<div class="image-container">';
+                while ($row = $result->fetch_assoc()) {
+                    echo  '<div class="car-box">';
+                    echo        '<div class="image">';
+                    echo            '<img src="data:image/jpeg;base64,' . base64_encode($row["Image"]) . '" alt="Car Image">';
+                    echo        '</div>';
+                    echo        '<div class="text">';
+                    echo            '<div class="brand-name">' . $row["brandName"] . '</div>';
+                    echo            '<div class="cname">' . $row["CarName"] . '</div>';
+                    echo            '<div class="ppd"> Now at <span>$' . $row["PricePerDay"] . '</span> per day</div>';
+                    echo        '</div>';
+                    echo        '<form action="reserve.php" method="POST">';
+                    echo            '<input type="text" name="plateid" id="plateid" value="' . $row["PlateId"] . '" readonly hidden>';
+                    echo            '<button class="submit">RENT CAR</button>';
+                    echo        '</form> ';
+                    echo  '</div>';
+                }
+                echo '</div>';
+            }
+            ?>
         </div>
     </div>
 
+    <!-- Start Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="box">
+                <h3>RENT CAR</h3>
+                <ul class="social">
+                    <li>
+                        <a href="#" class="facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+                <p class="text">
+                    Where quality meets convenience: Rent with us and enjoy the journey
+                </p>
+            </div>
+            <div class="box">
+                <ul class="links">
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="box">
+                <div class="line">
+                    <i class="fas fa-map-marker-alt fa-fw"></i>
+                    <div class="info">Egypt, Giza, Inside The Sphinx, Room Number 220</div>
+                </div>
+                <div class="line">
+                    <i class="far fa-clock fa-fw"></i>
+                    <div class="info">Business Hours: From 10:00 To 18:00</div>
+                </div>
+                <div class="line">
+                    <i class="fas fa-phone-volume fa-fw"></i>
+                    <div class="info">
+                        <span>+20123456789</span>
+                        <span>+20198765432</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <p class="copyright">&copy; 2024 RENT CAR Ltds | All rights reserved
+</p>
+    </div>
+    <!-- End Footer -->
+
 
 </body>
+
 </html>

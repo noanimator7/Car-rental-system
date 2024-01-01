@@ -1,8 +1,5 @@
 <?php
-session_start();
-if (isset($_SESSION["SESSION_EMAIL"])) {
-  header("Location: profile.php");
-}
+
 if (isset($_POST["register"])) {
   include 'config.php';
   $fname = $_POST["fname"];
@@ -27,7 +24,7 @@ if (isset($_POST["register"])) {
       VALUES ('$ssn', '$fname', '$lname','$email', '$password', '$contactNumber','$dob', '$address', '$city', '$country', '0')";
     $result = mysqli_query($conn, $sql);
     if ($result) {
-      //header("Location: login.html");
+      //header("Location: profile.php");
       echo "success";
     } else {
       // Error sql query failure
