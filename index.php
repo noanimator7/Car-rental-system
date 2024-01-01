@@ -73,7 +73,7 @@ if (isset($_SESSION["SESSION_EMAIL"])) {
                 <form action="" id="loginForm" method="post">
                     <div class="email">
                         <div class="icon"><i class="fa-regular fa-envelope"></i></div>
-                        <input type="email" id="email" name="email" placeholder="Enter Your Email" class="input">
+                        <input type="text" id="email" name="email" placeholder="Enter Your Email" class="input">
                         <div class="error"></div>
                         <!-- <div class="error"></div> -->
                     </div>

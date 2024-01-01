@@ -27,12 +27,8 @@ $status =$_POST['status'] ;
 $sql = "INSERT INTO `car` (`CarName`, `PricePerDay`, `DriverAirbag`, `PlateId`, `Overview`, `Seating_capacity`, `Year`, 
 `Air_conditioner` ,`Status` , `Color` ,`OId` , `Image` ,`category` , `brandName`) VALUES 
 ('$brand', '$price', '$airbag', '$plate', '$overview', '$seatingcapacity', '$year', '$airconditioner','$status','$color','$oid' , '{$image}',
-<<<<<<< HEAD
 '$category' , '$brandname' )
 ";
-=======
-'$category' , '$brandname')";
->>>>>>> 844694b5bcdd6ec1448b88e94443998445eadda6
 
 $rs = mysqli_query($con, $sql);
 
