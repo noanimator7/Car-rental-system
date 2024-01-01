@@ -16,46 +16,46 @@ if (mysqli_num_rows($result) > 0) {
 /******************************************************************************* */
 // i use this query to get all distinct colors in db and put them in options of color 
 
-    $sql_colors = "SELECT DISTINCT Color FROM car"; 
-    $result_colors = $conn->query($sql_colors);
-    $colors = [];
+$sql_colors = "SELECT DISTINCT Color FROM car";
+$result_colors = $conn->query($sql_colors);
+$colors = [];
 
-    if ($result_colors->num_rows > 0) {
-        while ($row_country = $result_colors->fetch_assoc()) {
-            $colors[] = $row_country["Color"];
-        }
+if ($result_colors->num_rows > 0) {
+    while ($row_country = $result_colors->fetch_assoc()) {
+        $colors[] = $row_country["Color"];
     }
+}
 
 /******************************************************************************* */
 // i use this query to get all car overviews from db
 
-    $sql_overview = "SELECT DISTINCT Overview FROM car"; 
-    $result_overview = $conn->query($sql_overview);
-    $overviews = [];
+$sql_overview = "SELECT DISTINCT Overview FROM car";
+$result_overview = $conn->query($sql_overview);
+$overviews = [];
 
-    if ($result_overview->num_rows > 0) {
-        while ($row_overview = $result_overview->fetch_assoc()) {
-            $overviews[] = $row_overview["Overview"];
-        }
+if ($result_overview->num_rows > 0) {
+    while ($row_overview = $result_overview->fetch_assoc()) {
+        $overviews[] = $row_overview["Overview"];
     }
+}
 /******************************************************************************* */
 // i use this query to get all distinct seating capacity
 
-    $sql_overview = "SELECT DISTINCT Seating_capacity FROM car ORDER BY Seating_capacity"; 
-    $result_seat = $conn->query($sql_overview);
-    $seats = [];
+$sql_overview = "SELECT DISTINCT Seating_capacity FROM car ORDER BY Seating_capacity";
+$result_seat = $conn->query($sql_overview);
+$seats = [];
 
-    if ($result_seat->num_rows > 0) {
-        while ($row_seat = $result_seat->fetch_assoc()) {
-            $seats[] = $row_seat["Seating_capacity"];
-        }
+if ($result_seat->num_rows > 0) {
+    while ($row_seat = $result_seat->fetch_assoc()) {
+        $seats[] = $row_seat["Seating_capacity"];
     }
+}
 
 /******************************************************************************* */
 // i use this query to get all distinct  years 
 
 
-$sql_overview = "SELECT DISTINCT Year FROM car"; 
+$sql_overview = "SELECT DISTINCT Year FROM car";
 $result_year = $conn->query($sql_overview);
 $years = [];
 
@@ -65,7 +65,7 @@ if ($result_year->num_rows > 0) {
     }
 }
 /******************************************************************************* */
-$sql_overview = "SELECT DISTINCT Country FROM offices"; 
+$sql_overview = "SELECT DISTINCT Country FROM offices";
 $result_country = $conn->query($sql_overview);
 $countries = [];
 
@@ -74,11 +74,18 @@ if ($result_country->num_rows > 0) {
         $countries[] = $row_country["Country"];
     }
 }
-
-
-// print($result->num_rows);
 /******************************************************************************* */
 
+/******************************************************************************* */
+$sql_brandname = "SELECT DISTINCT brandName FROM car    ";
+$result_count3 = $conn->query($sql_brandname);
+$brandnames = [];
+
+if ($result_count3->num_rows > 0) {
+    while ($row_count3 = $result_count3->fetch_assoc()) {
+        $brandnames[] = $row_count3["brandName"];
+    }
+}
 
 
 
@@ -100,6 +107,7 @@ if ($result_country->num_rows > 0) {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <body>
 
 
@@ -146,117 +154,128 @@ if ($result_country->num_rows > 0) {
     </div>
 
     <div class="caratts">
-            <div class="container">
-                <form action="" method="post" id="form">
+        <div class="container">
+            <form action="" method="post" id="form">
                 <div class="inputs-container">
                     <div class="left">
-                    <div class="ppd">    
-                        <label for="price">Price per Day:</label>
-                        <input type="text" name="price" id="price">
-                    </div>
+                        <div class="ppd">
+                            <label for="price">Price per Day:</label>
+                            <input type="text" name="price" id="price">
+                        </div>
 
-                    <div class="brand-name">
-                        <label for="Brand">Car Name:</label>
-                        <input type="text" name="Brand" id="Brand">
-                    </div>
-                    
-                    <div class="oview">                        
-                        <label for="overview">OverView</label>    
-                        <select name="overview" id="overview">
-                     <option value="Null"></option>
-                     <?php
-                        foreach ($overviews as $overview) {
-                        echo '<option value="' . $overview . '">' . $overview . '</option>';
-                        }
-                        ?>
-                        </select> 
-                    </div>
-                
-                    <div class="clr">
-                        
-                        <label for="color">Car Color:</label>
-                        <select name="color" id="color">
-                        <option value="Null"></option>
-                        <?php
-                        // Generate HTML options for countries
-                        foreach ($colors as $color) {
-                        echo '<option value="' . $color . '">' . $color . '</option>';
-                        }
-                        ?>
-                        </select>      
-                    </div>
-                    <div class="sc">
-                        <label for="seatingcapacity">Seating Capacity</label>
-                        <select name="seatingcapacity" id="seatingcapacity">
-                            <option value="Null"></option>
+                        <div class="brand-name">
+                            <label for="Brand">Car Name:</label>
+                            <input type="text" name="Brand" id="Brand">
+                        </div>
 
-                            <?php
-                            foreach ($seats as $s) {
-                            echo '<option value="'. $s .'">' . $s . '</option>';
-                            }
-                            ?>
-                        </select>
-                    </div>
+                        <div class="oview">
+                            <label for="overview">OverView</label>
+                            <select name="overview" id="overview">
+                                <option value="Null"></option>
+                                <?php
+                                foreach ($overviews as $overview) {
+                                    echo '<option value="' . $overview . '">' . $overview . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+                        <div class="clr">
+
+                            <label for="color">Car Color:</label>
+                            <select name="color" id="color">
+                                <option value="Null"></option>
+                                <?php
+                                // Generate HTML options for countries
+                                foreach ($colors as $color) {
+                                    echo '<option value="' . $color . '">' . $color . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="sc">
+                            <label for="seatingcapacity">Seating Capacity</label>
+                            <select name="seatingcapacity" id="seatingcapacity">
+                                <option value="Null"></option>
+
+                                <?php
+                                foreach ($seats as $s) {
+                                    echo '<option value="' . $s . '">' . $s . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
                     </div>
                     <div class="right">
-                    
 
-                    <div class="yr">
-                        <label for="year">Year</label>
-                        <select name="year" id="year">
-                            <option value="Null"></option>
 
-                            <?php
-                            foreach ($years as $y) {
-                            echo '<option value="' . $y . '">' . $y . '</option>';
-                            }
-                            ?>
-                        </select> 
+                        <div class="yr">
+                            <label for="year">Year</label>
+                            <select name="year" id="year">
+                                <option value="Null"></option>
+
+                                <?php
+                                foreach ($years as $y) {
+                                    echo '<option value="' . $y . '">' . $y . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="brand">
+                            <label for="brandname">Brand Name:</label>
+                            <select name="brandname" id="brandname">
+                                <option value="Null"></option>
+
+                                <?php
+                                foreach ($brandnames as $o) {
+                                    echo '<option value="' . $o . '">' . $o . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+                        <div class="ab">
+                            <label for="airbag">Airbag:</label>
+                            <select name="airbag" id="airbag">
+                                <option value="Null"></option>
+
+                                <option value="Y">Yes</option>
+                                <option value="N">No</option>
+                            </select>
+                        </div>
+                        <div class="ac">
+                            <label for="airconditioner">Airconditioner:</label>
+                            <select name="airconditioner" id="airconditioner">
+                                <option value="Null"></option>
+
+                                <option value="Y">Yes</option>
+                                <option value="N">No</option>
+                            </select>
+                        </div>
+
+                        <div class="cty">
+                            <label for="country">Select Country:</label>
+                            <select name="country" id="country">
+                                <option value="Null"></option>
+                                <?php
+                                foreach ($countries as $y) {
+                                    echo '<option value="' . $y . '">' . $y . '</option>';
+                                }
+                                ?>
+
+                            </select>
+                        </div>
                     </div>
 
-
-                    <div class="ab">
-                        <label for="airbag">Airbag:</label>
-                        <select name="airbag" id="airbag">
-                            <option value="Null"></option>
-
-                            <option value="Y">Yes</option>
-                            <option value="N">No</option>
-                        </select>
+                    <div class="submit">
+                        <button class="submit-btn" onclick="scrollDown()">Search For Car</button>
                     </div>
-                    <div class="ac">
-                        <label for="airconditioner">Airconditioner:</label>
-                        <select name="airconditioner" id="airconditioner">
-                            <option value="Null"></option>
+            </form>
 
-                            <option value="Y">Yes</option>
-                            <option value="N">No</option>
-                        </select>
-                    </div>
 
-                    <div class="cty">
-                    <label for="country">Select Country:</label>
-                        <select name="country" id="country">
-                            <option value="Null"></option> 
-                            <?php
-                        foreach ($countries as $y) {
-                        echo '<option value="' . $y . '">' . $y . '</option>';
-                        }
-                        ?> 
-
-                        </select>
-                    </div>
-                    </div>
-                   
-                    <div class="submit">            
-                    <button class="submit-btn" onclick="scrollDown()">Search For Car</button>
-                    </div>
-                </form>
-                
-
-            </div>
+        </div>
     </div>
-    
+
     <div class="output-search">
         <div class="container">
             <div class="search-result" id="search-result"></div>
@@ -315,221 +334,218 @@ if ($result_country->num_rows > 0) {
 
         </div>
         <p class="copyright">&copy; 2024 RENT CAR Ltds | All rights reserved
-</p>
+        </p>
     </div>
     <!-- End Footer -->
 
-    
+
 </body>
 <script>
+    const form = document.getElementById("form");
+    const resultbox = document.getElementById("search-result")
 
 
-const form = document.getElementById("form") ; 
-const resultbox = document.getElementById("search-result")
+    form.addEventListener("submit", (e) => {
 
-
-form.addEventListener("submit", (e) => {
-
-    while (resultbox.firstChild) {
+        while (resultbox.firstChild) {
             resultbox.removeChild(resultbox.lastChild);
-  }
-    const brand  = document.getElementById("Brand") ;
-    const overview =document.getElementById("overview") ;
-    const airbag =document.getElementById("airbag") ;
-    const price =document.getElementById("price") ; 
-    const color =document.getElementById("color") ; 
-    const seatingcapacity =document.getElementById("seatingcapacity") ; 
-    const year =document.getElementById("year") ; 
-    const airconditioner =document.getElementById("airconditioner") ;
-    const country =document.getElementById("country") ;
-    e.preventDefault();
-    const data = {
-    brand : brand.value  ,
-    overview : overview.value  ,
-    airbag : airbag.value  ,
-    price : price.value  ,
-    color : color.value  ,
-    seatingcapacity : seatingcapacity.value  ,
-    year : year.value  ,
-    airconditioner : airconditioner.value  ,
-    country  : country.value
-  };
-  console.log("megzo is 3ars");
-  $.ajax({
-    type: 'POST',
-    url: 'searchprocessing.php',
-    data: data,
-  })
-    .done((data) => {
-
-        if(data==="error"){
-            return false;
         }
-        else {
-            
-            // const para = document.createElement("p");
-            // const node = document.createTextNode(item.a);
+        const brand = document.getElementById("Brand");
+        const overview = document.getElementById("overview");
+        const airbag = document.getElementById("airbag");
+        const price = document.getElementById("price");
+        const color = document.getElementById("color");
+        const seatingcapacity = document.getElementById("seatingcapacity");
+        const year = document.getElementById("year");
+        const airconditioner = document.getElementById("airconditioner");
+        const country = document.getElementById("country");
+        const brandname= document.getElementById("brandname");
+        e.preventDefault();
+        const data = {
+            brand: brand.value,
+            overview: overview.value,
+            airbag: airbag.value,
+            price: price.value,
+            color: color.value,
+            seatingcapacity: seatingcapacity.value,
+            year: year.value,
+            airconditioner: airconditioner.value,
+            country: country.value,
+            brandname: brandname.value
+        };
+        console.log("megzo is 3ars");
+        $.ajax({
+                type: 'POST',
+                url: 'searchprocessing.php',
+                data: data,
+            })
+            .done((data) => {
 
-        for (let i = 0; i < data.length; i++){
-            // let maindiv = document.createElement("div");
-            // let item=data[i];
-            // const imgdiv = document.createElement("div");
-            // imgdiv.classList.add("image");
-            // const para = document.createElement("img");
-            // para.src = "data:image/jpeg;base64," + item.a;
-            // imgdiv.appendChild(para);
-            // maindiv.appendChild(imgdiv);
+                if (data === "error") {
+                    return false;
+                } else {
 
+                    // const para = document.createElement("p");
+                    // const node = document.createTextNode(item.a);
 
- 
-
-
-
-            // const para3 = document.createElement("p");
-            // const nodec = document.createTextNode(item.c);
-            // para3.appendChild(nodec);
-            // maindiv.appendChild(para3);
-
-
-
-            // const para4 = document.createElement("p");
-            // const noded = document.createTextNode("Year : " + item.d);
-            // para4.appendChild(noded);
-            // maindiv.appendChild(para4);
-
-
-
-            // const para5 = document.createElement("p");
-            // const nodee = document.createTextNode("Price : $"+ item.e);
-            // para5.appendChild(nodee);
-            // maindiv.appendChild(para5);
-
-
-            // const para6 = document.createElement("p");
-            // const nodef = document.createTextNode("Seating Capacity : " + item.f);
-            // para6.appendChild(nodef);
-            // maindiv.appendChild(para6);
-
-            // const para7 = document.createElement("p");
-            // var nodeg;
-            // if(item.g === 'Y'){
-            //     nodeg = document.createTextNode("Air Conditioner : Yes");
-            // }
-            // else{
-            //     nodeg = document.createTextNode("Air Conditioner : No");
-            // }
-            // para7.appendChild(nodeg);
-            // maindiv.appendChild(para7);
-
-            // const para8 = document.createElement("p");
-            // var nodeh;
-            // if(item.h === 'Y'){
-            //     nodeh = document.createTextNode("Air Bag : Yes");
-            // }
-            // else{
-            //     nodeh = document.createTextNode("Air Bag : No");
-            // }
-            // para8.appendChild(nodeh);
-            // maindiv.appendChild(para8);
-
-            // const para9 = document.createElement("p");
-            // const nodei = document.createTextNode("Country : " + item.i);
-            // para9.appendChild(nodei);
-            // maindiv.appendChild(para9);
-            
-
-        
-            let item = data[i]; 
-        let maindiv = document.createElement("form");
-        maindiv.action ="reserve.php" ;
-        maindiv.method="post" ;
-        const imgdiv = document.createElement("div");
-        imgdiv.classList.add("image");
-        const img = document.createElement("img");
-        img.src = "data:image/jpeg;base64," + item.a;
-        imgdiv.appendChild(img);
-        maindiv.appendChild(imgdiv);
-        // createInput(maindiv, "plateid", item.plateid);
-                   // const para2 = document.createElement("p");
-            // para2.classList.add("c-name");
-            // const nodeb = document.createTextNode(item.b);
-            // para2.appendChild(nodeb);
-            // maindiv.appendChild(para2);
-
-                
-        createInput(maindiv, "brandName", item.brandName);
-        createInput(maindiv, "a", item.b);
-        createInput(maindiv, "b", item.c);
-        createInput(maindiv, "c", "Year : " + item.d);
-        createInput(maindiv, "d", "Price Per Day : "+item.e);
-        createInput(maindiv, "e", "Seating Capacity : "+item.f);
-        if(item.g==="Y"){
-            createInput(maindiv, "f", "Air Conditioner : Yes");
-        }
-        else{
-            createInput(maindiv, "f", "Air Conditioner : No");
-        }
-
-        if(item.h==="Y"){
-            createInput(maindiv, "g", "Airbag : Yes");
-        }
-        else{
-            createInput(maindiv, "g", "Airbag : No");
-        }
-
-        createInput(maindiv, "h","Country : "+ item.i);
-        createInput(maindiv, "plateid", item.plateid);
- 
+                    for (let i = 0; i < data.length; i++) {
+                        // let maindiv = document.createElement("div");
+                        // let item=data[i];
+                        // const imgdiv = document.createElement("div");
+                        // imgdiv.classList.add("image");
+                        // const para = document.createElement("img");
+                        // para.src = "data:image/jpeg;base64," + item.a;
+                        // imgdiv.appendChild(para);
+                        // maindiv.appendChild(imgdiv);
 
 
-        const submitButton = document.createElement("button");
-    submitButton.type = "submit";
-    submitButton.classList.add("submit-btn")
-    submitButton.textContent = "RENT CAR";
-    maindiv.appendChild(submitButton);
-
-        document.getElementById("search-result").appendChild(maindiv);
-    }
-        }
 
 
-        
-    
 
-function createInput(parent, name, value) {
 
-    const input = document.createElement("input");
-    input.readOnly = true;
-    input.type = "text";
-    input.name = name.toLowerCase();
-    if(name === "a"){
-        input.classList.add("c-name");
-    }
-    if(name==="plateid"){
-        input.classList.add("pid");
-    }
-    if(name==="brandName"){
-        input.classList.add("brandName");
-    }
-    console.log(input.name);
-    input.value = value;
-    parent.appendChild(input);
-}
+                        // const para3 = document.createElement("p");
+                        // const nodec = document.createTextNode(item.c);
+                        // para3.appendChild(nodec);
+                        // maindiv.appendChild(para3);
 
-    })
-    .fail((err) => {
-      console.error(err);
-    })
-    .always(() => {
-      console.log('always called');
+
+
+                        // const para4 = document.createElement("p");
+                        // const noded = document.createTextNode("Year : " + item.d);
+                        // para4.appendChild(noded);
+                        // maindiv.appendChild(para4);
+
+
+
+                        // const para5 = document.createElement("p");
+                        // const nodee = document.createTextNode("Price : $"+ item.e);
+                        // para5.appendChild(nodee);
+                        // maindiv.appendChild(para5);
+
+
+                        // const para6 = document.createElement("p");
+                        // const nodef = document.createTextNode("Seating Capacity : " + item.f);
+                        // para6.appendChild(nodef);
+                        // maindiv.appendChild(para6);
+
+                        // const para7 = document.createElement("p");
+                        // var nodeg;
+                        // if(item.g === 'Y'){
+                        //     nodeg = document.createTextNode("Air Conditioner : Yes");
+                        // }
+                        // else{
+                        //     nodeg = document.createTextNode("Air Conditioner : No");
+                        // }
+                        // para7.appendChild(nodeg);
+                        // maindiv.appendChild(para7);
+
+                        // const para8 = document.createElement("p");
+                        // var nodeh;
+                        // if(item.h === 'Y'){
+                        //     nodeh = document.createTextNode("Air Bag : Yes");
+                        // }
+                        // else{
+                        //     nodeh = document.createTextNode("Air Bag : No");
+                        // }
+                        // para8.appendChild(nodeh);
+                        // maindiv.appendChild(para8);
+
+                        // const para9 = document.createElement("p");
+                        // const nodei = document.createTextNode("Country : " + item.i);
+                        // para9.appendChild(nodei);
+                        // maindiv.appendChild(para9);
+
+
+
+                        let item = data[i];
+                        let maindiv = document.createElement("form");
+                        maindiv.action = "reserve.php";
+                        maindiv.method = "post";
+                        const imgdiv = document.createElement("div");
+                        imgdiv.classList.add("image");
+                        const img = document.createElement("img");
+                        img.src = "data:image/jpeg;base64," + item.a;
+                        imgdiv.appendChild(img);
+                        maindiv.appendChild(imgdiv);
+                        // createInput(maindiv, "plateid", item.plateid);
+                        // const para2 = document.createElement("p");
+                        // para2.classList.add("c-name");
+                        // const nodeb = document.createTextNode(item.b);
+                        // para2.appendChild(nodeb);
+                        // maindiv.appendChild(para2);
+
+
+                        createInput(maindiv, "brandName", item.brandName);
+                        createInput(maindiv, "a", item.b);
+                        createInput(maindiv, "b", item.c);
+                        createInput(maindiv, "c", "Year : " + item.d);
+                        createInput(maindiv, "d", "Price Per Day : " + item.e);
+                        createInput(maindiv, "e", "Seating Capacity : " + item.f);
+                        if (item.g === "Y") {
+                            createInput(maindiv, "f", "Air Conditioner : Yes");
+                        } else {
+                            createInput(maindiv, "f", "Air Conditioner : No");
+                        }
+
+                        if (item.h === "Y") {
+                            createInput(maindiv, "g", "Airbag : Yes");
+                        } else {
+                            createInput(maindiv, "g", "Airbag : No");
+                        }
+
+                        createInput(maindiv, "h", "Country : " + item.i);
+                        createInput(maindiv, "plateid", item.plateid);
+
+
+
+                        const submitButton = document.createElement("button");
+                        submitButton.type = "submit";
+                        submitButton.classList.add("submit-btn")
+                        submitButton.textContent = "RENT CAR";
+                        maindiv.appendChild(submitButton);
+
+                        document.getElementById("search-result").appendChild(maindiv);
+                    }
+                }
+
+
+
+
+
+                function createInput(parent, name, value) {
+
+                    const input = document.createElement("input");
+                    input.readOnly = true;
+                    input.type = "text";
+                    input.name = name.toLowerCase();
+                    if (name === "a") {
+                        input.classList.add("c-name");
+                    }
+                    if (name === "plateid") {
+                        input.classList.add("pid");
+                    }
+                    if (name === "brandName") {
+                        input.classList.add("brandName");
+                    }
+                    console.log(input.name);
+                    input.value = value;
+                    parent.appendChild(input);
+                }
+
+            })
+            .fail((err) => {
+                console.error(err);
+            })
+            .always(() => {
+                console.log('always called');
+            });
     });
-});
 </script>
 <script>
     function scrollDown() {
-      // You can adjust the scroll amount based on your needs
-      window.scrollBy(0, 500); // Scroll down by 100 pixels
+        // You can adjust the scroll amount based on your needs
+        window.scrollBy(0, 500); // Scroll down by 100 pixels
     }
-  </script>
+</script>
 
 </html>

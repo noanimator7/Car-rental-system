@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $seatingcapacity =  isset($_POST["seatingcapacity"]) ? $_POST["seatingcapacity"] : null;
     $year =  isset($_POST["year"]) ? $_POST["year"] : null;
     $country =  isset($_POST["country"]) ? $_POST["country"] : null;
+    $brandname = isset($_POST["brandname"]) ? $_POST["brandname"] : null;
 
     
     if ($conn->connect_error) {
@@ -27,6 +28,12 @@ FROM car  as c
 JOIN offices AS o 
 ON c.OId =  o.OId 
 WHERE Status ='Available' ";
+
+if($brandname !== "Null"){
+    $sql .= " AND brandName = '$brandname'";
+
+}
+
 if ($country !== "Null") {
     $sql .= "  AND Country = '$country' ";
 
