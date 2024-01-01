@@ -315,79 +315,131 @@ form.addEventListener("submit", (e) => {
             // const node = document.createTextNode(item.a);
 
         for (let i = 0; i < data.length; i++){
-            let maindiv = document.createElement("div");
-            let item=data[i];
-            const imgdiv = document.createElement("div");
-            imgdiv.classList.add("image");
-            const para = document.createElement("img");
-            para.src = "data:image/jpeg;base64," + item.a;
-            imgdiv.appendChild(para);
-            maindiv.appendChild(imgdiv);
+            // let maindiv = document.createElement("div");
+            // let item=data[i];
+            // const imgdiv = document.createElement("div");
+            // imgdiv.classList.add("image");
+            // const para = document.createElement("img");
+            // para.src = "data:image/jpeg;base64," + item.a;
+            // imgdiv.appendChild(para);
+            // maindiv.appendChild(imgdiv);
 
 
-            const para2 = document.createElement("p");
-            para2.classList.add("c-name");
-            const nodeb = document.createTextNode(item.b);
-            para2.appendChild(nodeb);
-            maindiv.appendChild(para2);
+ 
 
 
 
-            const para3 = document.createElement("p");
-            const nodec = document.createTextNode(item.c);
-            para3.appendChild(nodec);
-            maindiv.appendChild(para3);
+            // const para3 = document.createElement("p");
+            // const nodec = document.createTextNode(item.c);
+            // para3.appendChild(nodec);
+            // maindiv.appendChild(para3);
 
 
 
-            const para4 = document.createElement("p");
-            const noded = document.createTextNode("Year : " + item.d);
-            para4.appendChild(noded);
-            maindiv.appendChild(para4);
+            // const para4 = document.createElement("p");
+            // const noded = document.createTextNode("Year : " + item.d);
+            // para4.appendChild(noded);
+            // maindiv.appendChild(para4);
 
 
 
-            const para5 = document.createElement("p");
-            const nodee = document.createTextNode("Price : $"+ item.e);
-            para5.appendChild(nodee);
-            maindiv.appendChild(para5);
+            // const para5 = document.createElement("p");
+            // const nodee = document.createTextNode("Price : $"+ item.e);
+            // para5.appendChild(nodee);
+            // maindiv.appendChild(para5);
 
 
-            const para6 = document.createElement("p");
-            const nodef = document.createTextNode("Seating Capacity : " + item.f);
-            para6.appendChild(nodef);
-            maindiv.appendChild(para6);
+            // const para6 = document.createElement("p");
+            // const nodef = document.createTextNode("Seating Capacity : " + item.f);
+            // para6.appendChild(nodef);
+            // maindiv.appendChild(para6);
 
-            const para7 = document.createElement("p");
-            var nodeg;
-            if(item.g === 'Y'){
-                nodeg = document.createTextNode("Air Conditioner : Yes");
-            }
-            else{
-                nodeg = document.createTextNode("Air Conditioner : No");
-            }
-            para7.appendChild(nodeg);
-            maindiv.appendChild(para7);
+            // const para7 = document.createElement("p");
+            // var nodeg;
+            // if(item.g === 'Y'){
+            //     nodeg = document.createTextNode("Air Conditioner : Yes");
+            // }
+            // else{
+            //     nodeg = document.createTextNode("Air Conditioner : No");
+            // }
+            // para7.appendChild(nodeg);
+            // maindiv.appendChild(para7);
 
-            const para8 = document.createElement("p");
-            var nodeh;
-            if(item.h === 'Y'){
-                nodeh = document.createTextNode("Air Bag : Yes");
-            }
-            else{
-                nodeh = document.createTextNode("Air Bag : No");
-            }
-            para8.appendChild(nodeh);
-            maindiv.appendChild(para8);
+            // const para8 = document.createElement("p");
+            // var nodeh;
+            // if(item.h === 'Y'){
+            //     nodeh = document.createTextNode("Air Bag : Yes");
+            // }
+            // else{
+            //     nodeh = document.createTextNode("Air Bag : No");
+            // }
+            // para8.appendChild(nodeh);
+            // maindiv.appendChild(para8);
 
-            const para9 = document.createElement("p");
-            const nodei = document.createTextNode("Country : " + item.i);
-            para9.appendChild(nodei);
-            maindiv.appendChild(para9);
+            // const para9 = document.createElement("p");
+            // const nodei = document.createTextNode("Country : " + item.i);
+            // para9.appendChild(nodei);
+            // maindiv.appendChild(para9);
+            
 
-            resultbox.appendChild(maindiv)
-        }
+        
+            let item = data[i]; 
+        let maindiv = document.createElement("form");
+        maindiv.action ="reserve.php" ;
+        maindiv.method="post" ;
+        const imgdiv = document.createElement("div");
+        imgdiv.classList.add("image");
+        const img = document.createElement("img");
+        img.src = "data:image/jpeg;base64," + item.a;
+        imgdiv.appendChild(img);
+        maindiv.appendChild(imgdiv);
+        // createInput(maindiv, "plateid", item.plateid);
+                   // const para2 = document.createElement("p");
+            // para2.classList.add("c-name");
+            // const nodeb = document.createTextNode(item.b);
+            // para2.appendChild(nodeb);
+            // maindiv.appendChild(para2);
+
+        createInput(maindiv, "a", item.b);
+        createInput(maindiv, "b", item.c);
+        createInput(maindiv, "c", item.d);
+        createInput(maindiv, "d", item.e);
+        createInput(maindiv, "e", item.f);
+        createInput(maindiv, "f", item.g);
+        createInput(maindiv, "g", item.h);
+        createInput(maindiv, "h", item.i);
+        createInput(maindiv, "plateid", item.plateid);
+ 
+
+
+        const submitButton = document.createElement("button");
+    submitButton.type = "submit";
+    submitButton.classList.add("submit-btn")
+    submitButton.textContent = "Rent";
+    maindiv.appendChild(submitButton);
+
+        document.getElementById("search-result").appendChild(maindiv);
     }
+        }
+
+
+        
+    
+
+function createInput(parent, name, value) {
+
+    const input = document.createElement("input");
+    input.type = "text"; // Change this based on the type of input you need
+    input.name = name.toLowerCase();
+    if(name === "a"){
+        input.classList.add("c-name");
+
+    }
+    console.log(input.name);
+    input.value = value;
+    parent.appendChild(input);
+}
+
     })
     .fail((err) => {
       console.error(err);

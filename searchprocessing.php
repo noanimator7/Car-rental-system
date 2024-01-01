@@ -1,5 +1,5 @@
 <?php 
-/*************************** */
+/********* */
 //trying to search the car by the specs the admin entered 
 //even if the admin didnot enter all the specs i will search with the entered specs
 include "config.php";
@@ -67,7 +67,8 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         // Sample array for each row
         $rowData = array("a" => base64_encode($row["Image"]), "b" => $row["CarName"], "c" => $row["Overview"], "d"=> $row["Year"],
-        "e"=> $row["PricePerDay"], "f"=>$row["Seating_capacity"], "g"=> $row["Air_conditioner"] , "h" => $row["DriverAirbag"] , "i" => $row['Country']);
+        "e"=> $row["PricePerDay"], "f"=>$row["Seating_capacity"], "g"=> $row["Air_conditioner"] , "h" => $row["DriverAirbag"] , "i" => $row['Country']
+    ,"plateid" => $row["PlateId"]);
     
         $data[] = $rowData; // Add the row data to the main array
     }
