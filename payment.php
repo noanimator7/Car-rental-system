@@ -209,6 +209,8 @@ $price  =$_POST['priceperday'] ;
 
 
 </body>
+
+
 <script>
     var cardNumInput = document.querySelector('#cardNum')
 

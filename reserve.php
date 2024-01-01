@@ -11,9 +11,9 @@ $sql = "SELECT * FROM car where PlateId = $plateid";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 
-$email = $_SESSION["SESSION_EMAIL"] ;
+$email = $_SESSION["SESSION_EMAIL"];
 //echo $email ; 
-$sql = "SELECT * FROM users WHERE EMAIL = '$email'" ; 
+$sql = "SELECT * FROM users WHERE EMAIL = '$email'";
 $result2 = $conn->query($sql);
 $row2 = $result2->fetch_assoc();
 //echo $row["CarName"];
@@ -80,36 +80,41 @@ $row2 = $result2->fetch_assoc();
     <div class="section">
         <div class="container">
             <div class="top-box">
-            <?php
+                <?php
                 echo    '<div class="image">';
                 echo        '<img src="data:image/jpeg;base64,' . base64_encode($row["Image"]) . '" alt="Car Image">';
                 echo    '</div>';
                 ?>
                 <div class="text">
-                    <div class="car-name"><?php echo $row["CarName"]?></div>
-                    <!-- <div class="overview"><?php //echo $row["Overview"]?></div> -->
-                    <div class="color">Color : <?php echo $row["Color"]?></div>
-                    <div class="year">Year : <?php echo $row["Year"]?></div>
-                    <div class="ppd">Price Per Day : $<span id="pricepd"><?php echo $row["PricePerDay"]?></span></div>
-                    <div class="plate">Plate ID : <?php echo $row["PlateId"]?></div>
-                    <div class="ac">Air Conditioner : <?php if($row["Air_conditioner"] === "Y"){echo "Yes";}else{echo "No";}?></div>
-                    <div class="sc">Seating Capacity : <?php echo $row["Seating_capacity"]?></div>
+                    <div class="car-name"><?php echo $row["CarName"] ?></div>
+                    <!-- <div class="overview"><?php //echo $row["Overview"]
+                                                ?></div> -->
+                    <div class="color">Color : <?php echo $row["Color"] ?></div>
+                    <div class="year">Year : <?php echo $row["Year"] ?></div>
+                    <div class="ppd">Price Per Day : $<span id="pricepd"><?php echo $row["PricePerDay"] ?></span></div>
+                    <div class="plate">Plate ID : <?php echo $row["PlateId"] ?></div>
+                    <div class="ac">Air Conditioner : <?php if ($row["Air_conditioner"] === "Y") {
+                                                            echo "Yes";
+                                                        } else {
+                                                            echo "No";
+                                                        } ?></div>
+                    <div class="sc">Seating Capacity : <?php echo $row["Seating_capacity"] ?></div>
                     <div class="tp">Total Price : <span class="price" id="result">Select Dates To Calculate</span></div>
-                    
+
                 </div>
-                
+
             </div>
             <form action="payment.php" method="post">
-                    
-                    
-                    
 
 
-                </form>
+
+
+
+            </form>
             <div class="form-container">
                 <form action="payment.php" method="post" id="form">
                     <input type="text" name="priceperday" id="priceperday" value="<?php echo $row["PricePerDay"]; ?>" hidden>
-                    <input type="text" name="ssn" id="ssn" value="<?php echo $row2["SSN"]; ?>" hidden >
+                    <input type="text" name="ssn" id="ssn" value="<?php echo $row2["SSN"]; ?>" hidden>
                     <input type="text" id="plateids" name="plateids" value="<?php echo $row["PlateId"]; ?>" hidden>
                     <div class="dates">
                         <div class="date1">
@@ -121,8 +126,8 @@ $row2 = $result2->fetch_assoc();
                             <input type="date" oninput="calculatePrice()" placeholder="Enter End Date" name="end-date" id="end-date" class="inputs">
                         </div>
                     </div>
-                    
-                    
+
+
                     <div class="button">
                         <button class="proceed" name=proceed>PROCEED TO PAYMENT</button>
                     </div>
@@ -130,93 +135,150 @@ $row2 = $result2->fetch_assoc();
 
                     <div class="error" id="error"></div>
 
-                    
+
                 </form>
             </div>
         </div>
     </div>
     <!-- End Section -->
+    <!-- Start Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="box">
+                <h3>RENT CAR</h3>
+                <ul class="social">
+                    <li>
+                        <a href="#" class="facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+                <p class="text">
+                    Where quality meets convenience: Rent with us and enjoy the journey
+                </p>
+            </div>
+            <div class="box">
+                <ul class="links">
+                    <li><a href="profile.php">Home</a></li>
+                    <li><a href="search.php">Search</a></li>
+                    <li><a href="userprofile.php">Profile</a></li>
+                    <li><a href="logout.php">Log Out</a></li>
+                </ul>
+            </div>
+            <div class="box">
+                <div class="line">
+                    <i class="fas fa-map-marker-alt fa-fw"></i>
+                    <div class="info">Room 100, Street 1111, Smouha, Alexandria, Egypt</div>
+                </div>
+                <div class="line">
+                    <i class="far fa-clock fa-fw"></i>
+                    <div class="info">Business Hours: From 8:00 AM To 4:00 PM</div>
+                </div>
+                <div class="line">
+                    <i class="fas fa-phone-volume fa-fw"></i>
+                    <div class="info">
+                        <span>+01234567891</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <p class="copyright">&copy; 2024 RENT CAR Ltds | All rights reserved
+        </p>
+    </div>
+    <!-- End Footer -->
 </body>
 
 <script>
     function isValidDate(d) {
-  return d instanceof Date && !isNaN(d);
-}
+        return d instanceof Date && !isNaN(d);
+    }
+
     function calculatePrice() {
-        var plateid = document.getElementById("plateids").value ;
-      var startDate = new Date(document.getElementById('start-date').value);
-      var endDate = new Date(document.getElementById('end-date').value);
-      var pricePerDay = document.getElementById('pricepd').innerHTML;
-      var price = calculatePriceLogic(startDate, endDate, pricePerDay);
+        var plateid = document.getElementById("plateids").value;
+        var startDate = new Date(document.getElementById('start-date').value);
+        var endDate = new Date(document.getElementById('end-date').value);
+        var pricePerDay = document.getElementById('pricepd').innerHTML;
+        var price = calculatePriceLogic(startDate, endDate, pricePerDay);
 
-      if(!isNaN(price) && price>=0 ){
+        if (!isNaN(price) && price >= 0) {
             document.getElementById('result').innerText = price + "$";
-      }
-      else if(price <=0){
-        document.getElementById('result').innerText = "$0";
+        } else if (price <= 0) {
+            document.getElementById('result').innerText = "$0";
 
-        
-      }
-      
+
+        }
+
     }
-    function calculatePriceLogic(startDate, endDate, pricePerDay) {      
-      var daysDifference = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
-      var totalPrice = daysDifference * pricePerDay;
-      return totalPrice;
+
+    function calculatePriceLogic(startDate, endDate, pricePerDay) {
+        var daysDifference = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+        var totalPrice = daysDifference * pricePerDay;
+        return totalPrice;
     }
-    const form  =document.getElementById("form") ;
-    const error =document.getElementById("error") ; 
-    form.addEventListener("submit" , (e)=>{
-        var flag = true ;
+    const form = document.getElementById("form");
+    const error = document.getElementById("error");
+    form.addEventListener("submit", (e) => {
+        var flag = true;
 
-      var startDate = new Date(document.getElementById('start-date').value);
-      var endDate = new Date(document.getElementById('end-date').value);
-      console.log("Migzo is here");
-      if (startDate >= endDate  || isValidDate(endDate) === false || isValidDate(startDate) ===  false ){
-        console.log("Migzo is here part2 ");
-        console.log(error) ;
+        var startDate = new Date(document.getElementById('start-date').value);
+        var endDate = new Date(document.getElementById('end-date').value);
+        console.log("Migzo is here");
+        if (startDate >= endDate || isValidDate(endDate) === false || isValidDate(startDate) === false) {
+            console.log("Migzo is here part2 ");
+            console.log(error);
 
-        flag = false ; 
-        document.getElementById('result').innerText = "$0";
+            flag = false;
+            document.getElementById('result').innerText = "$0";
 
-        error.innerHTML = "You cannot insert start date > end date" ;
-        console.log(error.innerHTML)
-        e.preventDefault() ;
-      }
+            error.innerHTML = "You cannot insert start date > end date";
+            console.log(error.innerHTML)
+            e.preventDefault();
+        }
 
-      var plateid = document.getElementById("plateids").value ;
-    var startDate = document.getElementById('start-date').value;
-      var endDate = document.getElementById('end-date').value;
-      var pricePerDay = document.getElementById('pricepd').innerHTML;
-      e.preventDefault();
+        var plateid = document.getElementById("plateids").value;
+        var startDate = document.getElementById('start-date').value;
+        var endDate = document.getElementById('end-date').value;
+        var pricePerDay = document.getElementById('pricepd').innerHTML;
+        e.preventDefault();
 
         $.ajax({
             type: "POST",
             url: "check_date.php",
-            data: { 
-                start: startDate , 
-                end :endDate ,
-                plateid ,plateid
-             },
+            data: {
+                start: startDate,
+                end: endDate,
+                plateid,
+                plateid
+            },
             success: function(response) {
                 if (response === "noclash") {
-                    console.log("There is no clash in here ") ;
-                    if(flag === true ){
-                        error.innerHTML="";
+                    console.log("There is no clash in here ");
+                    if (flag === true) {
+                        error.innerHTML = "";
 
-                        form.submit() ;
+                        form.submit();
 
-                    }
-                    else {
-                        error.innerHTML = "You cannot insert start date > end date" ;
+                    } else {
+                        error.innerHTML = "You cannot insert start date > end date";
 
-                        e.preventDefault() ;
+                        e.preventDefault();
                     }
 
                 } else {
 
-                    console.log("There is clash here ") ;
-                    error.innerHTML="There is a clash with an existing reservation" ;
+                    console.log("There is clash here ");
+                    error.innerHTML = "There is a clash with an existing reservation";
                     // window.location.href ='check_date.php';
 
                 }
@@ -226,16 +288,16 @@ $row2 = $result2->fetch_assoc();
 
 
 
-    //   else {
-    //     error.innerText="" ;
-    //     return true ;
-    //   }
+        //   else {
+        //     error.innerText="" ;
+        //     return true ;
+        //   }
 
 
 
 
     })
-        // $.ajax({
+    // $.ajax({
     //         type: "POST",
     //         url: "check_plate.php",
     //         data: { plate_id: plateid },
@@ -254,7 +316,4 @@ $row2 = $result2->fetch_assoc();
     //             }
     //         },
     //     });
-  </script>
-
-
-
+</script>
