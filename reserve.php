@@ -143,20 +143,10 @@ $row2 = $result2->fetch_assoc();
   return d instanceof Date && !isNaN(d);
 }
     function calculatePrice() {
-
+        var plateid = document.getElementById("plateids").value ;
       var startDate = new Date(document.getElementById('start-date').value);
       var endDate = new Date(document.getElementById('end-date').value);
       var pricePerDay = document.getElementById('pricepd').innerHTML;
-    //   console.log(pricePerDay);
-    //   console.log( endDate)
-    //   console.log(typeof startDate)
-    //   if( endDate === "Invalid Date"){
-    //     console.log("7amda");
-    //   }
-    //   if(isValidDate(endDate) === false ){
-    //     console.log("Hassona is here") ;
-    //   }
-
       var price = calculatePriceLogic(startDate, endDate, pricePerDay);
 
       if(!isNaN(price) && price>=0 ){
@@ -177,6 +167,8 @@ $row2 = $result2->fetch_assoc();
     const form  =document.getElementById("form") ;
     const error =document.getElementById("error") ; 
     form.addEventListener("submit" , (e)=>{
+        var flag = true ;
+
       var startDate = new Date(document.getElementById('start-date').value);
       var endDate = new Date(document.getElementById('end-date').value);
       console.log("Migzo is here");
@@ -184,21 +176,84 @@ $row2 = $result2->fetch_assoc();
         console.log("Migzo is here part2 ");
         console.log(error) ;
 
+        flag = false ; 
         document.getElementById('result').innerText = "$0";
 
         error.innerHTML = "You cannot insert start date > end date" ;
         console.log(error.innerHTML)
         e.preventDefault() ;
       }
-      else {
-        error.innerText="" ;
-        return true ;
-      }
+
+      var plateid = document.getElementById("plateids").value ;
+    var startDate = document.getElementById('start-date').value;
+      var endDate = document.getElementById('end-date').value;
+      var pricePerDay = document.getElementById('pricepd').innerHTML;
+      e.preventDefault();
+
+        $.ajax({
+            type: "POST",
+            url: "check_date.php",
+            data: { 
+                start: startDate , 
+                end :endDate ,
+                plateid ,plateid
+             },
+            success: function(response) {
+                if (response === "noclash") {
+                    console.log("There is no clash in here ") ;
+                    if(flag === true ){
+                        error.innerHTML="";
+
+                        form.submit() ;
+
+                    }
+                    else {
+                        error.innerHTML = "You cannot insert start date > end date" ;
+
+                        e.preventDefault() ;
+                    }
+
+                } else {
+
+                    console.log("There is clash here ") ;
+                    error.innerHTML="There is a clash with an existing reservation" ;
+                    // window.location.href ='check_date.php';
+
+                }
+            },
+        });
+
+
+
+
+    //   else {
+    //     error.innerText="" ;
+    //     return true ;
+    //   }
 
 
 
 
     })
+        // $.ajax({
+    //         type: "POST",
+    //         url: "check_plate.php",
+    //         data: { plate_id: plateid },
+    //         success: function(response) {
+    //             if (response === "unique") {
+    //                 console.log("uniqe office id") ;
+    //                 errorMsg[3].innerHTML = "";
+    //                 plate.style.border = "2px solid green";
+    //                 uniqueerror = false;
+    //             } else {
+    //                 console.log("non uniqe office id") ;
+
+    //                 uniqueerror = true;
+    //                 plate.style.border = "2px solid red";
+    //                 errorMsg[3].innerHTML = "Plate Id already exists";
+    //             }
+    //         },
+    //     });
   </script>
 
 

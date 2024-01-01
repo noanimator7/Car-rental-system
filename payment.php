@@ -222,4 +222,7 @@ $price  =$_POST['priceperday'] ;
             cardNumInput.value = cNumber
         }
     })
+
+
+    
 </script>
