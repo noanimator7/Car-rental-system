@@ -181,7 +181,7 @@ if ($resultrented === false) {
                 }
             } else {
                 echo '<div class="car-info-box">';
-                echo '<p>No reservations found matching the criteria.</p>';
+                echo '<p>No reserved Cars on This Day.</p>';
                 echo '</div>';
             }
             echo '</div>';
@@ -220,7 +220,7 @@ if ($resultrented === false) {
                 }
             } else {
                 echo '<div class="car-info-box">';
-                echo '<p>No reservations found matching the criteria.</p>';
+                echo '<p>No Available cars on this day.</p>';
                 echo '</div>';
             }
             echo '</div>';

@@ -175,6 +175,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo '</div>';
 
                     echo '<div class="results-box"> ';
+                    echo '<label for="car_name">Brand Name:</label>' ;
+                    echo '<input type="text" id="car_name" name="car_name" value="' . $row["brandName"] . '" readonly>';
+                    echo '</div>';
+                    echo '<div class="results-box"> ';
+                    echo '<label for="car_name">Category:</label>' ;
+                    echo '<input type="text" id="car_name" name="car_name" value="' . $row["category"] . '" readonly>';
+                    echo '</div>';
+                    echo '<div class="results-box"> ';
                     echo '<label for="car_name">Car Name:</label>' ;
                     echo '<input type="text" id="car_name" name="car_name" value="' . $row["CarName"] . '" readonly>';
                     echo '</div>';

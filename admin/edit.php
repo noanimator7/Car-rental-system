@@ -16,6 +16,8 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //echo 'Hello from post if' ;
     $color = $_POST["color"];
+    $brandname = $_POST["bd"];
+    $category = $_POST["catego"];
     $brand = $_POST["brand"];
     $overview = $_POST["overview"] ; 
     $price = $_POST["price_per_day"];
@@ -207,10 +209,11 @@ $conn->close();
                     ?>
                     </select> -->
                 <div class="brandatts">
+                <label for="bd">Brand Name</label>
+                        <input type="text"  name="bd" id="bd" value='<?php echo  $brandname?>' readonly>
                     <label for="brand">Car Name:</label>
                     <input type="text" name="brand" id="brand" value='<?php echo $brand?>' readonly>
-                        <label for="overview">OverView</label>
-                        <input type="text" name="overview" id="overview" value='<?php echo $overview?>' readonly>
+   
 
                         
                 </div>
@@ -255,6 +258,17 @@ $conn->close();
                     <div class="brandatts">
                         <label for="oid">Office Id</label>
                         <input type="text"  name="oid" id="oid" value='<?php echo  $oid?>' readonly>
+                        <!-- brandname -->
+                        <label for="overview">OverView</label>
+                        <input type="text" name="overview" id="overview" value='<?php echo $overview?>' readonly>
+    
+
+                    </div>
+                    <div class="brandatts">
+                        <!-- siuu -->
+                    <label for="catego">Category</label>
+                    <input type="text"  name="catego" id="catego" value='<?php echo  $category?>' readonly>
+
                     </div>
              <!-- <input type="submit" name="submit" value="edit" class = "submit-btn"> -->
             <button class="submit-btn" type="submit" name="submit" id='submit'>Submit</button>

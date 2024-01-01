@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  
  $sql = "
  SELECT r.Reservation_number  , u.SSN, u.FirstName , u.LastName, u.Email  ,
- u.Address , u.city ,u.country , c.CarName , r.PlateId
+ u.Address , u.city ,u.country , c.CarName , c.brandName, c.category ,r.PlateId
  FROM reservation as r 
  NATURAL JOIN users AS u
  NATURAL JOIN car as c
@@ -197,6 +197,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo '<input type="text" id="country" name="country" value="' . $row["country"] . '" readonly>';
                     echo '</div>';
 
+                    echo '<div class="results-box"> ';
+                    echo '<label for="carname">Brand Name:</label>';
+                    echo '<input type="text" id="carname" name="carname" value="' . $row["brandName"] . '" readonly>';
+                    echo '</div>';
+                    echo '<div class="results-box"> ';
+                    echo '<label for="carname">Category:</label>';
+                    echo '<input type="text" id="carname" name="carname" value="' . $row["category"] . '" readonly>';
+                    echo '</div>';
                     echo '<div class="results-box"> ';
                     echo '<label for="carname">Car Name:</label>';
                     echo '<input type="text" id="carname" name="carname" value="' . $row["CarName"] . '" readonly>';

@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  $start = $_POST['startdate'];   
  $end = $_POST['enddate'];   
  $sql = "
- SELECT Image,pickup_date, return_date, u.FirstName, u.LastName, u.SSN, u.country, c.CarName, c.PlateId, c.PricePerDay
+ SELECT Image,pickup_date, return_date, u.FirstName, u.LastName, u.SSN, u.country, c.CarName, c.PlateId, c.PricePerDay , c.brandName  , c.category
  FROM reservation as r 
  JOIN car as c ON r.PlateId = c.PlateId 
  JOIN users as u ON r.SSN  = u.SSN 
@@ -206,6 +206,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo '<input type="text" id="enddate" name="enddate" value="' . $row["return_date"] . '" readonly>';
                 echo '</div>';
    
+                echo '<div class="results-box"> ';
+                echo '<label for="carname">Brand Name:</label>' ;
+                echo '<input type="text" id="carname" name="carname" value="' . $row["brandName"] . '" readonly>';
+                echo '</div>';
+                echo '<div class="results-box"> ';
+                echo '<label for="carname">Category:</label>' ;
+                echo '<input type="text" id="carname" name="carname" value="' . $row["category"] . '" readonly>';
+                echo '</div>';
                 echo '<div class="results-box"> ';
                 echo '<label for="carname">Car Name:</label>' ;
                 echo '<input type="text" id="carname" name="carname" value="' . $row["CarName"] . '" readonly>';
