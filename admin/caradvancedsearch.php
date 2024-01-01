@@ -26,7 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     c.Color LIKE '%$start%'  OR
     c.OId LIKE '%$start%'  OR
     c.Seating_capacity LIKE '%$start%'  OR
-    c.Air_conditioner LIKE '%$start%'  
+    c.Air_conditioner LIKE '%$start%'   OR 
+    c.brandName LIKE '%$start%'    OR
+    c.category LIKE '%$start%'
 ";
 //  echo $sqlrented;
 $resultrented = $conn->query($sqlrented);
@@ -164,8 +166,18 @@ if ($resultrented === false) {
     
     
                     echo '<div class="results-box"> ';
-                    echo '<label for="brand">Brand Name:</label>' ;
+                    echo '<label for="bd">Brand Name:</label>';
+                    echo '<input type="text" id = "bd" name="bd" value="' . $row["brandName"] . '" readonly>';
+                    echo '</div>';
+
+                    echo '<div class="results-box"> ';
+                    echo '<label for="brand">Car Name:</label>';
                     echo '<input type="text" id = "brand" name="brand" value="' . $row["CarName"] . '" readonly>';
+                    echo '</div>';
+
+                    echo '<div class="results-box"> ';
+                    echo '<label for="catego">Category:</label>';
+                    echo '<input type="text" id = "catego" name="catego" value="' . $row["category"] . '" readonly>';
                     echo '</div>';
                     
                     echo '<div class="results-box"> ';

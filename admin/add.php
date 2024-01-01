@@ -115,6 +115,8 @@ if ($result_office->num_rows > 0) {
 <input type="file" id="image" name="image" accept="image/jpg, image/jpeg, image/jfif" />
 
 
+
+
             <label for="Brand">Car Name:</label>
             <input type="text" name="Brand" id="Brand">
                     <div class="error"></div>
@@ -133,6 +135,11 @@ if ($result_office->num_rows > 0) {
                             <option value="N">No</option>
                         </select>
                         <div class="error"></div>
+
+
+
+
+                        <label for=""></label>
 
 
                         <label for="plate">Plate ID:</label>
@@ -190,16 +197,13 @@ if ($result_office->num_rows > 0) {
                         </select>
                         <div class="error"></div>
 
-    
+                        <label for="brandname">Brand Name</label>
+            <input type="text" name="brandname" id="brandname">
+            <div class="error"></div>
 
-
-<!-- 
-                    <label for="status">Car Status:</label>
-                    <select name="status" id="status">
-                        
-                        <option value="available">Available</option>
-                        <option value="rented">Rented</option>
-                    </select> -->
+            <label for="category">Category</label>
+            <input type="text" name="category" id="category">
+            <div class="error"></div>
                 
                  
 
@@ -230,6 +234,8 @@ if ($result_office->num_rows > 0) {
         let seatingcapacity = id("seatingcapacity");
         let year = id("year");
         let airconditioner =id("airconditioner") ;
+        let brandname =id("brandname") ;
+        let category =id("category") ;
 
 
         let form = id("form");
@@ -280,6 +286,7 @@ if ($result_office->num_rows > 0) {
             let validationPassed9 = true;
             let validationPassed10 = true;
             let validationPassed11= true;
+            let validationPassed12= true;
             validationPassed1 = validationPassed1 && engine(brand, 0, "Brand cannot be blank");
 
 
@@ -291,6 +298,8 @@ if ($result_office->num_rows > 0) {
             validationPassed8 = validationPassed8 && engine(overview, 7, "overview  cannot be blank");
             validationPassed9 = validationPassed9 && engine(seatingcapacity, 8, "seating capacity  cannot be blank");
             validationPassed10 = validationPassed10 && engine(year, 9, "year  cannot be blank");
+            validationPassed11 = validationPassed11 && engine(brandname, 11, "brand name  cannot be blank");
+            validationPassed12 = validationPassed12 && engine(category, 12, "category  cannot be blank");
 
             // validationPassed1 = validationPassed1 && engine(price, 1, "price cannot be blank");
             
