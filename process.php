@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "\n" ;
 
     echo $totalprice ;
-    $sql="UPDATE car set status = 'Reserved' where PlateId = '$plateid' ";
+    $sql="UPDATE car set status = 'Rented' where PlateId = '$plateid' ";
     $result = $conn->query($sql);
    
     $pay = "MasterCard" ;
