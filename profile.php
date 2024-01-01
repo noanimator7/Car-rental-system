@@ -4,6 +4,11 @@ if (!isset($_SESSION["SESSION_EMAIL"])) {
     header("Location: index.php");
 }
 include 'config.php';
+$today = date("Y-m-d");
+mysqli_query($conn, "UPDATE car as c set Status = 'Available' where c.PlateId in
+(select r.PlateId from reservation as r where return_date ='$today')");
+mysqli_query($conn, "UPDATE car as c set Status = 'rented' where c.PlateId in
+(select r.PlateId from reservation as r where pickup_date ='$today')");
 $result = mysqli_query($conn, "SELECT * FROM users WHERE email='{$_SESSION["SESSION_EMAIL"]}'");
 //echo $_SESSION['SESSION_EMAIL'];
 if (mysqli_num_rows($result) > 0) {
