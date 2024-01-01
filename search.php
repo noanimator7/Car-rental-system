@@ -456,6 +456,8 @@ form.addEventListener("submit", (e) => {
             // para2.appendChild(nodeb);
             // maindiv.appendChild(para2);
 
+                
+        createInput(maindiv, "brandName", item.brandName);
         createInput(maindiv, "a", item.b);
         createInput(maindiv, "b", item.c);
         createInput(maindiv, "c", "Year : " + item.d);
@@ -505,6 +507,9 @@ function createInput(parent, name, value) {
     }
     if(name==="plateid"){
         input.classList.add("pid");
+    }
+    if(name==="brandName"){
+        input.classList.add("brandName");
     }
     console.log(input.name);
     input.value = value;

@@ -1084,7 +1084,7 @@ input::-webkit-outer-spin-button{
     background-color: #cd1818;
     height: 2px;
     width: 75%;
-    bottom: -45px;
+    bottom: -81px;
     left: 0px;
 }
 .caratts .search-result > form .image img{
@@ -1104,6 +1104,15 @@ input::-webkit-outer-spin-button{
     width: 100%;
     height: fit-content;
 }
+.caratts .search-result > form input.brandName{
+    color: #cd1818;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 10px;
+    background-color: white;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
 .caratts .search-result > form input.c-name{
     display: block;
     color: #393e46;
@@ -1114,6 +1123,7 @@ input::-webkit-outer-spin-button{
     background-color: white;
     width: 100%;
     border: none;
+    text-transform: capitalize;
 }
 .caratts .search-result > form input:focus{
     outline: none;
