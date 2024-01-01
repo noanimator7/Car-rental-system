@@ -131,7 +131,7 @@ if ($result_country->num_rows > 0) {
             <div class="rl-container">
                 <div class="home"><a href="profile.php">HOME</a></div>
                 <div class="search active"><a href="search.php">SEARCH</a></div>
-                <div class="login "><a href="#testimonials" class="button">PROFILE</a></div>
+                <div class="login "><a href="userprofile.php" class="button">PROFILE</a></div>
                 <div class="register "><a href="logout.php">LOG OUT</a></div>
             </div>
         </div>
@@ -262,6 +262,62 @@ if ($result_country->num_rows > 0) {
             <div class="search-result" id="search-result"></div>
         </div>
     </div>
+    <!-- Start Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="box">
+                <h3>RENT CAR</h3>
+                <ul class="social">
+                    <li>
+                        <a href="#" class="facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+                <p class="text">
+                    Where quality meets convenience: Rent with us and enjoy the journey
+                </p>
+            </div>
+            <div class="box">
+                <ul class="links">
+                    <li><a href="profile.php">Home</a></li>
+                    <li><a href="search.php">Search</a></li>
+                    <li><a href="userprofile.php">Profile</a></li>
+                    <li><a href="logout.php">Log Out</a></li>
+                </ul>
+            </div>
+            <div class="box">
+                <div class="line">
+                    <i class="fas fa-map-marker-alt fa-fw"></i>
+                    <div class="info">Room 100, Street 1111, Smouha, Alexandria, Egypt</div>
+                </div>
+                <div class="line">
+                    <i class="far fa-clock fa-fw"></i>
+                    <div class="info">Business Hours: From 8:00 AM To 4:00 PM</div>
+                </div>
+                <div class="line">
+                    <i class="fas fa-phone-volume fa-fw"></i>
+                    <div class="info">
+                        <span>+01234567891</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <p class="copyright">&copy; 2024 RENT CAR Ltds | All rights reserved
+</p>
+    </div>
+    <!-- End Footer -->
 
     
 </body>

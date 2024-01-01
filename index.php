@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (isset($_SESSION["SESSION_EMAIL"])) {
+    header("Location: profile.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +52,7 @@
                 <img src="../Car-rental-system/images/logo.png" alt="">
             </div>
             <div class="rl-container">
-                <div class="home"><a href="#">HOME</a></div>
+                <div class="home active"><a href="#">HOME</a></div>
                 <div class="about-us"><a href="#about">ABOUT US</a></div>
                 <div class="login "><a href="#testimonials" class="button">TESTIMONIALS</a></div>
                 <div class="register "><a href="#contact" class="button">CONTACT US</a></div>
@@ -139,20 +145,62 @@
     <!-- End Testimonials -->
 
 
-    <!-- <script>
-        function toggleForm(formType) {
-            const loginForm = document.querySelector('.login-form');
-            const signupForm = document.querySelector('.signup-form');
+    <!-- Start Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="box">
+                <h3>RENT CAR</h3>
+                <ul class="social">
+                    <li>
+                        <a href="#" class="facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+                <p class="text">
+                    Where quality meets convenience: Rent with us and enjoy the journey
+                </p>
+            </div>
+            <div class="box">
+                <ul class="links">
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="box">
+                <div class="line">
+                    <i class="fas fa-map-marker-alt fa-fw"></i>
+                    <div class="info">Room 100, Street 1111, Smouha, Alexandria, Egypt</div>
+                </div>
+                <div class="line">
+                    <i class="far fa-clock fa-fw"></i>
+                    <div class="info">Business Hours: From 8:00 AM To 4:00 PM</div>
+                </div>
+                <div class="line">
+                    <i class="fas fa-phone-volume fa-fw"></i>
+                    <div class="info">
+                        <span>+01234567891</span>
+                    </div>
+                </div>
+            </div>
 
-            if (formType === 'signup') {
-                loginForm.style.display = 'none';
-                signupForm.style.display = 'block';
-            } else {
-                loginForm.style.display = 'block';
-                signupForm.style.display = 'none';
-            }
-        }
-    </script> -->
+        </div>
+        <p class="copyright">&copy; 2024 RENT CAR Ltds | All rights reserved
+        </p>
+    </div>
+    <!-- End Footer -->
 
 
 
