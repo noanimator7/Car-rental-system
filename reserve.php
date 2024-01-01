@@ -61,9 +61,9 @@ $row2 = $result2->fetch_assoc();
                 <img src="../Car-rental-system/images/logo.png" alt="">
             </div>
             <div class="rl-container">
-                <div class="home"><a href="profile.php">HOME</a></div>
-                <div class="about-us"><a href="#about">ABOUT US</a></div>
-                <div class="login "><a href="#testimonials" class="button">PROFILE</a></div>
+                <div class="home active"><a href="profile.php">HOME</a></div>
+                <div class="about-us"><a href="search.php">SEARCH</a></div>
+                <div class="login "><a href="userprofile.php" class="button">PROFILE</a></div>
                 <div class="register "><a href="logout.php">LOG OUT</a></div>
             </div>
         </div>
@@ -86,20 +86,21 @@ $row2 = $result2->fetch_assoc();
                 echo    '</div>';
                 ?>
                 <div class="text">
+                    <div class="brand-name"><?php echo $row["brandName"] ?></div>
                     <div class="car-name"><?php echo $row["CarName"] ?></div>
                     <!-- <div class="overview"><?php //echo $row["Overview"]
                                                 ?></div> -->
-                    <div class="color">Color : <?php echo $row["Color"] ?></div>
-                    <div class="year">Year : <?php echo $row["Year"] ?></div>
-                    <div class="ppd">Price Per Day : $<span id="pricepd"><?php echo $row["PricePerDay"] ?></span></div>
-                    <div class="plate">Plate ID : <?php echo $row["PlateId"] ?></div>
-                    <div class="ac">Air Conditioner : <?php if ($row["Air_conditioner"] === "Y") {
-                                                            echo "Yes";
-                                                        } else {
-                                                            echo "No";
-                                                        } ?></div>
-                    <div class="sc">Seating Capacity : <?php echo $row["Seating_capacity"] ?></div>
-                    <div class="tp">Total Price : <span class="price" id="result">Select Dates To Calculate</span></div>
+                    <div class="color spec">Color : <?php echo $row["Color"] ?></div>
+                    <div class="year spec">Year : <?php echo $row["Year"] ?></div>
+                    <div class="ppd spec">Price Per Day : $<span id="pricepd"><?php echo $row["PricePerDay"] ?></span></div>
+                    <div class="plate spec">Plate ID : <?php echo $row["PlateId"] ?></div>
+                    <div class="ac spec">Air Conditioner : <?php if ($row["Air_conditioner"] === "Y") {
+                                                                echo "Yes";
+                                                            } else {
+                                                                echo "No";
+                                                            } ?></div>
+                    <div class="sc spec">Seating Capacity : <?php echo $row["Seating_capacity"] ?></div>
+                    <div class="tp spec">Total Price : <span class="price" id="result">Select Dates To Calculate</span></div>
 
                 </div>
 
