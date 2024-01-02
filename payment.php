@@ -71,7 +71,7 @@ $price  =$_POST['priceperday'] ;
             <div class="rl-container">
                 <div class="home"><a href="profile.php">HOME</a></div>
                 <div class="search"><a href="search.php">SEARCH</a></div>
-                <div class="login "><a href="#testimonials" class="button">PROFILE</a></div>
+                <div class="login "><a href="userprofile.php" class="button">PROFILE</a></div>
                 <div class="register "><a href="logout.php">LOG OUT</a></div>
             </div>
         </div>
