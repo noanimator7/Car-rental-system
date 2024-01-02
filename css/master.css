@@ -898,6 +898,13 @@ a {
     margin-top: 20px;
     transition: 0.3s;
 }
+.error.reserve{
+    color: #cd1818;
+    font-size: 13px;
+    transform: translateX(-50%);
+    left: 49%;
+    bottom: 3%;
+}
 /* End Reserve Page */
 
 /* Start Payement */

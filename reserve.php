@@ -128,13 +128,13 @@ $row2 = $result2->fetch_assoc();
                         </div>
                     </div>
 
-
+                    <div class="error reserve" id="error"></div>
                     <div class="button">
                         <button class="proceed" name=proceed>PROCEED TO PAYMENT</button>
                     </div>
 
 
-                    <div class="error" id="error"></div>
+                    
 
 
                 </form>
