@@ -240,11 +240,12 @@ if ($result_office->num_rows > 0) {
         let errorMsg = classes("error");
 
   
-        let uniqueerror = false
+        let uniqueerror = true
         plate.addEventListener("blur", () => {
     const plateid =plate.value;
     console.log(plateid) ;
     if (plateid.trim() !== "") {
+        
         $.ajax({
             type: "POST",
             url: "check_plate.php",
@@ -267,7 +268,7 @@ if ($result_office->num_rows > 0) {
     } else {
         errorMsg[3].innerHTML = "";
         ofid.style.border = "2px solid green";
-        uniqueerror = false;
+        uniqueerror = true;
     }
 });
 
@@ -294,20 +295,25 @@ if ($result_office->num_rows > 0) {
             validationPassed10 = validationPassed10 && engine(year, 9, "year  cannot be blank");
             validationPassed11 = validationPassed11 && engine(brandname, 11, "brand name  cannot be blank");
             validationPassed12 = validationPassed12 && engine(category, 12, "category  cannot be blank");
+            e.preventDefault();
             
 
 
 
 
             if (uniqueerror) {
-                ofid.style.border = "2px solid red";
-                errorMsg[3].innerHTML = "Office Id already exists";
+                console.log("Helllo");
+                plate.style.border = "2px solid red";
+                errorMsg[3].innerHTML = "Plate Id already exists";
             }
 
-            if (!validationPassed1 || !validationPassed2 ||  !validationPassed4 ||
-             !validationPassed5 || !validationPassed6 || !validationPassed7 || !validationPassed8 ||
-              !validationPassed9 || !validationPassed10 || uniqueerror) {
+            if ( !validationPassed1 || !validationPassed2 ||  !validationPassed4 ||
+             !validationPassed7 || !validationPassed8 ||
+              !validationPassed9 || !validationPassed10 ||! validationPassed12 ||uniqueerror) {
             e.preventDefault();
+        }
+        else{
+            form.submit() ;
         }
         });
 
