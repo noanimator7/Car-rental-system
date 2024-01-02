@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  FROM reservation as r 
  JOIN car as c ON r.PlateId = c.PlateId 
  JOIN users as u ON r.SSN  = u.SSN 
- WHERE   pickup_date BETWEEN '$start' AND '$end'    OR  return_date BETWEEN '$start' AND '$end' 
+ WHERE   pickup_date BETWEEN '$start' AND '$end'    OR  '$start' BETWEEN pickup_date AND return_date 
  ";
  
  $result = $conn->query($sql);
