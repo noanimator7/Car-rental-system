@@ -21,8 +21,7 @@ function validates() {
 
   for (let i = 0; i < inputs.length; i++) {
     if(inputs[i].value.trim().length == 0){
-      console.log("IAM HERE MEGZO");
-      error[i].innerText = "INVALID!! " + inputs[i].getAttribute('placeholder');
+      error[i].innerText = inputs[i].getAttribute('placeholder');
       // return;
     }
     else{
