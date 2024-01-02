@@ -21,9 +21,8 @@ if ($conn->connect_error) {
     SELECT * 
     FROM reservation 
     WHERE PlateId = '$plateid' AND 
-    ( (STR_TO_DATE('$start', '%Y-%m-%d') BETWEEN pickup_date AND return_date) OR (STR_TO_DATE('$end', '%Y-%m-%d') BETWEEN pickup_date AND return_date) )
-    
-    
+    ( (STR_TO_DATE('$start', '%Y-%m-%d') BETWEEN pickup_date AND return_date)
+     OR pickup_date BETWEEN (STR_TO_DATE('$start', '%Y-%m-%d') AND (STR_TO_DATE('$end', '%Y-%m-%d'))
     ";
 
     $result = $conn->query($sql);
