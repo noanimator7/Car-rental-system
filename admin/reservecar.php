@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  SELECT  c.* ,pickup_date, return_date
  FROM reservation as r 
  JOIN car as c ON r.PlateId = c.PlateId 
- WHERE  ( pickup_date BETWEEN '$start' AND '$end'    OR  return_date BETWEEN '$start' AND '$end' ) AND r.PlateId = '$plate'
+ WHERE  ( pickup_date BETWEEN '$start' AND '$end'    OR  '$start' BETWEEN pickup_date AND return_date ) AND r.PlateId = '$plate'
  ";
  
  $result = $conn->query($sql);
